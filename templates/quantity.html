@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, usda_source %}
+{% block description %}{{ p.phrase | capitalize }} of {{ item.name | lower }} is {{ p.g }}g. Sourced from USDA data, with metric cup and Australian spoon figures.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cups to grams","item":"{{ site.base_url }}/convert/"},{"@type":"ListItem","position":2,"name":"{{ item.name }}","item":"{{ site.base_url }}{{ item.url }}"},{"@type":"ListItem","position":3,"name":"{{ p.phrase | capitalize }}","item":"{{ canonical }}"}]}</script>
+{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/convert/">Cups to grams</a> / <a href="{{ item.url }}">{{ item.name }}</a></p>
+<h1>How many grams is {{ p.phrase }} of {{ item.name | lower }}?</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">{{ p.phrase | capitalize }} of {{ item.name | lower }}{% if item.us_name | lower != item.name | lower %} ({{ item.us_name }}){% endif %} weighs</p>
+  <p class="scale-a">{{ p.g }}<small>g</small></p>
+  <p class="scale-extra">That's {{ p.oz }}oz.{% if p.unit == 'cup' %} In a 250ml metric cup it's {{ p.metric_g }}g.{% elif p.unit == 'tbsp' %} An Australian 20ml tablespoon holds {{ p.metric_g }}g.{% endif %}</p>
+</section>
+
+{% if p.unit == 'cup' %}
+<p>This uses the US cup, the size American recipes mean. {{ p.phrase | capitalize }} is {{ p.ml }}ml by volume.</p>
+{% elif p.unit == 'tbsp' %}
+<p>A level US or UK tablespoon (15ml).{% if p.how == 'calc' %} USDA doesn't measure a tablespoon of this, so this is a sixteenth of its cup weight.{% endif %}</p>
+{% elif p.unit == 'stick' %}
+<p>A US stick is half a cup, or 8 tablespoons.</p>
+{% endif %}
+
+{% if item.note %}<p class="note">{{ item.note }}</p>{% endif %}
+
+{{ ad_slot("quantity-1") }}
+
+<h2>Other amounts of {{ item.name | lower }}</h2>
+<ul class="links">
+{% for o in others %}<li><a href="{{ o.url }}">{{ o.phrase | capitalize }}: {{ o.g }}g</a></li>{% endfor %}
+<li><a href="{{ item.url }}">Full table for {{ item.name | lower }}</a></li>
+</ul>
+
+{{ sponsor_slot() }}
+{{ usda_source(item) }}
+{% endblock %}

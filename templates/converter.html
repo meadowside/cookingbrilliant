@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% block description %}Convert cups, tablespoons, teaspoons and sticks to grams for 64 ingredients. Uses USDA weights, with US and metric cups.{% endblock %}
+{% block main %}
+<h1>Cups to grams converter</h1>
+
+<form id="conv" class="field" autocomplete="off" onsubmit="return false">
+  <div class="field">
+    <label for="ing">Ingredient</label>
+    <select id="ing">
+    {% for g, items in groups.items() %}
+      <optgroup label="{{ g }}">
+      {% for it in items %}<option value="{{ it.slug }}">{{ it.name }}</option>{% endfor %}
+      </optgroup>
+    {% endfor %}
+    </select>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label for="amt">Amount</label>
+      <input id="amt" inputmode="decimal" value="1" aria-describedby="amt-help">
+    </div>
+    <div class="field">
+      <label for="unit">Measure</label>
+      <select id="unit">
+        <option value="cup">US cup (237ml)</option>
+        <option value="metric_cup">Metric cup (250ml)</option>
+        <option value="tbsp">Tablespoon (15ml)</option>
+        <option value="au_tbsp">Australian tablespoon (20ml)</option>
+        <option value="tsp">Teaspoon (5ml)</option>
+        <option value="stick">Stick</option>
+      </select>
+    </div>
+  </div>
+  <p id="amt-help" class="source">Fractions work: 1/2, 1 1/3, ¾.</p>
+</form>
+
+<section class="scale" aria-live="polite" aria-label="Answer">
+  <p class="scale-q" id="res-q">1 US cup of plain flour weighs</p>
+  <p class="scale-a"><span id="res-g">125</span><small>g</small></p>
+  <p class="scale-extra" id="res-extra"></p>
+</section>
+<p id="res-link"></p>
+
+{{ ad_slot("converter-1") }}
+
+<h2>Grams back to cups</h2>
+<div class="row">
+  <div class="field">
+    <label for="grams">Grams</label>
+    <input id="grams" inputmode="decimal" placeholder="e.g. 200">
+  </div>
+  <div class="field">
+    <label>US cups</label>
+    <p class="out" id="cups-out" aria-live="polite">&nbsp;</p>
+  </div>
+</div>
+
+{{ sponsor_slot() }}
+
+<h2>How this works</h2>
+<p>Every ingredient has a different weight per cup, so the converter uses USDA's measured weight for the one you pick. Metric cups and Australian tablespoons are the same weights scaled up to the bigger spoon or cup. <a href="/sources/">Sources</a>.</p>
+<noscript><p class="warn">The converter needs JavaScript. Every ingredient also has its own page with a full table, listed on the <a href="/">home page</a>.</p></noscript>
+{% endblock %}
+{% block scripts %}<script src="/js/common.js" defer></script><script src="/js/converter.js" defer></script>{% endblock %}

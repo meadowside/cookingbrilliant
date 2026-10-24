@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% block description %}Paste any recipe's ingredient list, set the servings you have and the servings you want, and get every quantity scaled and sensibly rounded.{% endblock %}
+{% block main %}
+<h1>Recipe scaler</h1>
+<p class="lede">Paste the ingredients, one per line. Change the servings. Done.</p>
+
+<div class="row">
+  <div class="field">
+    <label for="from">Recipe serves</label>
+    <input id="from" inputmode="decimal" value="4">
+  </div>
+  <div class="field">
+    <label for="to">You want to serve</label>
+    <input id="to" inputmode="decimal" value="6">
+  </div>
+</div>
+<div class="field">
+  <label for="recipe">Ingredients</label>
+  <textarea id="recipe" spellcheck="false">250g plain flour
+2 eggs
+1 1/2 cups milk
+3 tbsp melted butter
+1/2 tsp salt
+Juice of 1 lemon</textarea>
+</div>
+
+<h2>Scaled</h2>
+<ul class="out" id="scaled" aria-live="polite"></ul>
+<p class="source" id="scale-note"></p>
+
+{{ ad_slot("scaler-1") }}
+{{ sponsor_slot() }}
+
+<h2>How the rounding works</h2>
+<p>Grams and millilitres over 100 round to the nearest 5. Smaller amounts round to the nearest gram, or half a gram under 10g. Cups and spoons round to the nearest quarter, or third where that's closer. Eggs and other things you count get a fraction plus a plain-English suggestion, since nobody can crack a third of an egg.</p>
+<p>Lines without a number at the start (like "salt to taste") are left as they are. Baking times and tin sizes don't scale in a straight line, so check those yourself.</p>
+{% endblock %}
+{% block scripts %}<script src="/js/common.js" defer></script><script src="/js/scaler.js" defer></script>{% endblock %}

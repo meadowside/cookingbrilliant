@@ -1,0 +1,50 @@
+# cookingbrilliant.com
+
+Kitchen conversions that answer the question in the first line. Static site: a Python build script turns JSON data into HTML, and the three tools run as plain JavaScript in the browser.
+
+## Layout
+
+```
+build.py                  builds everything into dist/  (python build.py --serve to preview)
+site.json                 site name, contact email, AdSense client ID, sponsor slot
+data/
+  ingredients.json        the ingredient list: names, USDA record (NDB) number, which USDA measures to use
+  usda_portions.json      gram weights extracted from USDA. Generated, never edited by hand
+  measures.json           cup and spoon sizes in ml, each with a source
+  oven.json               oven table (source: Which?)
+content/*.md              about, contact, privacy, sources pages
+templates/                Jinja2 templates
+static/                   CSS, JS, fonts, favicon, .htaccess (copied into dist/ as is)
+scripts/
+  extract_usda.py         SR28 ASCII files -> data/usda_portions.json
+  verify_fdc.py           checks usda_portions.json against the official FDC download
+.github/workflows/
+  deploy.yml              build and FTPS upload to Namecheap on every push to main
+  verify-usda.yml         monthly re-check of the USDA numbers
+```
+
+## The data rule
+
+Every number on the site traces to a source. Weights come from USDA FoodData Central SR Legacy (CC0). The build only does arithmetic on sourced numbers (half a cup is half the cup weight, a metric cup is the US cup scaled to 250ml) and the page says when it has. If a figure has no source, it doesn't go on the site.
+
+## Adding an ingredient
+
+1. Find the food in SR Legacy and note its NDB number and the exact measure names USDA uses (e.g. `cup, chopped`).
+2. Add an entry to `data/ingredients.json`. `cup`, `tbsp`, `tsp` and `stick` take USDA measure names. `alt` lists extra measures to show.
+3. Re-run the extraction: `python scripts/extract_usda.py PATH_TO_SR28_ASCII`. The SR28 ASCII files are mirrored at github.com/alyssaq/usda-sqlite (`data/` folder) and are identical to FDC's SR Legacy data.
+4. `python build.py --serve` and check the page.
+
+Ingredients USDA doesn't cover (caster sugar, golden syrup, double cream) need a second published source. Don't add them until there is one.
+
+## Deploying
+
+Pushes to `main` build and upload `dist/` over FTPS. Add these repository secrets (Settings > Secrets and variables > Actions):
+
+- `FTP_SERVER`: e.g. `ftp.cookingbrilliant.com`
+- `FTP_USERNAME`, `FTP_PASSWORD`: a cPanel FTP account whose home directory is the cookingbrilliant.com document root
+
+## Turning on ads
+
+1. Get AdSense approval for cookingbrilliant.com.
+2. Put the publisher ID (`ca-pub-...`) in `site.json` as `adsense_client`. The build then adds the AdSense script, the ad slots and `ads.txt`.
+3. In AdSense, Privacy & messaging, publish a European regulations message (Google's own consent tool) for UK, EEA and Swiss visitors. The footer's "Privacy and cookie settings" link reopens it.

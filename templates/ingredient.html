@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, usda_source %}
+{% block description %}{{ item.headline_label | capitalize }} of {{ item.name | lower }} weighs {{ item.headline_g }}g. Cups, spoons and ounces to grams for {{ item.name | lower }}, with UK, US and Australian measures.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cups to grams","item":"{{ site.base_url }}/convert/"},{"@type":"ListItem","position":2,"name":"{{ item.name }}","item":"{{ canonical }}"}]}</script>
+{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/convert/">Cups to grams</a></p>
+<h1>{{ item.name }}: cups to grams</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">{{ item.headline_label | capitalize }} of {{ item.name | lower }}{% if item.us_name | lower != item.name | lower %} ({{ item.us_name }}){% endif %} weighs</p>
+  <p class="scale-a">{{ item.headline_g }}<small>g</small></p>
+  {% if item.metric_cup_g %}<p class="scale-extra">In a 250ml metric cup (Australia, NZ): {{ item.metric_cup_g }}g</p>{% endif %}
+</section>
+
+{% if item.note %}<p class="note">{{ item.note }}</p>{% endif %}
+
+{% if item.rows %}
+<h2>Cups</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Amount</th><th class="n">US cup</th><th class="n">Metric cup</th>{% if item.liquid %}<th class="n">ml (US)</th>{% endif %}</tr></thead>
+  <tbody>
+  {% for r in item.rows %}
+    <tr><td>{{ r.label }}</td><td class="n">{{ r.g }}g</td><td class="n">{{ r.metric_g }}g</td>{% if item.liquid %}<td class="n">{{ r.ml }}ml</td>{% endif %}</tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="source">A US cup is 237ml. Use the metric column for Australian and New Zealand recipes.</p>
+{% endif %}
+
+{{ ad_slot("ingredient-1") }}
+
+{% if item.spoons %}
+<h2>Spoons{% if item.units.stick %} and sticks{% endif %}</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Amount</th><th class="n">Weight</th><th class="n">Australian tbsp (20ml)</th></tr></thead>
+  <tbody>
+  {% for s in item.spoons %}
+    <tr><td>{{ s.label }}</td><td class="n">{{ s.g }}g</td><td class="n">{% if s.au %}{{ s.au }}g{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% endif %}
+
+{% if item.alts %}
+<h2>Other ways it's measured</h2>
+<div class="tablewrap"><table><tbody>
+{% for a in item.alts %}<tr><td>{{ a.label }}</td><td class="n">{{ a.g }}g</td></tr>{% endfor %}
+</tbody></table></div>
+{% endif %}
+
+{% if qpages %}
+<h2>Quick answers</h2>
+<ul class="links">
+{% for p in qpages %}<li><a href="{{ p.url }}">{{ p.phrase | capitalize }} of {{ item.name | lower }}</a></li>{% endfor %}
+</ul>
+{% endif %}
+
+{{ sponsor_slot() }}
+{{ usda_source(item) }}
+
+<h2>Convert another amount</h2>
+<p><a href="/convert/?i={{ item.slug }}">Open the converter with {{ item.name | lower }} selected</a>.</p>
+
+{% if related %}
+<h2>Related ingredients</h2>
+<ul class="links">
+{% for r in related %}<li><a href="{{ r.url }}">{{ r.name }}</a></li>{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

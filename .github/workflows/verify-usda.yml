@@ -1,0 +1,23 @@
+name: Verify USDA weights
+
+# Re-checks data/usda_portions.json against the official SR Legacy download from
+# fdc.nal.usda.gov. Runs monthly and on demand. It never blocks a deploy.
+on:
+  schedule:
+    - cron: "17 6 3 * *"
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download SR Legacy CSV from FoodData Central
+        run: |
+          curl -fsSL -o sr.zip https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip
+          mkdir sr && unzip -q sr.zip -d sr
+      - name: Compare
+        run: python scripts/verify_fdc.py sr

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block description %}Cups to grams for 64 ingredients, oven temperatures in °C, fan, °F and gas mark, and a recipe scaler. Every figure sourced.{% endblock %}
+{% block main %}
+<h1>The number you need, then back to the cooking</h1>
+<p class="lede">Cup and spoon weights for {{ groups.values() | map('length') | sum }} ingredients, oven temperatures and a recipe scaler. Built for UK kitchens, with American and Australian measures alongside.</p>
+
+<form class="field" action="/convert/" method="get" role="search">
+  <label for="q">Which ingredient?</label>
+  <input id="q" name="i" list="ingredient-list" placeholder="e.g. plain flour" autocomplete="off">
+  <datalist id="ingredient-list">
+  {% for g, items in groups.items() %}{% for it in items %}<option value="{{ it.slug }}">{{ it.name }}</option>{% endfor %}{% endfor %}
+  </datalist>
+</form>
+
+<h2>Tools</h2>
+<ul class="tools">
+  <li><a href="/convert/">Cups to grams converter</a>: any amount, any ingredient on the list</li>
+  <li><a href="/oven-temperatures/">Oven temperatures</a>: °C, fan, °F and gas mark side by side</li>
+  <li><a href="/recipe-scaler/">Recipe scaler</a>: paste a recipe, change the servings</li>
+</ul>
+
+<div class="groups">
+{% for g, items in groups.items() %}
+<h2>{{ g }}</h2>
+<ul class="links">
+{% for it in items %}<li><a href="{{ it.url }}">{{ it.name }}</a></li>{% endfor %}
+</ul>
+{% endfor %}
+</div>
+{% endblock %}

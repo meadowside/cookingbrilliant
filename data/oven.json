@@ -1,0 +1,19 @@
+{
+  "source": {
+    "name": "Which?, Oven temperature conversion table",
+    "url": "https://www.which.co.uk/reviews/built-in-ovens/article/oven-temperature-conversion-table-aA5Ol9b157On",
+    "checked": "2026-10-24"
+  },
+  "fan_rule": "Set a fan oven about 20°C lower than a conventional one. If a recipe gives only one temperature, check which oven type it means. Many recent UK recipes assume fan.",
+  "rows": [
+    {"gas": "1", "f": 275, "c": 140, "fan": 120, "desc": "Cool"},
+    {"gas": "2", "f": 300, "c": 150, "fan": 130, "desc": "Cool"},
+    {"gas": "3", "f": 325, "c": 160, "fan": 140, "desc": "Moderate"},
+    {"gas": "4", "f": 350, "c": 180, "fan": 160, "desc": "Moderate"},
+    {"gas": "5", "f": 375, "c": 190, "fan": 170, "desc": "Moderately hot"},
+    {"gas": "6", "f": 400, "c": 200, "fan": 180, "desc": "Moderately hot"},
+    {"gas": "7", "f": 425, "c": 220, "fan": 200, "desc": "Hot"},
+    {"gas": "8", "f": 450, "c": 230, "fan": 210, "desc": "Hot"},
+    {"gas": "9", "f": 475, "c": 240, "fan": 220, "desc": "Very hot"}
+  ]
+}

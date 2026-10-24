@@ -1,0 +1,21 @@
+{
+  "_comment": "Volume definitions in millilitres. Every value needs a source. 'status: needs-primary' means the figure is right but we still want a government or standards-body citation before Phase 2.",
+  "units": {
+    "us_cup": {"ml": 236.5882365, "label": "US cup", "source": "nist-hb44"},
+    "us_tbsp": {"ml": 14.78676478, "label": "US tablespoon", "source": "nist-hb44"},
+    "us_tsp": {"ml": 4.928921594, "label": "US teaspoon", "source": "nist-hb44"},
+    "us_pint": {"ml": 473.176473, "label": "US pint", "source": "nist-hb44"},
+    "us_label_cup": {"ml": 240, "label": "US nutrition-label cup", "source": "cfr-101-9"},
+    "metric_cup": {"ml": 250, "label": "Metric cup (Australia, NZ, Canada)", "source": "wiki-cup", "status": "needs-primary"},
+    "metric_tbsp": {"ml": 15, "label": "Metric tablespoon (UK, US labels, NZ)", "source": "wiki-cup", "status": "needs-primary"},
+    "au_tbsp": {"ml": 20, "label": "Australian tablespoon", "source": "wiki-cup", "status": "needs-primary"},
+    "metric_tsp": {"ml": 5, "label": "Teaspoon", "source": "wiki-cup", "status": "needs-primary"},
+    "uk_pint": {"ml": 568.26125, "label": "UK (imperial) pint", "source": "wma-1985"}
+  },
+  "sources": {
+    "nist-hb44": {"name": "NIST Handbook 44, Appendix C: General Tables of Units of Measurement", "url": "https://www.nist.gov/pml/owm/nist-handbook-44-current-edition"},
+    "cfr-101-9": {"name": "US Code of Federal Regulations, 21 CFR 101.9(b)(5)(viii)", "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101/subpart-A/section-101.9"},
+    "wma-1985": {"name": "Weights and Measures Act 1985, Schedule 1 (UK gallon = 4.54609 litres, pint = one-eighth gallon)", "url": "https://www.legislation.gov.uk/ukpga/1985/72/schedule/1"},
+    "wiki-cup": {"name": "Wikipedia, Cup (unit)", "url": "https://en.wikipedia.org/wiki/Cup_(unit)"}
+  }
+}

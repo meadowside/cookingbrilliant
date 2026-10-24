@@ -1,0 +1,1187 @@
+{
+ "source": "USDA FoodData Central, SR Legacy (April 2018 release, equivalent to SR28)",
+ "licence": "CC0 1.0 (public domain)",
+ "url": "https://fdc.nal.usda.gov/",
+ "foods": {
+  "01009": {
+   "description": "Cheese, cheddar",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, diced",
+     "grams": 132.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, melted",
+     "grams": 244.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, shredded",
+     "grams": 113.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz",
+     "grams": 28.35
+    },
+    {
+     "amount": 1.0,
+     "measure": "cubic inch",
+     "grams": 17.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "slice (1 oz)",
+     "grams": 28.0
+    }
+   ]
+  },
+  "01017": {
+   "description": "Cheese, cream",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 14.5
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 232.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp, whipped",
+     "grams": 10.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz",
+     "grams": 28.35
+    },
+    {
+     "amount": 1.0,
+     "measure": "cubic inch",
+     "grams": 16.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "package, small (3 oz)",
+     "grams": 85.0
+    }
+   ]
+  },
+  "01026": {
+   "description": "Cheese, mozzarella, whole milk",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, shredded",
+     "grams": 112.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz",
+     "grams": 28.35
+    },
+    {
+     "amount": 6.0,
+     "measure": "slices",
+     "grams": 170.0
+    }
+   ]
+  },
+  "01032": {
+   "description": "Cheese, parmesan, grated",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 100.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 5.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz",
+     "grams": 28.35
+    }
+   ]
+  },
+  "01036": {
+   "description": "Cheese, ricotta, whole milk",
+   "portions": [
+    {
+     "amount": 0.5,
+     "measure": "cup",
+     "grams": 124.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 246.0
+    }
+   ]
+  },
+  "01053": {
+   "description": "Cream, fluid, heavy whipping",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, whipped",
+     "grams": 120.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, fluid (yields 2 cups whipped)",
+     "grams": 238.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 15.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "fl oz",
+     "grams": 29.8
+    }
+   ]
+  },
+  "01056": {
+   "description": "Cream, sour, cultured",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 12.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 230.0
+    }
+   ]
+  },
+  "01077": {
+   "description": "Milk, whole, 3.25% milkfat, with added vitamin D",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 244.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "fl oz",
+     "grams": 30.5
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 15.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "quart",
+     "grams": 976.0
+    }
+   ]
+  },
+  "01088": {
+   "description": "Milk, buttermilk, fluid, cultured, lowfat",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 245.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "fl oz",
+     "grams": 30.6
+    },
+    {
+     "amount": 1.0,
+     "measure": "quart",
+     "grams": 980.0
+    }
+   ]
+  },
+  "01116": {
+   "description": "Yogurt, plain, whole milk, 8 grams protein per 8 ounce",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "container (6 oz)",
+     "grams": 170.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "container (8 oz)",
+     "grams": 227.0
+    },
+    {
+     "amount": 0.5,
+     "measure": "container (4 oz)",
+     "grams": 113.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup (8 fl oz)",
+     "grams": 245.0
+    }
+   ]
+  },
+  "01145": {
+   "description": "Butter, without salt",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "pat (1\" sq, 1/3\" high)",
+     "grams": 5.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 14.2
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 227.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "stick",
+     "grams": 113.0
+    }
+   ]
+  },
+  "02010": {
+   "description": "Spices, cinnamon, ground",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 2.6
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 7.8
+    }
+   ]
+  },
+  "02047": {
+   "description": "Salt, table",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 6.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 18.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 292.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "dash",
+     "grams": 0.4
+    }
+   ]
+  },
+  "02050": {
+   "description": "Vanilla extract",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.2
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 13.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 208.0
+    }
+   ]
+  },
+  "04025": {
+   "description": "Salad dressing, mayonnaise, regular",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 13.8
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 220.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "packet",
+     "grams": 10.0
+    }
+   ]
+  },
+  "04047": {
+   "description": "Oil, coconut",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 13.6
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 218.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.5
+    }
+   ]
+  },
+  "04053": {
+   "description": "Oil, olive, salad or cooking",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tablespoon",
+     "grams": 13.5
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 216.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.5
+    }
+   ]
+  },
+  "04582": {
+   "description": "Oil, canola",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 14.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 218.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.5
+    }
+   ]
+  },
+  "04610": {
+   "description": "Margarine, regular, 80% fat, composite, stick, with salt",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 14.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 227.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.7
+    },
+    {
+     "amount": 1.0,
+     "measure": "pat (1\" sq, 1/3\" high)",
+     "grams": 5.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "stick",
+     "grams": 113.0
+    }
+   ]
+  },
+  "04615": {
+   "description": "Shortening, vegetable, household, composite",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 12.8
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 205.0
+    }
+   ]
+  },
+  "08120": {
+   "description": "Cereals, oats, regular and quick, not fortified, dry",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 81.0
+    },
+    {
+     "amount": 0.333,
+     "measure": "cup",
+     "grams": 27.0
+    }
+   ]
+  },
+  "09032": {
+   "description": "Apricots, dried, sulfured, uncooked",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, halves",
+     "grams": 130.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "half",
+     "grams": 3.5
+    }
+   ]
+  },
+  "09079": {
+   "description": "Cranberries, dried, sweetened",
+   "portions": [
+    {
+     "amount": 0.25,
+     "measure": "cup",
+     "grams": 40.0
+    }
+   ]
+  },
+  "09087": {
+   "description": "Dates, deglet noor",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, chopped",
+     "grams": 147.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "date, pitted",
+     "grams": 7.1
+    }
+   ]
+  },
+  "09298": {
+   "description": "Raisins, seedless",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, packed",
+     "grams": 165.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup (not packed)",
+     "grams": 145.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "miniature box (.5 oz)",
+     "grams": 14.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "small box (1.5 oz)",
+     "grams": 43.0
+    },
+    {
+     "amount": 50.0,
+     "measure": "raisins",
+     "grams": 26.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz (60 raisins)",
+     "grams": 28.35
+    }
+   ]
+  },
+  "11312": {
+   "description": "Peas, green, frozen, unprepared",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 134.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "package",
+     "grams": 284.0
+    }
+   ]
+  },
+  "12023": {
+   "description": "Seeds, sesame seeds, whole, dried",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 144.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 9.0
+    }
+   ]
+  },
+  "12036": {
+   "description": "Seeds, sunflower seed kernels, dried",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, with hulls, edible yield",
+     "grams": 46.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 140.0
+    }
+   ]
+  },
+  "12061": {
+   "description": "Nuts, almonds",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, whole",
+     "grams": 143.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, sliced",
+     "grams": 92.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, slivered",
+     "grams": 108.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, ground",
+     "grams": 95.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz (23 whole kernels)",
+     "grams": 28.35
+    },
+    {
+     "amount": 1.0,
+     "measure": "almond",
+     "grams": 1.2
+    }
+   ]
+  },
+  "12120": {
+   "description": "Nuts, hazelnuts or filberts",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, chopped",
+     "grams": 115.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, ground",
+     "grams": 75.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, whole",
+     "grams": 135.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz (21 whole kernels)",
+     "grams": 28.35
+    },
+    {
+     "amount": 10.0,
+     "measure": "nuts",
+     "grams": 14.0
+    }
+   ]
+  },
+  "12142": {
+   "description": "Nuts, pecans",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, chopped",
+     "grams": 109.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, halves",
+     "grams": 99.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz (19 halves)",
+     "grams": 28.35
+    }
+   ]
+  },
+  "12155": {
+   "description": "Nuts, walnuts, english",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup, chopped",
+     "grams": 117.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, ground",
+     "grams": 80.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup, in shell, edible yield (7 nuts)",
+     "grams": 28.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup shelled (50 halves)",
+     "grams": 100.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup pieces or chips",
+     "grams": 120.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz (14 halves)",
+     "grams": 28.35
+    }
+   ]
+  },
+  "14555": {
+   "description": "Water, bottled, generic",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "fl oz",
+     "grams": 29.6
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 237.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "ml",
+     "grams": 1.0
+    }
+   ]
+  },
+  "16056": {
+   "description": "Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 200.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 12.5
+    }
+   ]
+  },
+  "16069": {
+   "description": "Lentils, raw",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 192.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tablespoon",
+     "grams": 12.0
+    }
+   ]
+  },
+  "16398": {
+   "description": "Peanut butter, smooth style, without salt",
+   "portions": [
+    {
+     "amount": 2.0,
+     "measure": "tbsp",
+     "grams": 32.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 258.0
+    }
+   ]
+  },
+  "18079": {
+   "description": "Bread crumbs, dry, grated, plain",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "oz",
+     "grams": 28.35
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 108.0
+    }
+   ]
+  },
+  "18369": {
+   "description": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.6
+    },
+    {
+     "amount": 0.5,
+     "measure": "tsp",
+     "grams": 2.3
+    }
+   ]
+  },
+  "18372": {
+   "description": "Leavening agents, baking soda",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.6
+    },
+    {
+     "amount": 0.5,
+     "measure": "tsp",
+     "grams": 2.3
+    }
+   ]
+  },
+  "18375": {
+   "description": "Leavening agents, yeast, baker's, active dry",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 12.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "packet",
+     "grams": 7.2
+    }
+   ]
+  },
+  "19080": {
+   "description": "Candies, semisweet chocolate",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "serving",
+     "grams": 14.5
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup large chips",
+     "grams": 182.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup mini chips",
+     "grams": 173.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "oz (approx 60 pcs)",
+     "grams": 28.35
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup chips (6 oz package)",
+     "grams": 168.0
+    }
+   ]
+  },
+  "19165": {
+   "description": "Cocoa, dry powder, unsweetened",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 86.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 5.4
+    }
+   ]
+  },
+  "19296": {
+   "description": "Honey",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 339.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 21.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "packet (0.5 oz)",
+     "grams": 14.0
+    }
+   ]
+  },
+  "19297": {
+   "description": "Jams and preserves",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 20.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "packet (0.5 oz)",
+     "grams": 14.0
+    }
+   ]
+  },
+  "19304": {
+   "description": "Molasses",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 337.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "serving 1 tbsp",
+     "grams": 20.0
+    }
+   ]
+  },
+  "19334": {
+   "description": "Sugars, brown",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tsp unpacked",
+     "grams": 3.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup packed",
+     "grams": 220.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup unpacked",
+     "grams": 145.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp packed",
+     "grams": 4.6
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp brownulated",
+     "grams": 3.2
+    }
+   ]
+  },
+  "19335": {
+   "description": "Sugars, granulated",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "serving packet",
+     "grams": 2.8
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 4.2
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 200.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "serving 1 cube",
+     "grams": 2.3
+    }
+   ]
+  },
+  "19336": {
+   "description": "Sugars, powdered",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup unsifted",
+     "grams": 120.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup sifted",
+     "grams": 100.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp unsifted",
+     "grams": 8.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tsp",
+     "grams": 2.5
+    }
+   ]
+  },
+  "19350": {
+   "description": "Syrups, corn, light",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 341.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 22.0
+    }
+   ]
+  },
+  "19353": {
+   "description": "Syrups, maple",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "tbsp",
+     "grams": 20.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "serving 1/4 cup",
+     "grams": 83.0
+    },
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 315.0
+    }
+   ]
+  },
+  "20011": {
+   "description": "Buckwheat flour, whole-groat",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 120.0
+    }
+   ]
+  },
+  "20022": {
+   "description": "Cornmeal, degermed, enriched, yellow",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 157.0
+    }
+   ]
+  },
+  "20027": {
+   "description": "Cornstarch",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 128.0
+    }
+   ]
+  },
+  "20028": {
+   "description": "Couscous, dry",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 173.0
+    }
+   ]
+  },
+  "20035": {
+   "description": "Quinoa, uncooked",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 170.0
+    }
+   ]
+  },
+  "20036": {
+   "description": "Rice, brown, long-grain, raw",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 185.0
+    }
+   ]
+  },
+  "20044": {
+   "description": "Rice, white, long-grain, regular, raw, enriched",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 185.0
+    }
+   ]
+  },
+  "20064": {
+   "description": "Rye flour, medium",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 102.0
+    }
+   ]
+  },
+  "20066": {
+   "description": "Semolina, enriched",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 167.0
+    }
+   ]
+  },
+  "20080": {
+   "description": "Wheat flour, whole-grain",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 120.0
+    }
+   ]
+  },
+  "20081": {
+   "description": "Wheat flour, white, all-purpose, enriched, bleached",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 125.0
+    }
+   ]
+  },
+  "20082": {
+   "description": "Wheat flour, white, all-purpose, self-rising, enriched",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 125.0
+    }
+   ]
+  },
+  "20083": {
+   "description": "Wheat flour, white, bread, enriched",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 137.0
+    }
+   ]
+  },
+  "20450": {
+   "description": "Rice, white, medium-grain, raw, unenriched",
+   "portions": [
+    {
+     "amount": 1.0,
+     "measure": "cup",
+     "grams": 195.0
+    }
+   ]
+  }
+ }
+}

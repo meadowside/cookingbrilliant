@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% block description %}Gas mark 4 is 180°C, 160°C fan or 350°F. Full oven temperature table for °C, fan, °F and gas mark, plus a quick converter.{% endblock %}
+{% block main %}
+<h1>Oven temperatures: °C, fan, °F and gas mark</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">A moderate oven, gas mark 4, is</p>
+  <p class="scale-a">180<small>°C</small></p>
+  <p class="scale-extra">160°C fan, or 350°F.</p>
+</section>
+
+<div class="tablewrap"><table id="oven-table">
+  <thead><tr><th>Gas mark</th><th class="n">°C</th><th class="n">Fan °C</th><th class="n">°F</th><th>Heat</th></tr></thead>
+  <tbody>
+  {% for r in oven.rows %}
+    <tr data-c="{{ r.c }}" data-fan="{{ r.fan }}" data-f="{{ r.f }}" data-gas="{{ r.gas }}"><td>{{ r.gas }}</td><td class="n">{{ r.c }}</td><td class="n">{{ r.fan }}</td><td class="n">{{ r.f }}</td><td>{{ r.desc }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="note">{{ oven.fan_rule }}</p>
+
+<h2>Find the nearest setting</h2>
+<div class="row">
+  <div class="field">
+    <label for="temp">Temperature in the recipe</label>
+    <input id="temp" inputmode="decimal" placeholder="e.g. 375">
+  </div>
+  <div class="field">
+    <label for="scale">It's in</label>
+    <select id="scale">
+      <option value="f">°F</option>
+      <option value="c">°C (conventional)</option>
+      <option value="fan">°C (fan)</option>
+      <option value="gas">Gas mark</option>
+    </select>
+  </div>
+</div>
+<p class="out" id="oven-out" aria-live="polite">Type a temperature and the closest row lights up.</p>
+
+{{ ad_slot("oven-1") }}
+{{ sponsor_slot() }}
+
+<p class="source">Table from <a href="{{ oven.source.url }}">{{ oven.source.name }}</a>, checked {{ oven.source.checked }}. Celsius figures are rounded to the nearest 10°C. Exact Fahrenheit to Celsius: subtract 32, then multiply by 5/9.</p>
+{% endblock %}
+{% block scripts %}<script src="/js/common.js" defer></script><script src="/js/oven.js" defer></script>{% endblock %}

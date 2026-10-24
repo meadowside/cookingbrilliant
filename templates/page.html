@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>{{ title }}</h1>
+{{ body | safe }}
+{% if url == '/sources/' %}
+<h2>Ingredient data</h2>
+<p>The USDA food used for each ingredient, with its SR Legacy record (NDB) number.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Ingredient</th><th>USDA food</th><th class="n">NDB no.</th></tr></thead>
+  <tbody>
+  {% for it in items %}<tr><td><a href="{{ it.url }}">{{ it.name }}</a></td><td>{{ it.usda_description }}</td><td class="n">{{ it.ndb }}</td></tr>{% endfor %}
+  </tbody>
+</table></div>
+<h2>Measure definitions</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Measure</th><th class="n">ml</th><th>Source</th></tr></thead>
+  <tbody>
+  {% for key, u in measures.units.items() %}{% set s = measures.sources[u.source] %}
+  <tr><td>{{ u.label }}</td><td class="n">{{ '%g' % u.ml }}</td><td><a href="{{ s.url }}">{{ s.name }}</a></td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% endif %}
+{% endblock %}

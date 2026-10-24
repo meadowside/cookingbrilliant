@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }} | {{ site.name }}</title>
+<meta name="description" content="{% block description %}{{ description | default('Quick, sourced kitchen conversions: cups to grams, oven temperatures and recipe scaling.') }}{% endblock %}">
+<link rel="canonical" href="{{ canonical }}">
+<link rel="preload" href="/fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2B5C8A">
+{% if site.adsense_client %}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client }}" crossorigin="anonymous"></script>
+{% endif %}
+{% block head %}{% endblock %}
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">{{ site.name }}</a>
+    <nav aria-label="Tools">
+      <a href="/convert/"{% if url.startswith('/convert/') %} aria-current="page"{% endif %}>Cups to grams</a>
+      <a href="/oven-temperatures/"{% if url == '/oven-temperatures/' %} aria-current="page"{% endif %}>Oven temps</a>
+      <a href="/recipe-scaler/"{% if url == '/recipe-scaler/' %} aria-current="page"{% endif %}>Scale a recipe</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+{% block main %}{% endblock %}
+</main>
+<footer>
+  <div class="wrap">
+    <nav aria-label="Site">
+      <a href="/about/">About</a>
+      <a href="/sources/">Sources</a>
+      <a href="/contact/">Contact</a>
+      <a href="/privacy/">Privacy policy</a>
+      <a href="/privacy/" id="cookie-settings">Privacy and cookie settings</a>
+    </nav>
+    <p>Weights come from USDA FoodData Central unless a page says otherwise. Every figure links back to where it came from.</p>
+  </div>
+</footer>
+<script>
+document.getElementById("cookie-settings").addEventListener("click", function (e) {
+  if (window.googlefc && window.googlefc.callbackQueue) {
+    e.preventDefault();
+    window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
+  }
+});
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
