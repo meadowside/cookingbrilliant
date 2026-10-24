@@ -40,11 +40,11 @@ Ingredients USDA doesn't cover (caster sugar, golden syrup, double cream) need a
 
 Pushes to `main` build and upload `dist/` over FTPS. Add these repository secrets (Settings > Secrets and variables > Actions):
 
-- `FTP_SERVER`: e.g. `ftp.cookingbrilliant.com`
+- `FTP_SERVER`: the hosting server name (`premium75.web-hosting.com`), not ftp.yourdomain, or the FTPS certificate check fails
 - `FTP_USERNAME`, `FTP_PASSWORD`: a cPanel FTP account whose home directory is the cookingbrilliant.com document root
 
 ## Turning on ads
 
 1. Get AdSense approval for cookingbrilliant.com.
-2. Put the publisher ID (`ca-pub-...`) in `site.json` as `adsense_client`. The build then adds the AdSense script, the ad slots and `ads.txt`.
+2. `adsense_client` in `site.json` holds the publisher ID. It adds the AdSense script and `ads.txt` to every build. The in-page ad slots stay hidden until `ad_units` is set to `true`, so there are no empty gaps while Google reviews the site.
 3. In AdSense, Privacy & messaging, publish a European regulations message (Google's own consent tool) for UK, EEA and Swiss visitors. The footer's "Privacy and cookie settings" link reopens it.

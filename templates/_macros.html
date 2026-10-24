@@ -1,5 +1,5 @@
 {% macro ad_slot(name) %}
-{% if site.adsense_client %}
+{% if site.adsense_client and site.ad_units %}
 <div class="slot" data-slot="{{ name }}"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="{{ site.adsense_client }}" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
 {% endif %}
 {% endmacro %}

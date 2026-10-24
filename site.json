@@ -3,6 +3,7 @@
   "base_url": "https://cookingbrilliant.com",
   "contact_email": "hello@cookingbrilliant.com",
   "owner": "Andy Wood",
-  "adsense_client": "",
-  "sponsor": null
+  "adsense_client": "ca-pub-3967236610167889",
+  "sponsor": null,
+  "ad_units": false
 }
