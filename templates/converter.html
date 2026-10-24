@@ -63,4 +63,4 @@
 <p>Every ingredient has a different weight per cup, so the converter uses USDA's measured weight for the one you pick. Metric cups and Australian tablespoons are the same weights scaled up to the bigger spoon or cup. <a href="/sources/">Sources</a>.</p>
 <noscript><p class="warn">The converter needs JavaScript. Every ingredient also has its own page with a full table, listed on the <a href="/">home page</a>.</p></noscript>
 {% endblock %}
-{% block scripts %}<script src="/js/common.js" defer></script><script src="/js/converter.js" defer></script>{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/common.js') }}" defer></script><script src="{{ asset('/js/converter.js') }}" defer></script>{% endblock %}

@@ -267,6 +267,16 @@ env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True,
 env.globals.update(site=SITE, today=TODAY, measures=MEASURES, usda_meta=USDA)
 
 
+def asset(path):
+    """URL for a static file with a content hash, so browsers fetch new versions after every change."""
+    import hashlib
+    digest = hashlib.sha256((ROOT / "static" / path.lstrip("/")).read_bytes()).hexdigest()[:10]
+    return f"{path}?v={digest}"
+
+
+env.globals["asset"] = asset
+
+
 def write(url, template, **ctx):
     path = DIST / url.lstrip("/")
     if url.endswith("/"):

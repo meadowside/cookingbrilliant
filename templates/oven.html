@@ -43,4 +43,4 @@
 
 <p class="source">Table from <a href="{{ oven.source.url }}">{{ oven.source.name }}</a>, checked {{ oven.source.checked }}. Celsius figures are rounded to the nearest 10°C. Exact Fahrenheit to Celsius: subtract 32, then multiply by 5/9.</p>
 {% endblock %}
-{% block scripts %}<script src="/js/common.js" defer></script><script src="/js/oven.js" defer></script>{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/common.js') }}" defer></script><script src="{{ asset('/js/oven.js') }}" defer></script>{% endblock %}
