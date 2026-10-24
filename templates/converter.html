@@ -4,7 +4,7 @@
 {% block main %}
 <h1>Cups to grams converter</h1>
 
-<form id="conv" class="field" autocomplete="off" onsubmit="return false">
+<form id="conv" class="tool" autocomplete="off" onsubmit="return false">
   <div class="field">
     <label for="ing">Ingredient</label>
     <select id="ing">
@@ -45,7 +45,7 @@
 {{ ad_slot("converter-1") }}
 
 <h2>Grams back to cups</h2>
-<div class="row">
+<div class="tool"><div class="row">
   <div class="field">
     <label for="grams">Grams</label>
     <input id="grams" inputmode="decimal" placeholder="e.g. 200">
@@ -54,7 +54,7 @@
     <label>US cups</label>
     <p class="out" id="cups-out" aria-live="polite">&nbsp;</p>
   </div>
-</div>
+</div></div>
 
 {{ affiliate('scale') }}
 {{ sponsor_slot() }}

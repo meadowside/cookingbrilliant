@@ -312,6 +312,22 @@ def main():
              "l": bool(it.get("liquid"))} for it in items]
     (DIST / "js" / "ingredients.json").write_text(json.dumps(conv, separators=(",", ":")))
 
+    meats = roast_meats()
+    by_slug = {it["slug"]: it for it in items}
+    turkey = next(m for m in meats if m["slug"] == "turkey")
+    gm4 = next(r for r in OVEN["rows"] if r["gas"] == "4")
+    t5 = roast_minutes(turkey["per450"], turkey["extra"], 5)
+    env.globals.update(
+        nav_groups=by_group, nav_meats=meats,
+        popular=[
+            {"label": "1 cup of plain flour", "value": f"{fmt_g(by_slug['plain-flour']['units']['cup']['g'])}g", "url": "/convert/plain-flour/1-cup-to-grams/"},
+            {"label": "1 stick of butter", "value": f"{fmt_g(by_slug['butter']['units']['stick']['g'])}g", "url": "/convert/butter/1-stick-to-grams/"},
+            {"label": "1 cup of sugar", "value": f"{fmt_g(by_slug['granulated-sugar']['units']['cup']['g'])}g", "url": "/convert/granulated-sugar/1-cup-to-grams/"},
+            {"label": "Gas mark 4", "value": f"{gm4['c']}°C", "url": "/oven-temperatures/"},
+            {"label": "5kg turkey", "value": f"{t5 // 60}h {t5 % 60}m", "url": "/roast-timer/turkey/5kg/"},
+        ],
+    )
+
     for it in items:
         qp = quantity_pages(it)
         related = [o for o in by_group[it["group"]] if o["slug"] != it["slug"]][:6]
@@ -327,7 +343,6 @@ def main():
     urls.append(write("/convert/", "converter.html", groups=by_group, title="Cups to grams converter", page_kind="tool"))
     urls.append(write("/oven-temperatures/", "oven.html", oven=OVEN, title="Oven temperature converter: °C, fan, °F and gas mark", page_kind="tool"))
     urls.append(write("/recipe-scaler/", "scaler.html", title="Recipe scaler", page_kind="tool"))
-    meats = roast_meats()
     roast_js = {"meats": [{k: m[k] for k in ("slug", "label", "per450", "extra", "doneness", "oven", "rest", "core", "range", "cooked_through") if k in m}
                           for m in meats]}
     (DIST / "js" / "roasts.json").write_text(json.dumps(roast_js, separators=(",", ":"), ensure_ascii=False))

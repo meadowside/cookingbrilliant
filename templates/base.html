@@ -1,3 +1,4 @@
+{% from "_icons.html" import icon %}
 <!doctype html>
 <html lang="en-GB">
 <head>
@@ -6,6 +7,10 @@
 <title>{{ title }} | {{ site.name }}</title>
 <meta name="description" content="{% block description %}{{ description | default('Quick, sourced kitchen conversions: cups to grams, oven temperatures and recipe scaling.') }}{% endblock %}">
 <link rel="canonical" href="{{ canonical }}">
+<script>
+/* Set the theme before anything paints, so there's no flash of the wrong colours. */
+(function () { try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {} })();
+</script>
 <link rel="preload" href="/fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ asset('/css/site.css') }}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -16,22 +21,84 @@
 {% block head %}{% endblock %}
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="top">
-  <div class="wrap">
-    <a class="brand" href="/">{{ site.name }}</a>
-    <nav aria-label="Tools">
-      <a href="/convert/"{% if url.startswith('/convert/') %} aria-current="page"{% endif %}>Cups to grams</a>
-      <a href="/oven-temperatures/"{% if url == '/oven-temperatures/' %} aria-current="page"{% endif %}>Oven</a>
-      <a href="/roast-timer/"{% if url.startswith('/roast-timer/') %} aria-current="page"{% endif %}>Roasts</a>
-      <a href="/recipe-scaler/"{% if url == '/recipe-scaler/' %} aria-current="page"{% endif %}>Scaler</a>
+  <div class="top-in">
+    <a class="brand" href="/" aria-label="{{ site.name }} home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="6" width="28" height="20" rx="5" fill="currentColor"/><rect x="6" y="10" width="20" height="12" rx="2.5" fill="var(--display)"/><path d="M11 13v6m5-6v6m5-6v6" stroke="var(--display-ink)" stroke-width="2"/></svg>
+      <span>Cooking<b>Brilliant</b></span>
+    </a>
+    <nav class="tabs" aria-label="Tools">
+      <a href="/convert/"{% if url.startswith('/convert/') %} aria-current="page"{% endif %}>{{ icon('scale', 18) }}Cups to grams</a>
+      <a href="/oven-temperatures/"{% if url == '/oven-temperatures/' %} aria-current="page"{% endif %}>{{ icon('oven', 18) }}Oven temps</a>
+      <a href="/roast-timer/"{% if url.startswith('/roast-timer/') %} aria-current="page"{% endif %}>{{ icon('roast', 18) }}Roast timer</a>
+      <a href="/recipe-scaler/"{% if url == '/recipe-scaler/' %} aria-current="page"{% endif %}>{{ icon('scaler', 18) }}Scale a recipe</a>
     </nav>
+    <form class="hsearch" action="/convert/" method="get" role="search">
+      <label class="sr" for="hq">Find an ingredient</label>
+      {{ icon('search', 18) }}
+      <input id="hq" name="i" list="all-ingredients" placeholder="Find an ingredient" autocomplete="off">
+    </form>
+    <button class="theme" type="button" id="theme" aria-label="Switch to dark mode">
+      <span class="t-sun">{{ icon('sun', 20) }}</span><span class="t-moon">{{ icon('moon', 20) }}</span>
+    </button>
   </div>
 </header>
-<main class="wrap">
-{% block main %}{% endblock %}
-</main>
-<footer>
-  <div class="wrap">
+<datalist id="all-ingredients">
+{% for g, items in nav_groups.items() %}{% for it in items %}<option value="{{ it.name }}">{% endfor %}{% endfor %}
+</datalist>
+
+{% block hero %}{% endblock %}
+
+<div class="layout{% block layout_class %}{% endblock %}">
+  <aside class="side-left" aria-label="Browse">
+    <nav class="browse">
+      <p class="side-h">Tools</p>
+      <ul class="tool-list">
+        <li><a href="/convert/">{{ icon('scale', 18) }}Cups to grams</a></li>
+        <li><a href="/oven-temperatures/">{{ icon('oven', 18) }}Oven temperatures</a></li>
+        <li><a href="/roast-timer/">{{ icon('roast', 18) }}Roast timer</a></li>
+        <li><a href="/recipe-scaler/">{{ icon('scaler', 18) }}Recipe scaler</a></li>
+      </ul>
+      <p class="side-h">Roasts</p>
+      <ul class="plain">{% for m in nav_meats %}<li><a href="{{ m.url }}"{% if url.startswith(m.url) %} aria-current="page"{% endif %}>{{ m.label }}</a></li>{% endfor %}</ul>
+      <p class="side-h">Ingredients</p>
+      {% for g, items in nav_groups.items() %}
+      <details{% for it in items if url.startswith(it.url) %} open{% endfor %}>
+        <summary>{{ g }}</summary>
+        <ul class="plain">{% for it in items %}<li><a href="{{ it.url }}"{% if url.startswith(it.url) %} aria-current="page"{% endif %}>{{ it.name }}</a></li>{% endfor %}</ul>
+      </details>
+      {% endfor %}
+    </nav>
+  </aside>
+
+  <main id="main">
+  {% block main %}{% endblock %}
+  </main>
+
+  <aside class="side-right" aria-label="More">
+    {% if site.adsense_client and site.ad_units %}
+    <div class="side-ad"><span class="slot-label">Advertisement</span><ins class="adsbygoogle" style="display:block;width:300px;height:600px" data-ad-client="{{ site.adsense_client }}"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    {% endif %}
+    <section class="panel">
+      <h2 class="side-h">Popular right now</h2>
+      <ul class="pop">
+        {% for p in popular %}<li><a href="{{ p.url }}">{{ p.label }}<span>{{ p.value }}</span></a></li>{% endfor %}
+      </ul>
+    </section>
+    <section class="panel">
+      <h2 class="side-h">Cook it right</h2>
+      <p class="small">Every figure here comes from a named source. Weigh where it matters, and check meat with a thermometer. <a href="/sources/">Our sources</a></p>
+    </section>
+  </aside>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <p class="foot-brand">Cooking<b>Brilliant</b></p>
+      <p>Quick, sourced answers to the questions that stop you mid-recipe.</p>
+    </div>
     <nav aria-label="Site">
       <a href="/about/">About</a>
       <a href="/sources/">Sources</a>
@@ -40,17 +107,33 @@
       <a href="/privacy/">Privacy policy</a>
       <a href="/privacy/" id="cookie-settings">Privacy and cookie settings</a>
     </nav>
-    <p>General kitchen guidance only. Every figure comes from a named source, but cup measures vary and ovens differ, so weigh where it matters and check meat is cooked with a thermometer. <a href="/disclaimer/">Read the full disclaimer</a>.</p>
-    {% if site.amazon_tag %}<p>As an Amazon Associate we earn from qualifying purchases.</p>{% endif %}
+    <div class="foot-small">
+      <p>General kitchen guidance only. Every figure comes from a named source, but cup measures vary and ovens differ, so weigh where it matters and check meat is cooked with a thermometer. <a href="/disclaimer/">Read the full disclaimer</a>.</p>
+      {% if site.amazon_tag %}<p>As an Amazon Associate we earn from qualifying purchases.</p>{% endif %}
+    </div>
   </div>
 </footer>
 <script>
-document.getElementById("cookie-settings").addEventListener("click", function (e) {
-  if (window.googlefc && window.googlefc.callbackQueue) {
-    e.preventDefault();
-    window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
-  }
-});
+(function () {
+  var root = document.documentElement, btn = document.getElementById("theme");
+  function current() { return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); }
+  function label() { btn.setAttribute("aria-label", current() === "dark" ? "Switch to light mode" : "Switch to dark mode"); }
+  btn.addEventListener("click", function () {
+    var next = current() === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    label();
+  });
+  label();
+  var hq = document.getElementById("hq");
+  hq.form.addEventListener("submit", function () { hq.value = hq.value.trim(); });
+  document.getElementById("cookie-settings").addEventListener("click", function (e) {
+    if (window.googlefc && window.googlefc.callbackQueue) {
+      e.preventDefault();
+      window.googlefc.callbackQueue.push(window.googlefc.showRevocationMessage);
+    }
+  });
+})();
 </script>
 {% block scripts %}{% endblock %}
 </body>

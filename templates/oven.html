@@ -21,7 +21,7 @@
 <p class="note">{{ oven.fan_rule }}</p>
 
 <h2>Find the nearest setting</h2>
-<div class="row">
+<div class="tool"><div class="row">
   <div class="field">
     <label for="temp">Temperature in the recipe</label>
     <input id="temp" inputmode="decimal" placeholder="e.g. 375">
@@ -37,6 +37,7 @@
   </div>
 </div>
 <p class="out" id="oven-out" aria-live="polite">Type a temperature and the closest row lights up.</p>
+</div>
 
 {{ ad_slot("oven-1") }}
 {{ sponsor_slot() }}

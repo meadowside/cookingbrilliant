@@ -1,31 +1,40 @@
 {% extends "base.html" %}
-{% block description %}Cups to grams for 64 ingredients, roast times by weight, oven temperatures in °C, fan, °F and gas mark, and a recipe scaler. Every figure sourced.{% endblock %}
+{% from "_icons.html" import icon %}
+{% block description %}Cups to grams for {{ groups.values() | map('length') | sum }} ingredients, roast times by weight, oven temperatures in °C, fan, °F and gas mark, and a recipe scaler. Every figure sourced.{% endblock %}
+{% block hero %}
+<section class="hero">
+  <div class="hero-in">
+    <h1>The number you need, then back to the cooking</h1>
+    <p class="lede">Cup weights for {{ groups.values() | map('length') | sum }} ingredients, roast times, oven temperatures and a recipe scaler. UK measures first, with American and Australian alongside. Every figure comes from a named source.</p>
+    <form class="bigsearch" action="/convert/" method="get" role="search">
+      <label class="sr" for="q">Which ingredient?</label>
+      {{ icon('search', 22) }}
+      <input id="q" name="i" list="all-ingredients" placeholder="e.g. plain flour, butter, honey" autocomplete="off">
+      <button type="submit">Convert</button>
+    </form>
+    <ul class="chips">
+      {% for p in popular %}<li><a href="{{ p.url }}">{{ p.label }}</a></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}
+{% block layout_class %} wide{% endblock %}
 {% block main %}
-<h1>The number you need, then back to the cooking</h1>
-<p class="lede">Cup and spoon weights for {{ groups.values() | map('length') | sum }} ingredients, roast times, oven temperatures and a recipe scaler. Built for UK kitchens, with American and Australian measures alongside.</p>
-
-<form class="field" action="/convert/" method="get" role="search">
-  <label for="q">Which ingredient?</label>
-  <input id="q" name="i" list="ingredient-list" placeholder="e.g. plain flour" autocomplete="off">
-  <datalist id="ingredient-list">
-  {% for g, items in groups.items() %}{% for it in items %}<option value="{{ it.slug }}">{{ it.name }}</option>{% endfor %}{% endfor %}
-  </datalist>
-</form>
-
 <h2>Tools</h2>
-<ul class="tools">
-  <li><a href="/convert/">Cups to grams converter</a>: any amount, any ingredient on the list</li>
-  <li><a href="/oven-temperatures/">Oven temperatures</a>: °C, fan, °F and gas mark side by side</li>
-  <li><a href="/roast-timer/">Roast timer</a>: turkey, chicken, beef, lamb, pork and gammon by weight</li>
-  <li><a href="/recipe-scaler/">Recipe scaler</a>: paste a recipe, change the servings</li>
+<ul class="tool-cards">
+  <li><a href="/convert/"><span class="tc-ico">{{ icon('scale', 24) }}</span><strong>Cups to grams</strong><span>Any amount of {{ groups.values() | map('length') | sum }} ingredients, in US or metric cups.</span></a></li>
+  <li><a href="/roast-timer/"><span class="tc-ico">{{ icon('roast', 24) }}</span><strong>Roast timer</strong><span>Turkey, beef, lamb and more by weight, with when to put it in.</span></a></li>
+  <li><a href="/oven-temperatures/"><span class="tc-ico">{{ icon('oven', 24) }}</span><strong>Oven temperatures</strong><span>°C, fan, °F and gas mark side by side.</span></a></li>
+  <li><a href="/recipe-scaler/"><span class="tc-ico">{{ icon('scaler', 24) }}</span><strong>Recipe scaler</strong><span>Paste a recipe, change the servings, get sensible amounts.</span></a></li>
 </ul>
 
+<h2>Ingredients</h2>
 <div class="groups">
 {% for g, items in groups.items() %}
-<h2>{{ g }}</h2>
-<ul class="links">
-{% for it in items %}<li><a href="{{ it.url }}">{{ it.name }}</a></li>{% endfor %}
-</ul>
+  <section class="group-card">
+    <h3>{{ g }}</h3>
+    <ul>{% for it in items %}<li><a href="{{ it.url }}">{{ it.name }}</a></li>{% endfor %}</ul>
+  </section>
 {% endfor %}
 </div>
 {% endblock %}
