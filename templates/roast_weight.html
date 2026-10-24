@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, roast_safety, src %}
+{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, roast_safety, src, affiliate %}
 {% block description %}A {{ p.label }} ({{ p.lb }}lb) {{ m.name | lower }} takes about {{ p.time }} to roast, plus resting. Oven temperatures, resting time and how to check it's cooked.{% endblock %}
 {% block head %}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roast timer","item":"{{ site.base_url }}/roast-timer/"},{"@type":"ListItem","position":2,"name":"{{ m.label }}","item":"{{ site.base_url }}{{ m.url }}"},{"@type":"ListItem","position":3,"name":"{{ p.label }}","item":"{{ canonical }}"}]}</script>
@@ -26,6 +26,7 @@
 <h2>Other sizes</h2>
 <ul class="links">{% for o in wpages if o.kg != p.kg %}<li><a href="{{ o.url }}">{{ o.label }}: {{ o.time }}</a></li>{% endfor %}</ul>
 
+{{ affiliate('thermo') }}
 {{ sponsor_slot() }}
 <p class="source">Times from {{ src(roasts, m.source) }}, checked {{ roasts.sources[m.source].checked }}.</p>
 {% endblock %}

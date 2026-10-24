@@ -48,3 +48,14 @@
 <p>{{ roasts.carryover.text }} ({{ src(roasts, roasts.carryover.source) }})</p>
 <p class="source">US guidance: USDA's safe minimum is {{ m.usda.f }}°F ({{ m.usda.c }}°C){% if m.usda.note %} {{ m.usda.note }}{% endif %}{% if m.usda.rest %}, with a rest of {{ m.usda.rest }}{% endif %} ({{ src(roasts, 'usda') }}).{% if m.doneness or m.slug == 'lamb' %} USDA's figure is a safety minimum, not a doneness guide.{% endif %}</p>
 {% endmacro %}
+
+{% macro affiliate(kind) %}
+{% if site.amazon_tag %}
+{% if kind == 'scale' %}{% set q = 'digital kitchen scales' %}{% set label = 'kitchen scales' %}{% set why = 'Cup measures vary with how you fill the cup. Kitchen scales take the guesswork out.' %}
+{% else %}{% set q = 'digital meat thermometer' %}{% set label = 'meat thermometers' %}{% set why = 'A meat thermometer is the only sure way to tell when a roast is cooked.' %}{% endif %}
+<aside class="affiliate">
+  <p>{{ why }} <a href="https://www.amazon.co.uk/s?k={{ q | urlencode }}&amp;tag={{ site.amazon_tag }}" rel="sponsored nofollow noopener" target="_blank">Shop {{ label }} on Amazon UK</a>.</p>
+  <p class="slot-label">Affiliate link. We may earn a commission at no extra cost to you.</p>
+</aside>
+{% endif %}
+{% endmacro %}

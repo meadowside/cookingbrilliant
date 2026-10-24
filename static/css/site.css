@@ -125,3 +125,6 @@ footer a { color: var(--ink-soft); }
 .seg label:has(input:checked) { border-color: var(--rim); }
 
 .scale-a.dur { font-size: clamp(2rem, 10vw, 3rem); letter-spacing: -.02em; }
+.affiliate { background: var(--flour); border-radius: 6px; padding: .75rem .9rem; margin: 1.5rem 0; }
+.affiliate p { margin: 0 0 .3rem; }
+.affiliate p:last-child { margin: 0; }

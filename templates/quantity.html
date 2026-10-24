@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import ad_slot, sponsor_slot, usda_source %}
+{% from "_macros.html" import ad_slot, sponsor_slot, usda_source, affiliate %}
 {% block description %}{{ p.phrase | capitalize }} of {{ item.name | lower }} is {{ p.g }}g. Sourced from USDA data, with metric cup and Australian spoon figures.{% endblock %}
 {% block head %}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cups to grams","item":"{{ site.base_url }}/convert/"},{"@type":"ListItem","position":2,"name":"{{ item.name }}","item":"{{ site.base_url }}{{ item.url }}"},{"@type":"ListItem","position":3,"name":"{{ p.phrase | capitalize }}","item":"{{ canonical }}"}]}</script>
@@ -32,6 +32,7 @@
 <li><a href="{{ item.url }}">Full table for {{ item.name | lower }}</a></li>
 </ul>
 
+{{ affiliate('scale') }}
 {{ sponsor_slot() }}
 {{ usda_source(item) }}
 {% endblock %}

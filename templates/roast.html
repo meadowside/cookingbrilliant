@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, src %}
+{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, src, affiliate %}
 {% block description %}Roasting times by weight for turkey, chicken, beef, lamb, pork and gammon, with oven temperatures, resting times, safe core temperatures and what time to put it in.{% endblock %}
 {% block main %}
 <h1>Roast timer</h1>
@@ -59,6 +59,7 @@
 </table></div>
 <p class="note">{{ roasts.fan_rule.text }}</p>
 
+{{ affiliate('thermo') }}
 {{ sponsor_slot() }}
 
 <h2>How the times are worked out</h2>

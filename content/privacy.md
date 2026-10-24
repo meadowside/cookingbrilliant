@@ -27,7 +27,9 @@ We don't use any other analytics or tracking cookies.
 
 ## Links to other sites
 
-Some pages link to other websites. If a link is ever an affiliate or sponsored link, we'll label it. Those sites have their own privacy policies.
+Some pages link to other websites, which have their own privacy policies.
+
+A few pages link to Amazon UK. As an Amazon Associate we earn from qualifying purchases made through those links, at no extra cost to you. They're labelled where they appear. If you click one, Amazon may set its own cookies to record that you came from this site. That happens on Amazon's site, under Amazon's privacy notice, not ours.
 
 ## Your rights
 

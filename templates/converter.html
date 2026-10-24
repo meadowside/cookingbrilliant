@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
 {% block description %}Convert cups, tablespoons, teaspoons and sticks to grams for 64 ingredients. Uses USDA weights, with US and metric cups.{% endblock %}
 {% block main %}
 <h1>Cups to grams converter</h1>
@@ -56,6 +56,7 @@
   </div>
 </div>
 
+{{ affiliate('scale') }}
 {{ sponsor_slot() }}
 
 <h2>How this works</h2>
