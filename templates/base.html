@@ -21,8 +21,9 @@
     <a class="brand" href="/">{{ site.name }}</a>
     <nav aria-label="Tools">
       <a href="/convert/"{% if url.startswith('/convert/') %} aria-current="page"{% endif %}>Cups to grams</a>
-      <a href="/oven-temperatures/"{% if url == '/oven-temperatures/' %} aria-current="page"{% endif %}>Oven temps</a>
-      <a href="/recipe-scaler/"{% if url == '/recipe-scaler/' %} aria-current="page"{% endif %}>Scale a recipe</a>
+      <a href="/oven-temperatures/"{% if url == '/oven-temperatures/' %} aria-current="page"{% endif %}>Oven</a>
+      <a href="/roast-timer/"{% if url.startswith('/roast-timer/') %} aria-current="page"{% endif %}>Roasts</a>
+      <a href="/recipe-scaler/"{% if url == '/recipe-scaler/' %} aria-current="page"{% endif %}>Scaler</a>
     </nav>
   </div>
 </header>
@@ -35,10 +36,11 @@
       <a href="/about/">About</a>
       <a href="/sources/">Sources</a>
       <a href="/contact/">Contact</a>
+      <a href="/disclaimer/">Disclaimer</a>
       <a href="/privacy/">Privacy policy</a>
       <a href="/privacy/" id="cookie-settings">Privacy and cookie settings</a>
     </nav>
-    <p>Weights come from USDA FoodData Central unless a page says otherwise. Every figure links back to where it came from.</p>
+    <p>General kitchen guidance only. Every figure comes from a named source, but cup measures vary and ovens differ, so weigh where it matters and check meat is cooked with a thermometer. <a href="/disclaimer/">Read the full disclaimer</a>.</p>
   </div>
 </footer>
 <script>

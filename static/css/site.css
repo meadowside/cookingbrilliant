@@ -38,7 +38,7 @@ a:hover { text-decoration-thickness: 2px; }
 .top { border-top: 6px solid var(--rim); background: var(--surface); border-bottom: 1px solid var(--line); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.25rem; flex-wrap: wrap; }
 .brand { font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
-.top nav { display: flex; gap: 1rem; font-size: .95rem; }
+.top nav { display: flex; gap: 1rem; font-size: .95rem; white-space: nowrap; overflow-x: auto; max-width: 100%; }
 .top nav a { text-decoration: none; color: var(--ink-soft); }
 .top nav a:hover, .top nav a[aria-current] { color: var(--rim); }
 
@@ -112,3 +112,16 @@ footer nav { display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin-bottom: .6r
 footer a { color: var(--ink-soft); }
 
 @media print { .top nav, .slot, .sponsor, footer { display: none; } .scale { box-shadow: none; } }
+
+.caution { border: 2px solid var(--tomato); border-radius: 6px; padding: .75rem .9rem; margin: 1.25rem 0; }
+.caution p { margin: 0; }
+.check { display: flex; gap: .5rem; align-items: center; font-weight: 400; }
+.check input { width: auto; }
+.steps { padding-left: 1.2rem; margin: .5rem 0 0; }
+.steps li { margin: .2rem 0; }
+.seg { display: flex; gap: .4rem; flex-wrap: wrap; }
+.seg label { font-weight: 400; display: flex; align-items: center; gap: .3rem; border: 2px solid var(--line); border-radius: 6px; padding: .35rem .6rem; margin: 0; cursor: pointer; background: var(--surface); }
+.seg input { width: auto; margin: 0; }
+.seg label:has(input:checked) { border-color: var(--rim); }
+
+.scale-a.dur { font-size: clamp(2rem, 10vw, 3rem); letter-spacing: -.02em; }

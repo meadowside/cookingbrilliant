@@ -13,6 +13,10 @@ USDA measures are American: a US cup is 237ml and a US tablespoon is just under 
 
 Weights under 10g are rounded to 0.1g. Everything else is rounded to the nearest gram. Your own cupful can easily vary by 10% depending on how you fill it, so treat any cup conversion as a good guide, and weigh where it matters (bread and pastry, mostly).
 
+## Roast times
+
+Cooking times, oven settings and resting times come from the Q Guild, the UK butchers' quality guild. Each meat's time is its minutes-per-450g rule worked out for your weight and rounded up to the next 5 minutes. Safe core temperatures come from the Food Standards Agency and safefood (the food safety body for the island of Ireland). US minimum temperatures are from the USDA. The full list is at the bottom of this page.
+
 ## Oven temperatures
 
 [Which?, Oven temperature conversion table](https://www.which.co.uk/reviews/built-in-ovens/article/oven-temperature-conversion-table-aA5Ol9b157On).

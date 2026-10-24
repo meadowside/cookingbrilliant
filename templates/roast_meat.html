@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, roast_safety, src %}
+{% block description %}{{ m.label }}: {{ m.rule }} at {{ m.oven_text }}. Times by weight, resting time and the safe core temperature.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roast timer","item":"{{ site.base_url }}/roast-timer/"},{"@type":"ListItem","position":2,"name":"{{ m.label }}","item":"{{ canonical }}"}]}</script>
+{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/roast-timer/">Roast timer</a></p>
+<h1>How long to roast a {{ m.label | lower }}</h1>
+
+<section class="scale" aria-label="Answer">
+  {% if m.doneness %}
+  <p class="scale-q">Roast beef for, per 450g (1lb):</p>
+  <p class="scale-a" style="font-size:clamp(1.6rem,7vw,2.2rem)">{% for d in m.doneness %}{{ d.per450 }}<small>min</small> {{ d.label | lower }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
+  <p class="scale-extra">Then add {% for d in m.doneness %}{{ d.extra }} min for {{ d.label | lower }}{% if not loop.last %}, {% endif %}{% endfor %}. Oven at {{ m.oven_text }}.</p>
+  {% else %}
+  <p class="scale-q">Roast a {{ m.label | lower }} for</p>
+  <p class="scale-a">{{ m.per450 }}<small>min per 450g</small></p>
+  <p class="scale-extra">Plus {{ m.extra }} minutes ({{ m.per_kg_text }}). Oven at {{ m.oven_text }}.</p>
+  {% endif %}
+</section>
+
+{{ roast_disclaimer() }}
+
+<h2>Times by weight</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Weight</th>{% if m.doneness %}{% for d in m.doneness %}<th class="n">{{ d.label }}</th>{% endfor %}{% else %}<th class="n">Cooking time</th>{% endif %}</tr></thead>
+  <tbody>
+  {% for r in m.rows %}
+    <tr><td>{{ r.kg }} ({{ r.lb }}lb)</td>{% for t in r.times %}<td class="n">{{ t }}</td>{% endfor %}</tr>
+  {% endfor %}
+  </tbody>
+  <caption>Rounded up to the next 5 minutes. Resting time not included.</caption>
+</table></div>
+<p><a href="/roast-timer/?m={{ m.slug }}">Work out an exact weight, and when to put it in</a>.</p>
+
+{% if wpages %}
+<ul class="links">{% for p in wpages %}<li><a href="{{ p.url }}">{{ p.label }} {{ m.name | lower }}: {{ p.time }}</a></li>{% endfor %}</ul>
+{% endif %}
+
+<h2>Oven and resting</h2>
+<p>Oven: {{ m.oven_text }}. {{ roasts.fan_rule.text }}</p>
+{% if m.rest %}<p>Rest for {{ m.rest.text }} before carving ({{ src(roasts, m.rest.source) }}).</p>{% endif %}
+{% if m.tip %}<p>{{ m.tip }}</p>{% endif %}
+
+{{ ad_slot("roast-meat-1") }}
+
+{{ roast_safety(m, roasts) }}
+
+{{ sponsor_slot() }}
+
+<p class="source">Times from {{ src(roasts, m.source) }}, checked {{ roasts.sources[m.source].checked }}.</p>
+
+<h2>Other roasts</h2>
+<ul class="links">{% for o in meats if o.slug != m.slug %}<li><a href="{{ o.url }}">{{ o.label }}</a></li>{% endfor %}</ul>
+{% endblock %}

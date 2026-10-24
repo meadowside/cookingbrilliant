@@ -1,0 +1,112 @@
+{
+  "_comment": "Roast times and temperatures. Every figure carries a source key. Timing formula from Q Guild: minutes = per_450g * (weight_g / 450) + extra. Totals are rounded UP to the next 5 minutes. Do not add a figure without a source.",
+  "sources": {
+    "qguild": {"name": "Q Guild, Recommended Cooking Times (butchers' guild leaflet)", "url": "https://qguild.co.uk/assets/memberpdfs/Q_Guild_Recommended_Cooking_Times_Flier.pdf", "checked": "2026-10-24"},
+    "fsa": {"name": "Food Standards Agency, Safer Food Better Business: Cooking safely", "url": "https://www.food.gov.uk/sites/default/files/media/document/sfbb-caterer-cooking-01-cooking-safely_0.pdf", "checked": "2026-10-24"},
+    "safefood": {"name": "safefood, Turkey cooking calculator", "url": "https://safefood.net/turkey-calculator", "checked": "2026-10-24"},
+    "safefood-chicken": {"name": "safefood, Roast chicken", "url": "https://www.safefood.net/recipes/roast-chicken", "checked": "2026-10-24"},
+    "usda": {"name": "FoodSafety.gov (USDA), Meat and poultry roasting charts", "url": "https://www.foodsafety.gov/food-safety-charts/meat-poultry-charts", "checked": "2026-10-24"}
+  },
+  "fan_rule": {"text": "For a fan oven, set it 10 to 20°C lower. Cooking times stay the same.", "source": "qguild"},
+  "carryover": {"text": "Meat keeps cooking while it rests. Take it out about 5 to 10°C below the target and let the rest finish it.", "source": "qguild"},
+  "fsa_core": {"text": "The FSA's safe core temperature and time combinations are 70°C for 2 minutes, 75°C for 30 seconds or 80°C for 6 seconds.", "source": "fsa"},
+  "meats": [
+    {
+      "slug": "turkey", "name": "Turkey", "label": "Whole turkey",
+      "per450": 15, "extra": 15, "source": "qguild",
+      "oven": {"stages": [{"c": 220, "f": 425, "gas": "7", "minutes": 60, "note": "for the first hour"}, {"c": 190, "f": 375, "gas": "5", "note": "for the rest of the time"}]},
+      "rest": {"min": 30, "text": "at least 30 minutes", "source": "safefood"},
+      "core": {"text": "75°C in the thickest part of the thigh, and in the centre of any stuffing", "c": 75, "source": "safefood"},
+      "cooked_through": true,
+      "check": "No pink meat, the juices run clear and it's piping hot all the way through.",
+      "check_source": "safefood",
+      "usda": {"f": 165, "c": 74},
+      "weights": [3, 4, 5, 6, 7, 8, 9, 10],
+      "weight_pages": true,
+      "range": [2, 12]
+    },
+    {
+      "slug": "turkey-breast-joint", "name": "Turkey breast joint", "label": "Boned and rolled turkey breast",
+      "per450": 18, "extra": 20, "source": "qguild",
+      "oven": {"stages": [{"c": 200, "f": 390, "gas": "6"}]},
+      "rest": {"min": 30, "text": "at least 30 minutes", "source": "safefood"},
+      "core": {"text": "75°C in the centre", "c": 75, "source": "safefood"},
+      "cooked_through": true,
+      "check": "No pink meat, the juices run clear and it's piping hot in the centre.",
+      "check_source": "safefood",
+      "tip": "Uncover for the last 20 to 30 minutes to crisp the skin.",
+      "usda": {"f": 165, "c": 74},
+      "weights": [1, 1.5, 2, 2.5, 3],
+      "range": [0.5, 5]
+    },
+    {
+      "slug": "chicken", "name": "Chicken", "label": "Whole chicken",
+      "per450": 20, "extra": 15, "source": "qguild",
+      "oven": {"stages": [{"c": 190, "f": 375, "gas": "5"}]},
+      "rest": {"min": 10, "max": 15, "text": "10 to 15 minutes", "source": "qguild"},
+      "core": {"text": "75°C in the thickest part, between the breast and the leg", "c": 75, "source": "safefood-chicken"},
+      "cooked_through": true,
+      "check": "No pink meat, the juices run clear where the thigh meets the body and it's piping hot.",
+      "check_source": "safefood-chicken",
+      "usda": {"f": 165, "c": 74},
+      "weights": [1, 1.25, 1.5, 1.75, 2, 2.5],
+      "range": [0.75, 4]
+    },
+    {
+      "slug": "beef", "name": "Beef", "label": "Beef joint",
+      "doneness": [
+        {"key": "rare", "label": "Rare", "per450": 20, "extra": 20, "core": 60},
+        {"key": "medium", "label": "Medium", "per450": 25, "extra": 20, "core": 70},
+        {"key": "well", "label": "Well done", "per450": 30, "extra": 25, "core": 80}
+      ],
+      "source": "qguild",
+      "oven": {"stages": [{"c": 190, "f": 375, "gas": "5"}]},
+      "rest": {"min": 20, "text": "20 minutes", "source": "qguild"},
+      "cooked_through": false,
+      "pink_ok": "Whole beef joints can be served pink as long as the whole outside surface is properly cooked, because bacteria are only on the surface. Rolled or stuffed joints are different: cook them all the way through.",
+      "pink_source": "fsa",
+      "usda": {"f": 145, "c": 63, "rest": "at least 3 minutes"},
+      "weights": [1, 1.5, 2, 2.5, 3],
+      "range": [0.5, 6]
+    },
+    {
+      "slug": "lamb", "name": "Lamb", "label": "Lamb joint",
+      "per450": 25, "extra": 25, "source": "qguild",
+      "oven": {"stages": [{"c": 190, "f": 375, "gas": "5"}]},
+      "rest": {"min": 20, "text": "20 minutes", "source": "qguild"},
+      "core": {"text": "70 to 75°C for medium, 75 to 80°C for well done", "c": 70, "source": "qguild"},
+      "cooked_through": false,
+      "pink_ok": "A whole leg or shoulder can be served pink as long as the whole outside surface is properly cooked. Rolled or stuffed joints must be cooked all the way through.",
+      "pink_source": "fsa",
+      "usda": {"f": 145, "c": 63, "rest": "at least 3 minutes"},
+      "weights": [1, 1.5, 2, 2.5, 3],
+      "range": [0.5, 5]
+    },
+    {
+      "slug": "pork", "name": "Pork", "label": "Pork joint",
+      "per450": 25, "extra": 30, "source": "qguild",
+      "oven": {"stages": [{"c": 190, "f": 375, "gas": "5"}]},
+      "rest": {"min": 20, "text": "20 minutes, uncovered so the crackling stays crisp", "source": "qguild"},
+      "core": {"text": "70 to 75°C in the centre", "c": 70, "source": "qguild"},
+      "cooked_through": true,
+      "check": "No pink or red in the juices, and it's hot all the way through. Pork shouldn't be served rare.",
+      "check_source": "fsa",
+      "usda": {"f": 145, "c": 63, "rest": "at least 3 minutes"},
+      "weights": [1, 1.5, 2, 2.5, 3],
+      "range": [0.5, 6]
+    },
+    {
+      "slug": "gammon", "name": "Gammon", "label": "Gammon or ham joint",
+      "per450": 20, "extra": 20, "source": "qguild",
+      "oven": {"stages": [{"c": 190, "f": 375, "gas": "5"}]},
+      "core": {"text": "70°C in the centre for at least 2 minutes", "c": 70, "source": "fsa"},
+      "cooked_through": true,
+      "check": "Gammon stays pink when it's cooked because it's cured, so colour won't tell you. Use a thermometer, or check the juices run clear and it's piping hot in the middle.",
+      "check_source": "fsa",
+      "tip": "To boil and roast, simmer for half the total time then roast for the other half. Cover the glaze with foil if it starts to catch.",
+      "usda": {"f": 145, "c": 63, "rest": "at least 3 minutes", "note": "for uncooked ham"},
+      "weights": [1, 1.5, 2, 2.5, 3],
+      "range": [0.5, 6]
+    }
+  ]
+}

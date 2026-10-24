@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, src %}
+{% block description %}Roasting times by weight for turkey, chicken, beef, lamb, pork and gammon, with oven temperatures, resting times, safe core temperatures and what time to put it in.{% endblock %}
+{% block main %}
+<h1>Roast timer</h1>
+<p class="lede">Pick the meat, enter the weight, and get the cooking time, the oven setting and when to put it in.</p>
+
+<form id="roast" autocomplete="off" onsubmit="return false">
+  <div class="field">
+    <label for="meat">What are you roasting?</label>
+    <select id="meat">
+    {% for m in meats %}<option value="{{ m.slug }}">{{ m.label }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label for="weight">Weight</label>
+      <input id="weight" inputmode="decimal" value="5">
+    </div>
+    <div class="field">
+      <label for="wunit">Unit</label>
+      <select id="wunit"><option value="kg">kg</option><option value="lb">lb</option></select>
+    </div>
+  </div>
+  <fieldset class="field" id="done-field" hidden>
+    <legend><label>How do you like it?</label></legend>
+    <div class="seg" id="doneness"></div>
+  </fieldset>
+  <div class="field" id="rolled-field" hidden>
+    <label class="check"><input type="checkbox" id="rolled"> It's a rolled or stuffed joint</label>
+  </div>
+  <div class="field">
+    <label for="serve">Eating at (optional)</label>
+    <input id="serve" type="time">
+  </div>
+</form>
+
+<section class="scale" aria-live="polite" aria-label="Answer">
+  <p class="scale-q" id="r-q">A 5kg whole turkey needs</p>
+  <p class="scale-a dur" id="r-a">3 hours 5 min</p>
+  <p class="scale-extra" id="r-extra"></p>
+</section>
+<div id="r-warn"></div>
+<div id="r-plan"></div>
+<p id="r-link"></p>
+
+{{ roast_disclaimer() }}
+
+{{ ad_slot("roast-1") }}
+
+<h2>Times for every roast</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Roast</th><th>Time</th><th>Oven</th></tr></thead>
+  <tbody>
+  {% for m in meats %}
+    <tr><td><a href="{{ m.url }}">{{ m.label }}</a></td><td>{{ m.rule }}</td><td>{{ m.oven_text }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="note">{{ roasts.fan_rule.text }}</p>
+
+{{ sponsor_slot() }}
+
+<h2>How the times are worked out</h2>
+<p>Every time uses the Q Guild's minutes-per-450g rule for that meat, worked out for your exact weight and rounded up to the next 5 minutes. Safe temperatures come from the Food Standards Agency and safefood. US minimums are from the USDA. <a href="/sources/">All sources</a>.</p>
+<noscript><p class="warn">The calculator needs JavaScript. Each meat's page above has a table of times by weight.</p></noscript>
+{% endblock %}
+{% block scripts %}<script src="/js/common.js" defer></script><script src="/js/roast.js" defer></script>{% endblock %}

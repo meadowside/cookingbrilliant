@@ -22,3 +22,29 @@
   <p>Fractions of a cup are the cup weight scaled down.{% if item.units.tbsp and item.units.tbsp.how == 'calc' %} The tablespoon figure is the cup weight divided by 16, since USDA doesn't list a tablespoon for this ingredient.{% endif %}{% if item.units.tsp and item.units.tsp.how == 'calc' %} The teaspoon is a third of the tablespoon.{% endif %} Metric-cup figures assume a 250ml cup, and Australian tablespoons hold 20ml. Weights under 10g are rounded to 0.1g, everything else to the nearest gram. <a href="/sources/">Full source list</a>.</p>
 </details>
 {% endmacro %}
+
+{% macro src(roasts, key) %}<a href="{{ roasts.sources[key].url }}">{{ roasts.sources[key].name.split(',')[0] }}</a>{% endmacro %}
+
+{% macro roast_disclaimer() %}
+<aside class="caution" role="note">
+  <p><strong>Use these times as a starting point.</strong> Ovens, tins and the shape of the joint all change how long it takes. The only reliable test is the temperature in the thickest part, so use a meat thermometer. If it isn't there yet, keep cooking and check again. <a href="/disclaimer/">More on how to use this site safely</a>.</p>
+</aside>
+{% endmacro %}
+
+{% macro roast_safety(m, roasts) %}
+<h2>How to tell it's done</h2>
+{% if m.doneness %}
+<div class="tablewrap"><table>
+  <thead><tr><th>Doneness</th><th class="n">Core temperature</th></tr></thead>
+  <tbody>{% for d in m.doneness %}<tr><td>{{ d.label }}</td><td class="n">{{ d.core }}°C</td></tr>{% endfor %}</tbody>
+</table></div>
+<p class="source">Core temperatures from {{ src(roasts, m.source) }}.</p>
+{% elif m.core %}
+<p>Cook until it reaches <strong>{{ m.core.text }}</strong> ({{ src(roasts, m.core.source) }}).</p>
+{% endif %}
+{% if m.check %}<p>Without a thermometer: {{ m.check }} ({{ src(roasts, m.check_source) }})</p>{% endif %}
+{% if m.pink_ok %}<p class="note">{{ m.pink_ok }} ({{ src(roasts, m.pink_source) }})</p>{% endif %}
+{% if m.cooked_through %}<p class="note">{{ m.name }} must be cooked all the way through. {{ roasts.fsa_core.text }} ({{ src(roasts, 'fsa') }})</p>{% endif %}
+<p>{{ roasts.carryover.text }} ({{ src(roasts, roasts.carryover.source) }})</p>
+<p class="source">US guidance: USDA's safe minimum is {{ m.usda.f }}°F ({{ m.usda.c }}°C){% if m.usda.note %} {{ m.usda.note }}{% endif %}{% if m.usda.rest %}, with a rest of {{ m.usda.rest }}{% endif %} ({{ src(roasts, 'usda') }}).{% if m.doneness or m.slug == 'lamb' %} USDA's figure is a safety minimum, not a doneness guide.{% endif %}</p>
+{% endmacro %}

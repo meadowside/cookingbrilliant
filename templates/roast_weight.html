@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, roast_safety, src %}
+{% block description %}A {{ p.label }} ({{ p.lb }}lb) {{ m.name | lower }} takes about {{ p.time }} to roast, plus resting. Oven temperatures, resting time and how to check it's cooked.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Roast timer","item":"{{ site.base_url }}/roast-timer/"},{"@type":"ListItem","position":2,"name":"{{ m.label }}","item":"{{ site.base_url }}{{ m.url }}"},{"@type":"ListItem","position":3,"name":"{{ p.label }}","item":"{{ canonical }}"}]}</script>
+{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/roast-timer/">Roast timer</a> / <a href="{{ m.url }}">{{ m.label }}</a></p>
+<h1>How long to cook a {{ p.label }} {{ m.name | lower }}</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">A {{ p.label }} ({{ p.lb }}lb) {{ m.label | lower }} needs about</p>
+  <p class="scale-a dur">{{ p.time }}</p>
+  <p class="scale-extra">Then rest it for {{ m.rest.text }}. Oven at {{ m.oven_text }}.</p>
+</section>
+
+{{ roast_disclaimer() }}
+
+<p>That's {{ m.rule }}, rounded up to the next 5 minutes. Weigh your bird and <a href="/roast-timer/?m={{ m.slug }}&amp;w={{ p.kg }}">use the roast timer</a> for its exact weight and to work out when it goes in.</p>
+<p>{{ roasts.fan_rule.text }}</p>
+
+{{ ad_slot("roast-weight-1") }}
+
+{{ roast_safety(m, roasts) }}
+
+<h2>Other sizes</h2>
+<ul class="links">{% for o in wpages if o.kg != p.kg %}<li><a href="{{ o.url }}">{{ o.label }}: {{ o.time }}</a></li>{% endfor %}</ul>
+
+{{ sponsor_slot() }}
+<p class="source">Times from {{ src(roasts, m.source) }}, checked {{ roasts.sources[m.source].checked }}.</p>
+{% endblock %}

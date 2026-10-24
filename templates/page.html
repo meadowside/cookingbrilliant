@@ -20,5 +20,9 @@
   {% endfor %}
   </tbody>
 </table></div>
+<h2>Roast times and food safety</h2>
+<ul>
+{% for k, v in roasts.sources.items() %}<li><a href="{{ v.url }}">{{ v.name }}</a>, checked {{ v.checked }}</li>{% endfor %}
+</ul>
 {% endif %}
 {% endblock %}

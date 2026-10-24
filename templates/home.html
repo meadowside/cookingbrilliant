@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block description %}Cups to grams for 64 ingredients, oven temperatures in °C, fan, °F and gas mark, and a recipe scaler. Every figure sourced.{% endblock %}
+{% block description %}Cups to grams for 64 ingredients, roast times by weight, oven temperatures in °C, fan, °F and gas mark, and a recipe scaler. Every figure sourced.{% endblock %}
 {% block main %}
 <h1>The number you need, then back to the cooking</h1>
-<p class="lede">Cup and spoon weights for {{ groups.values() | map('length') | sum }} ingredients, oven temperatures and a recipe scaler. Built for UK kitchens, with American and Australian measures alongside.</p>
+<p class="lede">Cup and spoon weights for {{ groups.values() | map('length') | sum }} ingredients, roast times, oven temperatures and a recipe scaler. Built for UK kitchens, with American and Australian measures alongside.</p>
 
 <form class="field" action="/convert/" method="get" role="search">
   <label for="q">Which ingredient?</label>
@@ -16,6 +16,7 @@
 <ul class="tools">
   <li><a href="/convert/">Cups to grams converter</a>: any amount, any ingredient on the list</li>
   <li><a href="/oven-temperatures/">Oven temperatures</a>: °C, fan, °F and gas mark side by side</li>
+  <li><a href="/roast-timer/">Roast timer</a>: turkey, chicken, beef, lamb, pork and gammon by weight</li>
   <li><a href="/recipe-scaler/">Recipe scaler</a>: paste a recipe, change the servings</li>
 </ul>
 

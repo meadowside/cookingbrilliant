@@ -33,6 +33,7 @@ MEASURES = load("data/measures.json")
 OVEN = load("data/oven.json")
 USDA = load("data/usda_portions.json")
 INGREDIENTS = load("data/ingredients.json")
+ROASTS = load("data/roasts.json")
 
 ML = {k: v["ml"] for k, v in MEASURES["units"].items()}
 
@@ -189,6 +190,77 @@ def quantity_pages(item):
     return pages
 
 
+# ---------------------------------------------------------------- roasts
+def roast_minutes(per450, extra, kg):
+    """Q Guild formula, rounded UP to the next 5 minutes. Must match static/js/roast.js."""
+    raw = per450 * (kg * 1000 / 450) + extra
+    return int(math.ceil(raw / 5 - 1e-9) * 5)
+
+
+def fmt_duration(m):
+    h, mm = divmod(m, 60)
+    if not h:
+        return f"{mm} min"
+    hs = "1 hour" if h == 1 else f"{h} hours"
+    return hs if not mm else f"{hs} {mm} min"
+
+
+def fmt_kg(kg):
+    return f"{kg:g}kg"
+
+
+def oven_text(meat):
+    parts = []
+    for st in meat["oven"]["stages"]:
+        t = f"{st['c']}°C ({st['f']}°F, gas mark {st['gas']})"
+        if st.get("note"):
+            t += " " + st["note"]
+        parts.append(t)
+    return ", then ".join(parts)
+
+
+def roast_rows(meat):
+    rows = []
+    for kg in meat["weights"]:
+        row = {"kg": fmt_kg(kg), "lb": f"{half_up(kg * 2.20462, 1):g}"}
+        if "doneness" in meat:
+            row["times"] = [fmt_duration(roast_minutes(d["per450"], d["extra"], kg)) for d in meat["doneness"]]
+        else:
+            row["times"] = [fmt_duration(roast_minutes(meat["per450"], meat["extra"], kg))]
+        rows.append(row)
+    return rows
+
+
+def roast_meats():
+    out = []
+    for m in ROASTS["meats"]:
+        m = dict(m)
+        m["url"] = f"/roast-timer/{m['slug']}/"
+        m["oven_text"] = oven_text(m)
+        m["rows"] = roast_rows(m)
+        if "doneness" in m:
+            mid = m["doneness"][1]
+            m["rule"] = "; ".join(f"{d['label'].lower()}: {d['per450']} min per 450g plus {d['extra']} min" for d in m["doneness"])
+            m["per_kg_text"] = ", ".join(f"{d['label'].lower()} about {int(half_up(d['per450'] * 1000 / 450))} min per kg plus {d['extra']}" for d in m["doneness"])
+        else:
+            m["rule"] = f"{m['per450']} minutes per 450g, plus {m['extra']} minutes"
+            m["per_kg_text"] = f"about {int(half_up(m['per450'] * 1000 / 450))} minutes per kg, plus {m['extra']}"
+        out.append(m)
+    return out
+
+
+def roast_weight_pages(m):
+    pages = []
+    if not m.get("weight_pages"):
+        return pages
+    for kg in m["weights"]:
+        mins = roast_minutes(m["per450"], m["extra"], kg)
+        pages.append({"kg": kg, "label": fmt_kg(kg), "lb": f"{half_up(kg * 2.20462, 1):g}",
+                      "time": fmt_duration(mins), "minutes": mins,
+                      "url": f"{m['url']}{fmt_kg(kg)}/"})
+    return pages
+
+
 # ---------------------------------------------------------------- render
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True,
                   trim_blocks=True, lstrip_blocks=True)
@@ -245,10 +317,24 @@ def main():
     urls.append(write("/convert/", "converter.html", groups=by_group, title="Cups to grams converter", page_kind="tool"))
     urls.append(write("/oven-temperatures/", "oven.html", oven=OVEN, title="Oven temperature converter: °C, fan, °F and gas mark", page_kind="tool"))
     urls.append(write("/recipe-scaler/", "scaler.html", title="Recipe scaler", page_kind="tool"))
-    for name in ("about", "privacy", "contact", "sources"):
+    meats = roast_meats()
+    roast_js = {"meats": [{k: m[k] for k in ("slug", "label", "per450", "extra", "doneness", "oven", "rest", "core", "range", "cooked_through") if k in m}
+                          for m in meats]}
+    (DIST / "js" / "roasts.json").write_text(json.dumps(roast_js, separators=(",", ":"), ensure_ascii=False))
+    urls.append(write("/roast-timer/", "roast.html", meats=meats, roasts=ROASTS,
+                      title="Roast timer: cooking times for turkey, chicken, beef, lamb, pork and gammon", page_kind="tool"))
+    for m in meats:
+        wp = roast_weight_pages(m)
+        urls.append(write(m["url"], "roast_meat.html", m=m, wpages=wp, meats=meats, roasts=ROASTS,
+                          title=f"How long to roast a {m['label'].lower()}", page_kind="roast"))
+        for p in wp:
+            urls.append(write(p["url"], "roast_weight.html", m=m, p=p, wpages=wp, roasts=ROASTS,
+                              title=f"How long to cook a {p['label']} {m['name'].lower()}", page_kind="roast"))
+
+    for name in ("about", "privacy", "contact", "sources", "disclaimer"):
         fields, body = md_page(name)
         urls.append(write(f"/{name}/", "page.html", body=body, title=fields["title"],
-                          description=fields["description"], page_kind="page", items=items))
+                          description=fields["description"], page_kind="page", items=items, roasts=ROASTS))
     write("/404.html", "404.html", title="Page not found", page_kind="page")
 
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
