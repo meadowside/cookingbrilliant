@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% block description %}Defrost a turkey in the fridge for {{ thaw.hours_per_kg_min }} to {{ thaw.hours_per_kg_max }} hours per kg. A 5kg turkey takes {{ rows[2].hmin }} to {{ rows[2].hmax }} hours, so move it from the freezer {{ rows[2].days }} ahead. Times for 3kg to 10kg.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/christmas-dinner-planner/">Christmas dinner planner</a></p>
+<h1>How long to defrost a turkey</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">In the fridge, allow</p>
+  <p class="scale-a dur">{{ thaw.hours_per_kg_min }} to {{ thaw.hours_per_kg_max }} hours per kg</p>
+  <p class="scale-extra">So a 5kg turkey needs {{ rows[2].hmin }} to {{ rows[2].hmax }} hours, {{ rows[2].days }}. Keep the fridge at {{ thaw.fridge }}.</p>
+</section>
+
+<div class="tablewrap"><table>
+  <thead><tr><th>Turkey</th><th class="n">Hours in the fridge</th><th class="n">Move it from the freezer</th></tr></thead>
+  <tbody>
+  {% for r in rows %}<tr><td>{{ r.kg }} ({{ r.lb }}lb)</td><td class="n">{{ r.hmin }} to {{ r.hmax }}</td><td class="n">{{ r.days }} before</td></tr>{% endfor %}
+  </tbody>
+  <caption>Plan on the longer time so it's fully thawed when you need it.</caption>
+</table></div>
+
+<p><a href="/christmas-dinner-planner/">Use the Christmas dinner planner</a> to get the exact time to take yours out, worked back from when you want to eat.</p>
+
+<h2>Doing it safely</h2>
+<ul>
+  <li>{{ thaw.text }}</li>
+  <li>The bottom shelf matters: it stops raw juices dripping onto ready-to-eat food.</li>
+  {% for s in safety %}<li>{{ s.text }}</li>{% endfor %}
+</ul>
+
+{{ ad_slot("thaw-1") }}
+
+<p class="source">Defrosting times and safety advice from <a href="{{ src.url }}">{{ src.name }}</a>, checked {{ src.checked }}.</p>
+
+{{ affiliate('thermo') }}
+{{ sponsor_slot() }}
+{% endblock %}

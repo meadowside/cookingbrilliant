@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer, affiliate %}
+{% block description %}Plan Christmas dinner backwards from when you want to eat: when to defrost the turkey, when it goes in, when the potatoes and trimmings start, with a printable timetable.{% endblock %}
+{% block main %}
+<h1>Christmas dinner planner</h1>
+<p class="lede">Tell it what you're roasting and when you want to eat. It works backwards and gives you a timetable for the day, starting with when to take the turkey out of the freezer.</p>
+
+<form id="xmas" class="tool" autocomplete="off" onsubmit="return false">
+  <div class="field">
+    <label for="x-meat">Main roast</label>
+    <select id="x-meat">{% for m in meats %}<option value="{{ m.slug }}">{{ m.label }}</option>{% endfor %}</select>
+  </div>
+  <fieldset class="field" id="x-done-field" hidden>
+    <legend><label>How do you like it?</label></legend>
+    <div class="seg" id="x-done"></div>
+  </fieldset>
+  <div class="row">
+    <div class="field"><label for="x-weight">Weight (kg)</label><input id="x-weight" inputmode="decimal" value="5"></div>
+    <div class="field"><label for="x-eat">Eating at</label><input id="x-eat" type="time" value="14:00"></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="x-date">On</label><input id="x-date" type="date"></div>
+    <div class="field" style="align-self:end"><label class="check"><input type="checkbox" id="x-frozen"> It's frozen</label></div>
+  </div>
+  <div class="field"><label class="check"><input type="checkbox" id="x-pots" checked> Roast potatoes</label></div>
+
+  <h2 style="margin-top:1rem">Trimmings</h2>
+  <p class="source">Tick what you're having and type the cooking time from the pack or your recipe. Shop-bought trimmings vary too much for one time to fit them all.</p>
+  <div class="sides">
+  {% for s in xmas.sides %}
+    <div class="side-row" data-key="{{ s.key }}" data-where="{{ s.where }}">
+      <label class="check"><input type="checkbox" class="s-on"> {{ s.label }}</label>
+      <input class="s-min" inputmode="numeric" placeholder="mins" aria-label="{{ s.label }} cooking time in minutes">
+      {% if s.where == 'oven' %}<input class="s-temp" inputmode="numeric" placeholder="°C" aria-label="{{ s.label }} oven temperature">{% else %}<span class="s-hob">Hob</span>{% endif %}
+    </div>
+  {% endfor %}
+  </div>
+</form>
+
+<section class="scale" aria-live="polite" aria-label="Answer">
+  <p class="scale-q" id="x-q">Your roast goes in at</p>
+  <p class="scale-a dur" id="x-a">–</p>
+  <p class="scale-extra" id="x-extra"></p>
+</section>
+
+<div id="x-warn"></div>
+
+<section class="timetable" aria-labelledby="tt-h">
+  <div class="tt-head"><h2 id="tt-h">Your timetable</h2><button type="button" id="x-print">Print it</button></div>
+  <ol class="tt" id="x-tt"></ol>
+</section>
+
+{{ roast_disclaimer() }}
+
+{{ ad_slot("xmas-1") }}
+
+<h2>Safety on the day</h2>
+<ul>
+  <li>{{ xmas.thaw.text }} <a href="/how-long-to-defrost-a-turkey/">Defrosting times by weight</a>.</li>
+  {% for s in xmas.safety %}<li>{{ s.text }}</li>{% endfor %}
+</ul>
+<p class="source">Food safety guidance from <a href="{{ xmas.sources.fss.url }}">{{ xmas.sources.fss.name }}</a>. Roast times from the <a href="/roast-timer/">roast timer</a>. Roast potatoes from <a href="{{ xmas.sources['bordbia-potatoes'].url }}">{{ xmas.sources['bordbia-potatoes'].name }}</a>.</p>
+
+{{ affiliate('thermo') }}
+{{ sponsor_slot() }}
+{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/common.js') }}" defer></script><script src="{{ asset('/js/planner.js') }}" defer></script>{% endblock %}

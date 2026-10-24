@@ -236,3 +236,26 @@ textarea { min-height: 12rem; resize: vertical; line-height: 1.5; }
 
 @media print { .top, .side-left, .side-right, .slot, .sponsor, .affiliate, .foot { display: none; } .layout { display: block; } .scale { box-shadow: none; } }
 .tool > .out:last-child { margin-bottom: .9rem; }
+
+/* ---------- Christmas planner ---------- */
+.sides { display: grid; gap: .5rem; margin: 0 0 1rem; }
+.side-row { display: grid; grid-template-columns: 1fr 5.5rem 5rem; gap: .5rem; align-items: center; }
+.side-row .check { margin: 0; font-weight: 400; }
+.side-row input.s-min, .side-row input.s-temp { padding: .45rem .55rem; }
+.s-hob { font-size: .9rem; color: var(--ink-soft); text-align: center; }
+.timetable { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; box-shadow: var(--shadow); margin: 0 0 1.25rem; }
+.tt-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.tt-head h2 { margin: 0; }
+.tt { list-style: none; margin: .75rem 0 0; padding: 0; }
+.tt li { display: grid; grid-template-columns: 4rem 1fr; gap: .75rem; padding: .55rem 0; border-bottom: 1px solid var(--line); }
+.tt li:last-child { border-bottom: 0; }
+.tt time { font-weight: 700; color: var(--rim); }
+.tt .tt-day { display: block; font-weight: 700; color: var(--ink-soft); font-size: .85rem; padding-top: 1rem; border-bottom: 0; }
+.tt .tt-day:first-child { padding-top: 0; }
+@media print {
+  body { background: #fff; color: #000; }
+  main > *:not(.timetable):not(h1) { display: none !important; }
+  .timetable { box-shadow: none; border: 0; padding: 0; }
+  #x-print { display: none; }
+  .tt time { color: #000; }
+}

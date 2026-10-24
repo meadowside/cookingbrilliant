@@ -1,0 +1,34 @@
+{
+  "_comment": "Christmas planner data. Every figure carries a source. Side dishes without an official source take the cook's own pack or recipe time instead of a number from us.",
+  "sources": {
+    "fss": {"name": "Food Standards Scotland, Christmas food safety checklist", "url": "https://www.foodstandards.gov.scot/consumers/food-safety/at-home/christmas-food-safety-checklist", "checked": "2026-10-24"},
+    "bordbia-potatoes": {"name": "Bord Bia, Perfect roast potatoes", "url": "https://www.bordbia.ie/recipes/side-salads/perfect-roast-potatoes/", "checked": "2026-10-24"}
+  },
+  "thaw": {
+    "hours_per_kg_min": 10, "hours_per_kg_max": 12, "fridge": "0 to 5°C",
+    "text": "Thaw a frozen turkey in the fridge, on the bottom shelf, allowing 10 to 12 hours per kg. Don't thaw it at room temperature.",
+    "source": "fss",
+    "weights": [3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  "safety": [
+    {"text": "Don't wash the raw turkey. It splashes bacteria around the sink and worktops.", "source": "fss"},
+    {"text": "Get leftovers into the fridge within two hours of cooking, and eat them within two days or freeze them.", "source": "fss"},
+    {"text": "Reheat leftovers only once, until they're steaming hot.", "source": "fss"}
+  ],
+  "potatoes": {
+    "label": "Roast potatoes",
+    "parboil_min": 5, "parboil_max": 10,
+    "roast_min": 40, "roast_max": 50,
+    "oven_c": 200, "oven_f": 400, "gas": "6",
+    "text": "Parboil for 5 to 10 minutes, drain and shake to rough up the edges, then roast at 200°C (gas mark 6) for 40 to 50 minutes.",
+    "source": "bordbia-potatoes"
+  },
+  "sides": [
+    {"key": "pigs", "label": "Pigs in blankets", "where": "oven"},
+    {"key": "stuffing", "label": "Stuffing", "where": "oven"},
+    {"key": "parsnips", "label": "Roast parsnips", "where": "oven"},
+    {"key": "sprouts", "label": "Brussels sprouts", "where": "hob"},
+    {"key": "carrots", "label": "Carrots", "where": "hob"},
+    {"key": "gravy", "label": "Gravy", "where": "hob"}
+  ]
+}

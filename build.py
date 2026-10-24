@@ -34,6 +34,7 @@ OVEN = load("data/oven.json")
 USDA = load("data/usda_portions.json")
 INGREDIENTS = load("data/ingredients.json")
 ROASTS = load("data/roasts.json")
+XMAS = load("data/christmas.json")
 
 ML = {k: v["ml"] for k, v in MEASURES["units"].items()}
 
@@ -261,6 +262,21 @@ def roast_weight_pages(m):
     return pages
 
 
+def days_text(hours):
+    """Hours as days, rounded UP to the next half day: 60 -> 'about 2½ days'."""
+    half_days = math.ceil(hours / 12 - 1e-9)
+    whole, half = divmod(half_days, 2)
+    txt = (str(whole) if whole else "") + ("½" if half else "")
+    return f"about {txt} day" + ("" if half_days == 2 else "s")
+
+
+def thaw_rows():
+    t = XMAS["thaw"]
+    return [{"kg": fmt_kg(kg), "lb": f"{half_up(kg * 2.20462, 1):g}",
+             "hmin": int(kg * t["hours_per_kg_min"]), "hmax": int(kg * t["hours_per_kg_max"]),
+             "days": days_text(kg * t["hours_per_kg_max"])} for kg in t["weights"]]
+
+
 # ---------------------------------------------------------------- render
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True,
                   trim_blocks=True, lstrip_blocks=True)
@@ -343,7 +359,7 @@ def main():
     urls.append(write("/convert/", "converter.html", groups=by_group, title="Cups to grams converter", page_kind="tool"))
     urls.append(write("/oven-temperatures/", "oven.html", oven=OVEN, title="Oven temperature converter: °C, fan, °F and gas mark", page_kind="tool"))
     urls.append(write("/recipe-scaler/", "scaler.html", title="Recipe scaler", page_kind="tool"))
-    roast_js = {"meats": [{k: m[k] for k in ("slug", "label", "per450", "extra", "doneness", "oven", "rest", "core", "range", "cooked_through") if k in m}
+    roast_js = {"meats": [{k: m[k] for k in ("slug", "name", "label", "per450", "extra", "doneness", "oven", "rest", "core", "range", "cooked_through") if k in m}
                           for m in meats]}
     (DIST / "js" / "roasts.json").write_text(json.dumps(roast_js, separators=(",", ":"), ensure_ascii=False))
     urls.append(write("/roast-timer/", "roast.html", meats=meats, roasts=ROASTS,
@@ -355,6 +371,14 @@ def main():
         for p in wp:
             urls.append(write(p["url"], "roast_weight.html", m=m, p=p, wpages=wp, roasts=ROASTS,
                               title=f"How long to cook a {p['label']} {m['name'].lower()}", page_kind="roast"))
+
+    (DIST / "js" / "christmas.json").write_text(json.dumps(
+        {"thaw": XMAS["thaw"], "potatoes": XMAS["potatoes"], "sides": XMAS["sides"]}, separators=(",", ":"), ensure_ascii=False))
+    urls.append(write("/christmas-dinner-planner/", "christmas.html", meats=meats, xmas=XMAS,
+                      title="Christmas dinner planner: your timetable for the day", page_kind="tool"))
+    urls.append(write("/how-long-to-defrost-a-turkey/", "thaw.html", thaw=XMAS["thaw"], rows=thaw_rows(),
+                      safety=XMAS["safety"], src=XMAS["sources"]["fss"],
+                      title="How long to defrost a turkey", page_kind="tool"))
 
     for name in ("about", "privacy", "contact", "sources", "disclaimer"):
         fields, body = md_page(name)
