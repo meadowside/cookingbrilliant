@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      indexnow_all:
+        description: "Send every page to IndexNow, not just changed ones"
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy
@@ -43,4 +48,6 @@ jobs:
           server-dir: ./
 
       - name: Notify search engines (IndexNow)
+        env:
+          INDEXNOW_ALL: ${{ inputs.indexnow_all }}
         run: python scripts/indexnow.py old-hashes.json dist/page-hashes.json

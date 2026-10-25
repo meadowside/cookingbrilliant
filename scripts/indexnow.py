@@ -4,7 +4,7 @@ Usage: python scripts/indexnow.py OLD_HASHES.json NEW_HASHES.json
 
 OLD is the page-hashes.json fetched from the live site before the upload (may be missing
 or empty on the first run). NEW is dist/page-hashes.json. Only new or changed pages are
-sent. Never fails the deploy: problems are printed and the script exits 0.
+sent. Set INDEXNOW_ALL=true to send every page (for a manual re-run). Never fails the deploy: problems are printed and the script exits 0.
 """
 import json
 import os
@@ -37,6 +37,8 @@ def main(old_path, new_path):
         print("No indexnow_key in site.json, skipping.")
         return
     old, new = load(old_path), load(new_path)
+    if os.environ.get("INDEXNOW_ALL") == "true":
+        old = {}
     changed = sorted(u for u, h in new.items() if old.get(u) != h)
     say(f"{len(changed)} of {len(new)} pages new or changed.")
     if not changed:
@@ -56,7 +58,8 @@ def main(old_path, new_path):
             with urllib.request.urlopen(req, timeout=30) as r:
                 say(f"HTTP {r.status} for {len(changed[i:i + 10000])} URLs")
         except urllib.error.HTTPError as e:
-            say(f"HTTP {e.code} {e.reason}")
+            detail = e.read().decode("utf-8", "replace")[:300].replace("\n", " ")
+            say(f"HTTP {e.code} {e.reason}: {detail}")
         except Exception as e:
             say(f"request failed: {e}")
 
