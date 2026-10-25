@@ -66,5 +66,13 @@
     });
   }
   ["from", "to", "recipe"].forEach(function (id) { $(id).addEventListener("input", run); });
+  // ?x=1.32 from the cake tin converter: scale by a factor instead of servings.
+  var x = parseFloat(new URLSearchParams(location.search).get("x"));
+  if (x > 0 && x < 20) {
+    $("from").value = "1"; $("to").value = String(x);
+    var n = document.createElement("p"); n.className = "note";
+    n.textContent = "Set to ×" + x + " for your new tin. Paste your recipe below.";
+    $("from").closest(".tool").before(n);
+  }
   run();
 })();

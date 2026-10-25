@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% block description %}To use a {{ p.to_label }} tin for a recipe written for a {{ p.from_label }} tin, multiply every ingredient by {{ p.k }}. The new tin has {% if p.change == 'the same' %}the same area{% else %}{{ p.change }} area{% endif %}.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/cake-tin-converter/">Cake tin converter</a></p>
+<h1>{{ p.from_label | capitalize }} tin to {{ p.to_label }} tin</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">Multiply every ingredient by</p>
+  <p class="scale-a">×{{ p.k }}</p>
+  <p class="scale-extra">A {{ p.to_label }} tin ({{ p.to_in }}) has {% if p.change == 'the same' %}the same area as{% else %}{{ p.change }} area than{% endif %} a {{ p.from_label }} tin ({{ p.from_in }}).{% if p.change != 'the same' %} Same depth of cake, {{ 'more' if p.kf > 1 else 'less' }} mixture.{% endif %}</p>
+</section>
+
+<div class="tablewrap"><table>
+  <thead><tr><th>In the recipe</th><th class="n">For your tin</th></tr></thead>
+  <tbody>{% for e in p.examples %}<tr><td>{{ e.before }}</td><td class="n">{{ e.after }}</td></tr>{% endfor %}</tbody>
+</table></div>
+<p><a href="/recipe-scaler/?x={{ p.k }}">Paste your recipe into the scaler, already set to ×{{ p.k }}</a>. It rounds everything sensibly and tells you what to do with part of an egg.</p>
+
+<aside class="caution" role="note"><p><strong>The baking time may change.</strong> Start checking before the recipe's time is up, and bake until a skewer in the middle comes out clean.</p></aside>
+
+{{ ad_slot("tin-pair-1") }}
+
+<h2>The working</h2>
+<p>{{ p.from_label | capitalize }} tin: {{ p.from_area }}cm² of base. {{ p.to_label | capitalize }} tin: {{ p.to_area }}cm². {{ p.to_area }} ÷ {{ p.from_area }} = {{ p.k }}. This assumes both tins are the same depth.</p>
+
+{% if others %}
+<h2>Other tins from a {{ p.from_label }}</h2>
+<ul class="links">{% for o in others %}<li><a href="{{ o.url }}">To {{ o.to_label }}: ×{{ o.k }}</a></li>{% endfor %}</ul>
+{% endif %}
+<p><a href="/cake-tin-converter/">Use the converter for any size, including rectangular tins</a>.</p>
+
+{{ affiliate('scale') }}
+{{ sponsor_slot() }}
+{% endblock %}

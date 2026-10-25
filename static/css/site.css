@@ -259,3 +259,9 @@ textarea { min-height: 12rem; resize: vertical; line-height: 1.5; }
   #x-print { display: none; }
   .tt time { color: #000; }
 }
+
+/* ---------- cake tins ---------- */
+.tins { display: grid; gap: .75rem; }
+@media (min-width: 40rem) { .tins { grid-template-columns: 1fr 1fr; } }
+.tin-box { border: 1px solid var(--line); border-radius: 12px; padding: .7rem .9rem .1rem; margin: 0; }
+.tin-box legend { font-weight: 700; padding: 0 .3rem; }

@@ -280,6 +280,80 @@ def reverse_pages(item):
     return out
 
 
+# ---------------------------------------------------------------- cake tins
+# Pure geometry: scale a recipe by the ratio of tin areas, assuming the same depth.
+# Must match static/js/tin.js. Sizes in cm.
+TIN_ROUND = [15, 18, 20, 23, 25, 28]
+TIN_SQUARE = [15, 18, 20, 23, 25]
+
+
+def tin_area(shape, a, b=None):
+    if shape == "round":
+        return math.pi * (a / 2) ** 2
+    if shape == "square":
+        return a * a
+    return a * b
+
+
+def tin_label(shape, a, b=None):
+    if shape == "rect":
+        return f"{a:g} x {b:g}cm rectangular"
+    return f"{a:g}cm {shape}"
+
+
+def tin_inches(cm):
+    return f"{half_up(cm / 2.54):g}in"
+
+
+def tin_pairs():
+    """Popular conversions: neighbouring round sizes, round to square of similar size, neighbouring squares."""
+    pairs = []
+    for i, a in enumerate(TIN_ROUND):
+        for b in TIN_ROUND[max(0, i - 2):i + 3]:
+            if a != b:
+                pairs.append((("round", a), ("round", b)))
+        for b in TIN_SQUARE:
+            if abs(a - b) <= 3:
+                pairs.append((("round", a), ("square", b)))
+                pairs.append((("square", b), ("round", a)))
+    for i, a in enumerate(TIN_SQUARE):
+        for b in TIN_SQUARE[max(0, i - 1):i + 2]:
+            if a != b:
+                pairs.append((("square", a), ("square", b)))
+    seen, out = set(), []
+    for p in pairs:
+        if p not in seen:
+            seen.add(p)
+            out.append(p)
+    return out
+
+
+def tin_page(frm, to):
+    fa, ta = tin_area(*frm), tin_area(*to)
+    k = ta / fa
+    pct = round((k - 1) * 100)
+    return {
+        "from": frm, "to": to, "k": f"{k:.2f}", "kf": k,
+        "from_label": tin_label(*frm), "to_label": tin_label(*to),
+        "from_in": tin_inches(frm[1]), "to_in": tin_inches(to[1]),
+        "from_area": f"{half_up(fa, 2):g}", "to_area": f"{half_up(ta, 2):g}",
+        "change": (f"{pct}% more" if pct > 0 else f"{-pct}% less") if pct else "the same",
+        "examples": [{"before": "100g", "after": f"{fmt_g(100 * k)}g"},
+                     {"before": "250g", "after": f"{fmt_g(250 * k)}g"},
+                     {"before": "3 eggs", "after": f"{half_up(3 * k, 1):g} eggs"}],
+        "url": f"/cake-tin-converter/{frm[1]}cm-{frm[0]}-to-{to[1]}cm-{to[0]}/",
+    }
+
+
+def tin_equivalents():
+    rows = []
+    for d in TIN_ROUND:
+        side = math.sqrt(tin_area("round", d))
+        nearest = min(TIN_SQUARE + [28], key=lambda s: abs(s - side))
+        rows.append({"round": d, "round_in": tin_inches(d), "side": f"{half_up(side, 1):g}", "nearest": nearest})
+    return rows
+
+
 # ---------------------------------------------------------------- roasts
 def roast_minutes(per450, extra, kg):
     """Q Guild formula, rounded UP to the next 5 minutes. Must match static/js/roast.js."""
@@ -472,6 +546,15 @@ def main():
     urls.append(write("/how-long-to-defrost-a-turkey/", "thaw.html", thaw=XMAS["thaw"], rows=thaw_rows(),
                       safety=XMAS["safety"], src=XMAS["sources"]["fss"],
                       title="How long to defrost a turkey", page_kind="tool"))
+
+    tpages = [tin_page(f, t) for f, t in tin_pairs()]
+    urls.append(write("/cake-tin-converter/", "tin.html", tpages=tpages, equiv=tin_equivalents(),
+                      rounds=TIN_ROUND, squares=TIN_SQUARE,
+                      title="Cake tin converter: scale a recipe to a different tin", page_kind="tool"))
+    for tp in tpages:
+        same = [o for o in tpages if o["from"] == tp["from"] and o is not tp]
+        urls.append(write(tp["url"], "tin_pair.html", p=tp, others=same,
+                          title=f"{tp['from_label'].capitalize()} tin to {tp['to_label']} tin", page_kind="tool"))
 
     for name in ("about", "privacy", "contact", "sources", "disclaimer"):
         fields, body = md_page(name)

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% block description %}Using a different cake tin from the recipe? Enter both tins and get the number to multiply every ingredient by. Round, square and rectangular tins, in cm or inches.{% endblock %}
+{% block main %}
+<h1>Cake tin converter</h1>
+<p class="lede">Your recipe says one tin and you've got another. Enter both and you'll get the number to multiply every ingredient by, so the cake comes out the same depth.</p>
+
+<form id="tin" class="tool" autocomplete="off" onsubmit="return false">
+  <div class="field">
+    <label for="t-unit">Measure in</label>
+    <div class="seg" id="t-unit-seg">
+      <label><input type="radio" name="t-unit" value="cm" checked> cm</label>
+      <label><input type="radio" name="t-unit" value="in"> inches</label>
+    </div>
+  </div>
+  <div class="tins">
+    {% for side, label, shape, a in [("f", "The recipe's tin", "round", 20), ("t", "Your tin", "round", 23)] %}
+    <fieldset class="tin-box">
+      <legend>{{ label }}</legend>
+      <div class="field">
+        <label for="{{ side }}-shape">Shape</label>
+        <select id="{{ side }}-shape"><option value="round"{% if shape == 'round' %} selected{% endif %}>Round</option><option value="square">Square</option><option value="rect">Rectangular</option></select>
+      </div>
+      <div class="row">
+        <div class="field"><label for="{{ side }}-a" id="{{ side }}-a-l">Diameter</label><input id="{{ side }}-a" inputmode="decimal" value="{{ a }}"></div>
+        <div class="field" id="{{ side }}-b-f" hidden><label for="{{ side }}-b">Width</label><input id="{{ side }}-b" inputmode="decimal" value="20"></div>
+      </div>
+    </fieldset>
+    {% endfor %}
+  </div>
+</form>
+
+<section class="scale" aria-live="polite" aria-label="Answer">
+  <p class="scale-q" id="t-q">Multiply every ingredient by</p>
+  <p class="scale-a" id="t-a">×1.32</p>
+  <p class="scale-extra" id="t-extra"></p>
+</section>
+<p id="t-link"></p>
+
+<aside class="caution" role="note"><p><strong>The baking time may change.</strong> Start checking before the recipe's time is up, and bake until a skewer in the middle comes out clean.</p></aside>
+
+{{ ad_slot("tin-1") }}
+
+<h2>Round tin to square tin</h2>
+<p>The square tin with the same area as a round one is a bit smaller across, because the round tin loses its corners.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Round tin</th><th class="n">Same-area square</th><th class="n">Nearest square tin</th></tr></thead>
+  <tbody>{% for e in equiv %}<tr><td>{{ e.round }}cm ({{ e.round_in }})</td><td class="n">{{ e.side }}cm</td><td class="n">{{ e.nearest }}cm</td></tr>{% endfor %}</tbody>
+  <caption>Using the nearest tin changes the depth slightly. Use the converter above for the exact amounts.</caption>
+</table></div>
+
+<h2>Common conversions</h2>
+<ul class="links">
+{% for p in tpages if p.from[0] == 'round' and p.to[0] == 'round' %}<li><a href="{{ p.url }}">{{ p.from[1] }}cm round to {{ p.to[1] }}cm round: ×{{ p.k }}</a></li>{% endfor %}
+</ul>
+<ul class="links">
+{% for p in tpages if p.from[0] != p.to[0] or p.from[0] == 'square' %}<li><a href="{{ p.url }}">{{ p.from_label }} to {{ p.to_label }}: ×{{ p.k }}</a></li>{% endfor %}
+</ul>
+
+{{ affiliate('scale') }}
+{{ sponsor_slot() }}
+
+<h2>How it works</h2>
+<p>The amount of mixture a tin needs depends on its area. The converter works out the area of each tin (a round tin is π × radius², a square is side × side) and divides one by the other. It assumes both tins are the same depth. Measure across the inside of the tin, not including the rim.</p>
+{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/common.js') }}" defer></script><script src="{{ asset('/js/tin.js') }}" defer></script>{% endblock %}
