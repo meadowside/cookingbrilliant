@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ title }} | {{ site.name }}</title>
-<meta name="description" content="{% block description %}{{ description | default('Quick, sourced kitchen conversions: cups to grams, oven temperatures and recipe scaling.') }}{% endblock %}">
+<title>{{ page_title(title) }}</title>
+<meta name="description" content="{% filter trim_desc %}{% block description %}{{ description | default('Quick, sourced kitchen conversions: cups to grams, oven temperatures and recipe scaling.') }}{% endblock %}{% endfilter %}">
 <link rel="canonical" href="{{ canonical }}">
 <script>
 /* Set the theme before anything paints, so there's no flash of the wrong colours. */

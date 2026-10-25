@@ -1,5 +1,7 @@
 # cookingbrilliant.com on Apache (Namecheap shared hosting)
 Options -Indexes
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .css .js .json .xml .txt
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 

@@ -498,6 +498,29 @@ def asset(path):
 env.globals["asset"] = asset
 
 
+def page_title(t):
+    """Search engines show about 70 characters. Drop the site name rather than cut the title."""
+    full = f"{t} | {SITE['name']}"
+    return full if len(full) <= 70 else t
+
+
+def trim_desc(d, limit=160):
+    """Keep meta descriptions within 160 characters, ending on a full sentence where possible."""
+    d = " ".join(d.split())
+    if len(d) <= limit:
+        return d
+    cut = d[:limit]
+    end = max(cut.rfind(". "), cut.rfind("? "))
+    if end >= 80:
+        return cut[:end + 1]
+    cut = d[:limit - 3]
+    return cut[:cut.rfind(" ")].rstrip(",;:") + "..."
+
+
+env.globals["page_title"] = page_title
+env.filters["trim_desc"] = trim_desc
+
+
 def write(url, template, **ctx):
     path = DIST / url.lstrip("/")
     if url.endswith("/"):
@@ -572,7 +595,7 @@ def main():
                           for m in meats]}
     (DIST / "js" / "roasts.json").write_text(json.dumps(roast_js, separators=(",", ":"), ensure_ascii=False))
     urls.append(write("/roast-timer/", "roast.html", meats=meats, roasts=ROASTS,
-                      title="Roast timer: cooking times for turkey, chicken, beef, lamb, pork and gammon", page_kind="tool"))
+                      title="Roast timer: turkey, chicken, beef, lamb, pork and gammon", page_kind="tool"))
     for m in meats:
         wp = roast_weight_pages(m)
         urls.append(write(m["url"], "roast_meat.html", m=m, wpages=wp, meats=meats, roasts=ROASTS,
