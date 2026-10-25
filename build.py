@@ -35,6 +35,7 @@ USDA = load("data/usda_portions.json")
 INGREDIENTS = load("data/ingredients.json")
 ROASTS = load("data/roasts.json")
 XMAS = load("data/christmas.json")
+OTHER = load("data/other_sources.json")
 
 ML = {k: v["ml"] for k, v in MEASURES["units"].items()}
 
@@ -80,8 +81,26 @@ def portion(ndb, measure):
     raise KeyError(f"{ndb}: no USDA measure {measure!r}")
 
 
+def resolve_other(ing):
+    """Ingredients from a non-USDA source: a quoted weight per US cup, or a density."""
+    f = OTHER["foods"][ing["src"]]
+    u = {}
+    if "cup_g" in f:
+        u["cup"] = {"g": f["cup_g"], "how": "source"}
+        u["tbsp"] = {"g": f["cup_g"] / 16, "how": "calc", "from": "cup", "factor": "1/16"}
+    else:
+        u["cup"] = {"g": f["density"] * ML["us_cup"], "how": "density"}
+        u["tbsp"] = {"g": f["density"] * ML["us_tbsp"], "how": "density"}
+    u["tsp"] = {"g": u["tbsp"]["g"] / 3, "how": "calc", "from": "tbsp", "factor": "1/3"}
+    u["metric_cup"] = {"g": u["cup"]["g"] * ML["metric_cup"] / ML["us_cup"], "how": "calc"}
+    u["au_tbsp"] = {"g": u["tbsp"]["g"] * ML["au_tbsp"] / ML["us_tbsp"], "how": "calc"}
+    return u, []
+
+
 def resolve(ing):
     """Work out grams per US cup / tbsp / tsp / stick, recording where each came from."""
+    if "src" in ing:
+        return resolve_other(ing)
     ndb = ing["ndb"]
     u = {}
     if "cup" in ing:
@@ -126,7 +145,13 @@ CUP_ROWS = [Fraction(1, 4), Fraction(1, 3), Fraction(1, 2), Fraction(2, 3), Frac
 
 def build_ingredient(ing):
     units, alts = resolve(ing)
-    usda_food = USDA["foods"][ing["ndb"]]
+    if "src" in ing:
+        f = OTHER["foods"][ing["src"]]
+        usda_food = {"description": None, "portions": []}
+        other = {**f, "source_info": OTHER["sources"][f["source"]]}
+    else:
+        usda_food = USDA["foods"][ing["ndb"]]
+        other = None
     rows = []
     if "cup" in units:
         for q in CUP_ROWS:
@@ -165,6 +190,7 @@ def build_ingredient(ing):
         "metric_cup_g": fmt_g(units["metric_cup"]["g"]) if "metric_cup" in units else None,
         "usda_description": usda_food["description"],
         "usda_portions": usda_food["portions"],
+        "other": other,
         "url": f"/convert/{ing['slug']}/",
     }
 

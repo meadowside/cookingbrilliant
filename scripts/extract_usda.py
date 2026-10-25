@@ -26,7 +26,7 @@ def read_sr(path):
 def main(sr_dir):
     sr_dir = Path(sr_dir)
     ingredients = json.loads((ROOT / "data" / "ingredients.json").read_text())
-    wanted = {i["ndb"] for i in ingredients}
+    wanted = {i["ndb"] for i in ingredients if "ndb" in i}
 
     foods = {r[0]: r[2] for r in read_sr(sr_dir / "FOOD_DES.txt") if r[0] in wanted}
     portions = {}

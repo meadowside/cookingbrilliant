@@ -8,7 +8,15 @@
 <div class="tablewrap"><table>
   <thead><tr><th>Ingredient</th><th>USDA food</th><th class="n">NDB no.</th></tr></thead>
   <tbody>
-  {% for it in items %}<tr><td><a href="{{ it.url }}">{{ it.name }}</a></td><td>{{ it.usda_description }}</td><td class="n">{{ it.ndb }}</td></tr>{% endfor %}
+  {% for it in items if not it.other %}<tr><td><a href="{{ it.url }}">{{ it.name }}</a></td><td>{{ it.usda_description }}</td><td class="n">{{ it.ndb }}</td></tr>{% endfor %}
+  </tbody>
+</table></div>
+<h2>Ingredients from other sources</h2>
+<p>USDA doesn't measure these, so each uses another published figure.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Ingredient</th><th>Source and figure</th></tr></thead>
+  <tbody>
+  {% for it in items if it.other %}<tr><td><a href="{{ it.url }}">{{ it.name }}</a></td><td><a href="{{ it.other.source_info.url }}">{{ it.other.source_info.name }}</a>: {{ it.other.row }}</td></tr>{% endfor %}
   </tbody>
 </table></div>
 <h2>Measure definitions</h2>

@@ -13,13 +13,18 @@
 {% macro usda_source(item) %}
 <details class="source">
   <summary>Where these numbers come from</summary>
+  {% if item.other %}
+  <p><a href="{{ item.other.source_info.url }}">{{ item.other.source_info.name }}</a>, checked {{ item.other.source_info.checked }}. USDA doesn't measure this ingredient, so we use this source instead. It lists:</p>
+  <ul><li>{{ item.other.row }}</li></ul>
+  {% if item.other.density %}<p>Cup and spoon weights are that density multiplied by the volume: a US cup holds 236.6ml and a US tablespoon 14.8ml.{% else %}<p>Fractions of a cup are the cup weight scaled down. The tablespoon is the cup weight divided by 16.{% endif %}
+  {% else %}
   <p>USDA FoodData Central, SR Legacy, food {{ item.ndb }}: “{{ item.usda_description }}”. USDA lists these household measures for it:</p>
   <ul>
   {% for p in item.usda_portions %}
     <li>{{ '%g' % p.amount }} {{ p.measure }} = {{ '%g' % p.grams }}g</li>
   {% endfor %}
   </ul>
-  <p>Fractions of a cup are the cup weight scaled down.{% if item.units.tbsp and item.units.tbsp.how == 'calc' %} The tablespoon figure is the cup weight divided by 16, since USDA doesn't list a tablespoon for this ingredient.{% endif %}{% if item.units.tsp and item.units.tsp.how == 'calc' %} The teaspoon is a third of the tablespoon.{% endif %} Metric-cup figures assume a 250ml cup, and Australian tablespoons hold 20ml. Weights under 10g are rounded to 0.1g, everything else to the nearest gram. <a href="/sources/">Full source list</a>.</p>
+  <p>Fractions of a cup are the cup weight scaled down.{% if item.units.tbsp and item.units.tbsp.how == 'calc' %} The tablespoon figure is the cup weight divided by 16, since USDA doesn't list a tablespoon for this ingredient.{% endif %}{% endif %}{% if item.units.tsp and item.units.tsp.how == 'calc' %} The teaspoon is a third of the tablespoon.{% endif %} Metric-cup figures assume a 250ml cup, and Australian tablespoons hold 20ml. Weights under 10g are rounded to 0.1g, everything else to the nearest gram. <a href="/sources/">Full source list</a>.</p>
 </details>
 {% endmacro %}
 
