@@ -12,6 +12,7 @@ data/
   usda_portions.json      gram weights extracted from USDA. Generated, never edited by hand
   measures.json           cup and spoon sizes in ml, each with a source
   oven.json               oven table (source: Which?)
+  thanksgiving.json       US turkey times, thawing and safety (source: USDA FSIS)
 content/*.md              about, contact, privacy, sources pages
 templates/                Jinja2 templates
 static/                   CSS, JS, fonts, favicon, .htaccess (copied into dist/ as is)

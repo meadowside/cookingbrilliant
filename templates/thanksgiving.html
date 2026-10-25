@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, roast_disclaimer %}
+{% from "_tg.html" import tg_source, tg_safety %}
+{% block description %}Plan Thanksgiving dinner backwards from when you want to eat: when to start thawing the turkey, when it goes in at 325°F, when to start checking it and when the sides start.{% endblock %}
+{% block main %}
+<h1>Thanksgiving dinner planner</h1>
+<p class="lede">Put in your turkey's weight and when you want to eat. It works backwards using the USDA's roasting chart and gives you a timetable, starting with the day to begin thawing.</p>
+
+<form id="tg" class="tool" autocomplete="off" onsubmit="return false">
+  <div class="row">
+    <div class="field"><label for="t-weight">Turkey weight (lb)</label><input id="t-weight" inputmode="decimal" value="16"></div>
+    <div class="field"><label for="t-eat">Eating at</label><input id="t-eat" type="time" value="16:00"></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="t-date">On</label><input id="t-date" type="date"></div>
+    <div class="field" style="align-self:end"><label class="check"><input type="checkbox" id="t-stuffed"> Stuffed</label></div>
+  </div>
+  <fieldset class="field">
+    <legend><label>Is it frozen?</label></legend>
+    <div class="seg" id="t-thaw">
+      <label><input type="radio" name="t-thaw" value="no" checked> No, it's fresh or thawed</label>
+      <label><input type="radio" name="t-thaw" value="fridge"> Yes, thaw in the fridge</label>
+      <label><input type="radio" name="t-thaw" value="water"> Yes, thaw in cold water</label>
+    </div>
+  </fieldset>
+
+  <h2 style="margin-top:1rem">Sides</h2>
+  <p class="source">Tick what you're making and type the cooking time from your recipe or the pack. Recipes vary too much for one time to fit them all.</p>
+  <div class="sides">
+  {% for s in [("dressing","Stuffing or dressing (in a dish)","oven"),("sweet","Sweet potato casserole","oven"),("beans","Green bean casserole","oven"),("rolls","Dinner rolls","oven"),("mash","Mashed potatoes","hob"),("cran","Cranberry sauce","hob"),("gravy","Gravy","hob")] %}
+    <div class="side-row" data-key="{{ s[0] }}" data-where="{{ s[2] }}">
+      <label class="check"><input type="checkbox" class="s-on"> {{ s[1] }}</label>
+      <input class="s-min" inputmode="numeric" placeholder="mins" aria-label="{{ s[1] }} cooking time in minutes">
+      {% if s[2] == 'oven' %}<input class="s-temp" inputmode="numeric" placeholder="°F" aria-label="{{ s[1] }} oven temperature in °F">{% else %}<span class="s-hob">Stove</span>{% endif %}
+    </div>
+  {% endfor %}
+  </div>
+</form>
+
+<section class="scale" aria-live="polite" aria-label="Answer">
+  <p class="scale-q" id="t-q">Your turkey goes in at</p>
+  <p class="scale-a dur" id="t-a">–</p>
+  <p class="scale-extra" id="t-extra"></p>
+</section>
+
+<div id="t-warn"></div>
+
+<section class="timetable" aria-labelledby="tt-h">
+  <div class="tt-head"><h2 id="tt-h">Your timetable</h2><button type="button" id="t-print">Print it</button></div>
+  <ol class="tt" id="t-tt"></ol>
+</section>
+
+{{ roast_disclaimer() }}
+<p class="source">The planner puts the turkey in early enough for the longest time in USDA's range for your weight, so it's ready even if it's slow. Start checking at the shortest time.</p>
+
+{{ ad_slot("tg-1") }}
+{{ tg_safety(tg) }}
+<p>Times for every size: <a href="/thanksgiving-turkey-cooking-times/">turkey cooking times by pound</a>. Thawing by weight: <a href="/how-long-to-thaw-a-turkey/">how long to thaw a turkey</a>.</p>
+{{ tg_source(src) }}
+{{ sponsor_slot() }}
+{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/common.js') }}" defer></script><script src="{{ asset('/js/thanksgiving.js') }}" defer></script>{% endblock %}

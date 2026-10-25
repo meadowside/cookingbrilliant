@@ -35,6 +35,7 @@ USDA = load("data/usda_portions.json")
 INGREDIENTS = load("data/ingredients.json")
 ROASTS = load("data/roasts.json")
 XMAS = load("data/christmas.json")
+TG = load("data/thanksgiving.json")
 OTHER = load("data/other_sources.json")
 YE = load("data/yeast_eggs.json")
 
@@ -482,6 +483,59 @@ def thaw_rows():
              "days": days_text(kg * t["hours_per_kg_max"])} for kg in t["weights"]]
 
 
+# ---------------------------------------------------------------- Thanksgiving (USDA FSIS, pounds and °F)
+def fmt_hours(m):
+    """Minutes as USDA writes them: 165 -> '2¾ hours'. FSIS times are all whole quarter hours."""
+    q = int(round(m / 15))
+    whole, frac = divmod(q, 4)
+    txt = (str(whole) if whole else "") + ["", "¼", "½", "¾"][frac]
+    return txt + (" hour" if q == 4 else " hours")
+
+
+def fmt_hour_range(a, b):
+    lo, hi = fmt_hours(a), fmt_hours(b)
+    return f"{lo.rsplit(' ', 1)[0]} to {hi}"
+
+
+def turkey_rows(kind):
+    return [dict(r, label=f"{r['lo']} to {r['hi']} lb" + (" (breast)" if r.get("breast") else ""),
+                 time=fmt_hour_range(r["min"], r["max"])) for r in TG[kind]]
+
+
+def turkey_range(lb, kind):
+    """USDA rows that include this weight. A weight on a boundary (12 lb) sits in two rows,
+    so the range runs from the lower row's shortest time to the upper row's longest.
+    Must match static/js/thanksgiving.js."""
+    rows = [r for r in TG[kind] if r["lo"] <= lb <= r["hi"] and not r.get("breast")]
+    rows = rows or [r for r in TG[kind] if r["lo"] <= lb <= r["hi"]]
+    if not rows:
+        return None
+    return {"min": rows[0]["min"], "max": rows[-1]["max"], "rows": [dict(r, label=f"{r['lo']} to {r['hi']} lb",
+            time=fmt_hour_range(r["min"], r["max"])) for r in rows]}
+
+
+def thaw_days(lb):
+    """Fridge: 24 hours per 4 to 5 lb, shown in half days rounded up. Cold water: 30 min per lb."""
+    t = TG["thaw"]
+    def half(x):
+        h = math.ceil(x * 2 - 1e-9) / 2
+        whole, half_ = divmod(int(h * 2), 2)
+        return (str(whole) if whole else "") + ("½" if half_ else "")
+    lo, hi = half(lb / t["fridge_lb_per_day_max"]), half(lb / t["fridge_lb_per_day_min"])
+    days = f"{lo} to {hi} days" if lo != hi else f"{hi} days"
+    return {"fridge": days, "water": fmt_duration(int(lb * t["water_min_per_lb"]))}
+
+
+def turkey_weight_pages():
+    out = []
+    for lb in TG["weight_pages"]:
+        u, s = turkey_range(lb, "unstuffed"), turkey_range(lb, "stuffed")
+        out.append({"a": "an" if str(lb).startswith(("8", "11", "18")) else "a", "lb": lb, "kg": f"{half_up(lb / 2.20462, 1):g}", "url": f"/thanksgiving-turkey-cooking-times/{lb}-lb/",
+                    "un": u, "st": s, "un_time": fmt_hour_range(u["min"], u["max"]),
+                    "st_time": fmt_hour_range(s["min"], s["max"]), "thaw": thaw_days(lb)})
+    return out
+
+
 # ---------------------------------------------------------------- render
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True,
                   trim_blocks=True, lstrip_blocks=True)
@@ -611,6 +665,20 @@ def main():
     urls.append(write("/how-long-to-defrost-a-turkey/", "thaw.html", thaw=XMAS["thaw"], rows=thaw_rows(),
                       safety=XMAS["safety"], src=XMAS["sources"]["fss"],
                       title="How long to defrost a turkey", page_kind="tool"))
+
+    tg_pages = turkey_weight_pages()
+    (DIST / "js" / "thanksgiving.json").write_text(json.dumps(
+        {k: TG[k] for k in ("unstuffed", "stuffed", "thaw", "rest_min", "safe_f", "oven_f")}, separators=(",", ":"), ensure_ascii=False))
+    tg_ctx = dict(tg=TG, src=TG["source"], un_rows=turkey_rows("unstuffed"), st_rows=turkey_rows("stuffed"), tg_pages=tg_pages)
+    urls.append(write("/thanksgiving-dinner-planner/", "thanksgiving.html", **tg_ctx,
+                      title="Thanksgiving dinner planner: when the turkey goes in", page_kind="tool"))
+    urls.append(write("/thanksgiving-turkey-cooking-times/", "turkey_us.html", **tg_ctx,
+                      title="Turkey cooking times by pound at 325°F", page_kind="roast"))
+    for p in tg_pages:
+        urls.append(write(p["url"], "turkey_us_weight.html", **tg_ctx, p=p,
+                          title=f"How long to cook {p['a']} {p['lb']} lb turkey", page_kind="roast"))
+    urls.append(write("/how-long-to-thaw-a-turkey/", "thaw_us.html", **tg_ctx,
+                      title="How long to thaw a turkey: fridge and cold water", page_kind="tool"))
 
     tpages = [tin_page(f, t) for f, t in tin_pairs()]
     urls.append(write("/cake-tin-converter/", "tin.html", tpages=tpages, equiv=tin_equivalents(),

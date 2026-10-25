@@ -43,6 +43,8 @@
 {% if m.rest %}<p>Rest for {{ m.rest.text }} before carving ({{ src(roasts, m.rest.source) }}).</p>{% endif %}
 {% if m.tip %}<p>{{ m.tip }}</p>{% endif %}
 
+{% if m.slug == 'turkey' %}<p>Cooking in pounds and °F for Thanksgiving? See the <a href="/thanksgiving-turkey-cooking-times/">USDA turkey times by pound</a>.</p>
+{% endif %}
 {{ ad_slot("roast-meat-1") }}
 
 {{ roast_safety(m, roasts) }}

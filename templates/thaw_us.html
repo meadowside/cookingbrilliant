@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% from "_tg.html" import tg_source %}
+{% block description %}Thaw a turkey in the fridge for 24 hours per 4 to 5 lb, so a 16 to 20 lb bird takes 4 to 5 days. In cold water, allow 30 minutes per lb. USDA times by weight.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/thanksgiving-dinner-planner/">Thanksgiving dinner planner</a></p>
+<h1>How long to thaw a turkey</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">In the fridge, allow</p>
+  <p class="scale-a dur">24 hours for every {{ tg.thaw.fridge_lb_per_day_min }} to {{ tg.thaw.fridge_lb_per_day_max }} lb</p>
+  <p class="scale-extra">So a 16 to 20 lb turkey needs 4 to 5 days. Short of time? Cold water takes about {{ tg.thaw.water_min_per_lb }} minutes per lb.</p>
+</section>
+
+<h2>In the fridge</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Turkey</th><th class="n">Fridge (40°F or below)</th></tr></thead>
+  <tbody>{% for r in tg.thaw.fridge_table %}<tr><td>{{ r.w }}</td><td class="n">{{ r.t }}</td></tr>{% endfor %}</tbody>
+</table></div>
+<p>{{ tg.thaw.fridge_text }}</p>
+
+<h2>In cold water</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Turkey</th><th class="n">Cold water</th></tr></thead>
+  <tbody>{% for r in tg.thaw.water_table %}<tr><td>{{ r.w }}</td><td class="n">{{ r.t }}</td></tr>{% endfor %}</tbody>
+</table></div>
+<p>{{ tg.thaw.water_text }}</p>
+
+{{ ad_slot("thawus-1") }}
+
+<h2>Forgot to thaw it?</h2>
+<p>You can roast it from frozen. USDA says it takes at least 50 percent longer than the <a href="/thanksgiving-turkey-cooking-times/">usual times</a>, and the giblet packages have to come out during cooking. Lift them out carefully with tongs or a fork.</p>
+
+<p><a href="/thanksgiving-dinner-planner/">The Thanksgiving dinner planner</a> works out the day and time to start thawing yours. Defrosting in kilos? See the <a href="/how-long-to-defrost-a-turkey/">UK defrosting guide</a>.</p>
+{{ tg_source(src) }}
+{{ sponsor_slot() }}
+{% endblock %}

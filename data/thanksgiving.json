@@ -1,0 +1,58 @@
+{
+  "_comment": "US turkey guidance, all from USDA FSIS 'Let's Talk Turkey' (last updated Nov 17, 2023). Times are in minutes. Bands include their upper weight: 12 lb falls in '8 to 12'.",
+  "source": {
+    "name": "USDA Food Safety and Inspection Service, Let's Talk Turkey: A Consumer Guide to Safely Roasting a Turkey",
+    "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/lets-talk-turkey-roasting",
+    "updated": "2023-11-17",
+    "checked": "2026-10-25"
+  },
+  "oven_f": 325,
+  "oven_c": 163,
+  "rest_min": 20,
+  "safe_f": 165,
+  "check_where": "the innermost part of the thigh and wing and the thickest part of the breast",
+  "unstuffed": [
+    {"lo": 4, "hi": 8, "min": 90, "max": 195, "breast": true},
+    {"lo": 8, "hi": 12, "min": 165, "max": 180},
+    {"lo": 12, "hi": 14, "min": 180, "max": 225},
+    {"lo": 14, "hi": 18, "min": 225, "max": 255},
+    {"lo": 18, "hi": 20, "min": 255, "max": 270},
+    {"lo": 20, "hi": 24, "min": 270, "max": 300}
+  ],
+  "stuffed": [
+    {"lo": 6, "hi": 8, "min": 150, "max": 210, "breast": true},
+    {"lo": 8, "hi": 12, "min": 180, "max": 210},
+    {"lo": 12, "hi": 14, "min": 210, "max": 240},
+    {"lo": 14, "hi": 18, "min": 240, "max": 255},
+    {"lo": 18, "hi": 20, "min": 255, "max": 285},
+    {"lo": 20, "hi": 24, "min": 285, "max": 315}
+  ],
+  "thaw": {
+    "fridge_lb_per_day_min": 4,
+    "fridge_lb_per_day_max": 5,
+    "fridge_text": "In the refrigerator (40°F or below), allow approximately 24 hours for every 4 to 5 pounds. Keep it in its original wrapper on a tray to catch drips. A thawed turkey can stay in the refrigerator for 1 to 2 days.",
+    "fridge_table": [
+      {"w": "4 to 12 lb", "t": "1 to 3 days"},
+      {"w": "12 to 16 lb", "t": "3 to 4 days"},
+      {"w": "16 to 20 lb", "t": "4 to 5 days"},
+      {"w": "20 to 24 lb", "t": "5 to 6 days"}
+    ],
+    "water_min_per_lb": 30,
+    "water_text": "In cold water, allow approximately 30 minutes per pound. Wrap it securely, submerge it in cold tap water and change the water every 30 minutes. Cook it immediately after thawing. Don't refreeze.",
+    "water_table": [
+      {"w": "4 to 12 lb", "t": "2 to 6 hours"},
+      {"w": "12 to 16 lb", "t": "6 to 8 hours"},
+      {"w": "16 to 20 lb", "t": "8 to 10 hours"},
+      {"w": "20 to 24 lb", "t": "10 to 12 hours"}
+    ]
+  },
+  "facts": [
+    "Allow 1 pound of turkey per person.",
+    "Set the oven no lower than 325°F.",
+    "Cooking the stuffing in a separate dish is the safer choice. If you stuff the bird, the center of the stuffing must also reach 165°F.",
+    "You can cook a turkey from frozen. It takes at least 50 percent longer.",
+    "Remove the giblets after thawing and cook them separately.",
+    "Throw away turkey, stuffing and gravy left out for more than 2 hours (1 hour above 90°F). Eat refrigerated leftovers within 3 to 4 days."
+  ],
+  "weight_pages": [10, 12, 14, 15, 16, 18, 20, 22, 24]
+}

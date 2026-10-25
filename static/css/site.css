@@ -247,9 +247,9 @@ textarea { min-height: 12rem; resize: vertical; line-height: 1.5; }
 .tt-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .tt-head h2 { margin: 0; }
 .tt { list-style: none; margin: .75rem 0 0; padding: 0; }
-.tt li { display: grid; grid-template-columns: 4rem 1fr; gap: .75rem; padding: .55rem 0; border-bottom: 1px solid var(--line); }
+.tt li { display: grid; grid-template-columns: 5.2rem 1fr; gap: .75rem; padding: .55rem 0; border-bottom: 1px solid var(--line); }
 .tt li:last-child { border-bottom: 0; }
-.tt time { font-weight: 700; color: var(--rim); }
+.tt time { font-weight: 700; color: var(--rim); white-space: nowrap; }
 .tt .tt-day { display: block; font-weight: 700; color: var(--ink-soft); font-size: .85rem; padding-top: 1rem; border-bottom: 0; }
 .tt .tt-day:first-child { padding-top: 0; }
 @media print {

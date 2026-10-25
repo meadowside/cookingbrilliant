@@ -1,0 +1,21 @@
+{% macro tg_source(src) %}<p class="source">Times, temperatures and thawing advice from the <a href="{{ src.url }}">{{ src.name }}</a> (updated {{ src.updated }}), checked {{ src.checked }}. USDA's times assume a fully thawed turkey in an oven set to 325°F.</p>{% endmacro %}
+
+{% macro tg_tables(un_rows, st_rows) %}
+<div class="tablewrap"><table>
+  <thead><tr><th>Turkey</th><th class="n">Unstuffed</th><th class="n">Stuffed</th></tr></thead>
+  <tbody>
+  {% for r in un_rows %}
+  {% set s = st_rows | selectattr('lo', 'equalto', r.lo) | first %}
+  <tr><td>{{ r.label }}</td><td class="n">{{ r.time }}</td><td class="n">{% if s %}{{ s.time }}{% else %}{% set s6 = st_rows[0] %}{{ s6.label }}: {{ s6.time }}{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+  <caption>At 325°F. USDA's smallest stuffed row starts at 6 lb. The turkey is done at 165°F, whatever the clock says.</caption>
+</table></div>
+{% endmacro %}
+
+{% macro tg_safety(tg) %}
+<h2>Is it done?</h2>
+<p>Check with a food thermometer. It's safe once it reaches {{ tg.safe_f }}°F in {{ tg.check_where }}. Then let it stand for {{ tg.rest_min }} minutes before carving.</p>
+<h2>The USDA's other rules</h2>
+<ul>{% for f in tg.facts %}<li>{{ f }}</li>{% endfor %}</ul>
+{% endmacro %}

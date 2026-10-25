@@ -17,6 +17,10 @@ Weights under 10g are rounded to 0.1g. Everything else is rounded to the nearest
 
 Cooking times, oven settings and resting times come from the Q Guild, the UK butchers' quality guild. Each meat's time is its minutes-per-450g rule worked out for your weight and rounded up to the next 5 minutes. Safe core temperatures come from the Food Standards Agency and safefood (the food safety body for the island of Ireland). US minimum temperatures are from the USDA. The full list is at the bottom of this page.
 
+## US turkey times (Thanksgiving pages)
+
+[USDA Food Safety and Inspection Service, Let's Talk Turkey](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/lets-talk-turkey-roasting). Roasting times at 325°F, thawing times, the 165°F safe temperature and the leftovers advice all come from this page. Where a weight sits on the line between two rows of USDA's chart (12 lb is in both the 8 to 12 lb and 12 to 14 lb rows), we show the range covering both rows.
+
 ## Oven temperatures
 
 [Which?, Oven temperature conversion table](https://www.which.co.uk/reviews/built-in-ovens/article/oven-temperature-conversion-table-aA5Ol9b157On).

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% from "_tg.html" import tg_source, tg_tables, tg_safety %}
+{% block description %}At 325°F a 12 to 14 lb unstuffed turkey takes {{ un_rows[2].time }}, and {{ st_rows[2].time }} stuffed. USDA times for every size from 8 to 24 lb, plus when it's done.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/thanksgiving-dinner-planner/">Thanksgiving dinner planner</a></p>
+<h1>Turkey cooking times by pound</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">At 325°F, a 12 to 14 lb unstuffed turkey takes</p>
+  <p class="scale-a dur">{{ un_rows[2].time }}</p>
+  <p class="scale-extra">Stuffed, allow {{ st_rows[2].time }}. It's done at {{ tg.safe_f }}°F in the thigh, wing and breast. Rest it {{ tg.rest_min }} minutes before carving.</p>
+</section>
+
+{{ tg_tables(un_rows, st_rows) }}
+
+<h2>By weight</h2>
+<ul class="chips">{% for p in tg_pages %}<li><a href="{{ p.url }}">{{ p.lb }} lb turkey</a></li>{% endfor %}</ul>
+<p>Cooking in kilos? The <a href="/roast-timer/turkey/">UK roast timer</a> works in kg and °C.</p>
+
+{{ ad_slot("tgt-1") }}
+{{ tg_safety(tg) }}
+<p><a href="/thanksgiving-dinner-planner/">Use the Thanksgiving dinner planner</a> to work out when your turkey goes in, counted back from when you want to eat.</p>
+{{ tg_source(src) }}
+{{ sponsor_slot() }}
+{% endblock %}

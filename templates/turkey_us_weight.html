@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% from "_tg.html" import tg_source, tg_safety %}
+{% block description %}{{ p.a | capitalize }} {{ p.lb }} lb turkey takes {{ p.un_time }} unstuffed at 325°F, or {{ p.st_time }} stuffed (USDA). Thaw it in the fridge for {{ p.thaw.fridge }}. It's done at {{ tg.safe_f }}°F.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/thanksgiving-turkey-cooking-times/">Turkey cooking times</a></p>
+<h1>How long to cook {{ p.a }} {{ p.lb }} lb turkey</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">At 325°F, unstuffed, {{ p.a }} {{ p.lb }} lb ({{ p.kg }}kg) turkey takes</p>
+  <p class="scale-a dur">{{ p.un_time }}</p>
+  <p class="scale-extra">Stuffed, allow {{ p.st_time }}. Start checking with a thermometer at the shorter time. It's done at {{ tg.safe_f }}°F, then rest it {{ tg.rest_min }} minutes.</p>
+</section>
+
+{% if p.un.rows | length > 1 %}
+<p>{{ p.lb }} lb sits where two rows of the USDA chart meet, so the range covers both: {% for r in p.un.rows %}{{ r.label }} takes {{ r.time }}{% if not loop.last %} and {% endif %}{% endfor %} unstuffed.</p>
+{% endif %}
+
+<div class="tablewrap"><table>
+  <thead><tr><th>{{ p.lb }} lb turkey</th><th class="n">Time</th></tr></thead>
+  <tbody>
+    <tr><td>Roast unstuffed at 325°F</td><td class="n">{{ p.un_time }}</td></tr>
+    <tr><td>Roast stuffed at 325°F</td><td class="n">{{ p.st_time }}</td></tr>
+    <tr><td>Thaw in the fridge</td><td class="n">{{ p.thaw.fridge }}</td></tr>
+    <tr><td>Thaw in cold water</td><td class="n">about {{ p.thaw.water }}</td></tr>
+    <tr><td>Rest before carving</td><td class="n">{{ tg.rest_min }} min</td></tr>
+  </tbody>
+  <caption>Thawing works out USDA's rules for {{ p.lb }} lb: 24 hours in the fridge for every {{ tg.thaw.fridge_lb_per_day_min }} to {{ tg.thaw.fridge_lb_per_day_max }} lb, or {{ tg.thaw.water_min_per_lb }} minutes per lb in cold water.</caption>
+</table></div>
+
+<p><a href="/thanksgiving-dinner-planner/">Plan your Thanksgiving</a>: put in your weight and dinner time and get the time it goes in, and when to start thawing.</p>
+
+{{ ad_slot("tgw-1") }}
+{{ tg_safety(tg) }}
+
+<h2>Other sizes</h2>
+<ul class="chips">{% for o in tg_pages if o.lb != p.lb %}<li><a href="{{ o.url }}">{{ o.lb }} lb</a></li>{% endfor %}</ul>
+{{ tg_source(src) }}
+{{ sponsor_slot() }}
+{% endblock %}
