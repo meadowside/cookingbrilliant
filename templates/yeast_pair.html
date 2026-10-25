@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% block description %}{% if p.kind == 'fresh' %}{{ p.g }}g of fresh yeast is {{ p.results[0].g }}g to {{ p.results[1].g }}g of dried or instant yeast{% else %}{{ p.g }}g of dried yeast is {{ p.results[1].g }}g to {{ p.results[0].g }}g of fresh yeast{% endif %}, depending on whose ratio you follow.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/yeast-converter/">Yeast converter</a></p>
+<h1>{{ p.title | capitalize }}</h1>
+
+<section class="scale" aria-label="Answer">
+{% if p.kind == 'fresh' %}
+  <p class="scale-q">{{ p.g }}g of fresh yeast is</p>
+  <p class="scale-a dur">{{ p.results[0].g }} to {{ p.results[1].g }}g dried</p>
+  <p class="scale-extra">That's {{ p.results[0].tsp }} to {{ p.results[1].tsp }} level teaspoons of dried or instant yeast.</p>
+{% else %}
+  <p class="scale-q">{{ p.g }}g of dried yeast is</p>
+  <p class="scale-a dur">{{ p.results[1].g }} to {{ p.results[0].g }}g fresh</p>
+  <p class="scale-extra">Dried here means active dry or instant: both makers treat them the same.</p>
+{% endif %}
+</section>
+
+<div class="tablewrap"><table>
+  <thead><tr><th>Maker's ratio</th><th class="n">{% if p.kind == 'fresh' %}Dried yeast{% else %}Fresh yeast{% endif %}</th></tr></thead>
+  <tbody>{% for r in p.results %}<tr><td>{{ r.label }}</td><td class="n">{{ r.g }}g{% if r.tsp %} ({{ r.tsp }} tsp){% endif %}</td></tr>{% endfor %}</tbody>
+</table></div>
+<p>The two makers' ratios differ by about a fifth. If you know your yeast's brand, use that maker's figure.</p>
+
+{{ ad_slot("yeast-pair-1") }}
+
+<h2>Other amounts</h2>
+<ul class="links">{% for o in ypages if o.url != p.url %}<li><a href="{{ o.url }}">{{ o.title }}</a></li>{% endfor %}</ul>
+<p><a href="/yeast-converter/">Convert any amount</a>.</p>
+
+<p class="source">{% for r in ye.yeast.ratios %}{% set s = ye.sources[r.source] %}<a href="{{ s.url }}">{{ r.label }}</a>: dried = fresh × {{ '%.2f' % r.dry_per_fresh }}. {% endfor %}</p>
+{{ affiliate('scale') }}
+{{ sponsor_slot() }}
+{% endblock %}

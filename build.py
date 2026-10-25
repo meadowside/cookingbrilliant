@@ -36,6 +36,7 @@ INGREDIENTS = load("data/ingredients.json")
 ROASTS = load("data/roasts.json")
 XMAS = load("data/christmas.json")
 OTHER = load("data/other_sources.json")
+YE = load("data/yeast_eggs.json")
 
 ML = {k: v["ml"] for k, v in MEASURES["units"].items()}
 
@@ -354,6 +355,47 @@ def tin_equivalents():
     return rows
 
 
+# ---------------------------------------------------------------- yeast and eggs
+OZ_G = 28.349523125
+
+
+def yeast_dry(fresh_g):
+    """Dried yeast for a weight of fresh, under each maker's ratio."""
+    return [{"label": r["label"], "g": fmt_g(fresh_g * r["dry_per_fresh"]),
+             "tsp": fmt_qty(Fraction(half_up(fresh_g * r["dry_per_fresh"] / YE["yeast"]["packet_g"] * YE["yeast"]["packet_tsp"] * 4) / 4).limit_denominator(4))}
+            for r in YE["yeast"]["ratios"]]
+
+
+def yeast_fresh(dry_g):
+    return [{"label": r["label"], "g": fmt_g(dry_g / r["dry_per_fresh"])} for r in YE["yeast"]["ratios"]]
+
+
+def yeast_pages():
+    y = YE["yeast"]
+    pages = []
+    for g in y["fresh_pages"]:
+        pages.append({"kind": "fresh", "g": g, "results": yeast_dry(g),
+                      "url": f"/yeast-converter/{g}g-fresh-yeast-to-dried/",
+                      "title": f"{g}g fresh yeast in dried yeast"})
+    for g in y["dry_pages"]:
+        pages.append({"kind": "dry", "g": g, "results": yeast_fresh(g),
+                      "url": f"/yeast-converter/{g}g-dried-yeast-to-fresh/",
+                      "title": f"{g}g dried yeast in fresh yeast"})
+    return pages
+
+
+def egg_rows():
+    shelled = {p["measure"]: p["grams"] for p in USDA["foods"]["01123"]["portions"]}
+    uk = YE["eggs"]["uk"]
+    rows = []
+    for e in YE["eggs"]["us"]:
+        per_egg = e["oz_dozen"] * OZ_G / 12
+        band = next(b for b in uk if per_egg >= b["min"] and (b["max"] is None or per_egg < b["max"]))
+        rows.append({"size": e["size"], "oz_dozen": e["oz_dozen"], "per_egg": f"{half_up(per_egg, 1):g}",
+                     "uk": band["size"], "shelled": fmt_g(shelled[e["shelled"]])})
+    return rows
+
+
 # ---------------------------------------------------------------- roasts
 def roast_minutes(per450, extra, kg):
     """Q Guild formula, rounded UP to the next 5 minutes. Must match static/js/roast.js."""
@@ -555,6 +597,15 @@ def main():
         same = [o for o in tpages if o["from"] == tp["from"] and o is not tp]
         urls.append(write(tp["url"], "tin_pair.html", p=tp, others=same,
                           title=f"{tp['from_label'].capitalize()} tin to {tp['to_label']} tin", page_kind="tool"))
+
+    yp = yeast_pages()
+    (DIST / "js" / "yeast.json").write_text(json.dumps(YE["yeast"], separators=(",", ":"), ensure_ascii=False))
+    urls.append(write("/yeast-converter/", "yeast.html", ye=YE, ypages=yp,
+                      title="Yeast converter: fresh, dried and instant yeast", page_kind="tool"))
+    for p in yp:
+        urls.append(write(p["url"], "yeast_pair.html", ye=YE, p=p, ypages=yp, title=p["title"], page_kind="tool"))
+    urls.append(write("/egg-sizes/", "eggs.html", ye=YE, rows=egg_rows(),
+                      title="Egg sizes: UK and US compared", page_kind="tool"))
 
     for name in ("about", "privacy", "contact", "sources", "disclaimer"):
         fields, body = md_page(name)

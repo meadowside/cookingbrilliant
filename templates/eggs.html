@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% block description %}A US large egg weighs at least {{ rows[2].per_egg }}g on average, which falls in the UK medium band. UK and US egg sizes compared, with weights in and out of the shell.{% endblock %}
+{% block main %}
+<h1>Egg sizes: UK and US compared</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">In UK sizes, an American recipe's large egg is</p>
+  <p class="scale-a dur">{{ rows[2].uk.split(' (')[0] }}</p>
+  <p class="scale-extra">US large eggs must average at least {{ rows[2].per_egg }}g each, in the shell. That's inside the UK medium band of 53g to 63g.</p>
+</section>
+
+<h2>US sizes in UK terms</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>US size</th><th class="n">Minimum average, in shell</th><th>UK band it falls in</th><th class="n">Out of the shell</th></tr></thead>
+  <tbody>{% for r in rows %}<tr><td>{{ r.size }}</td><td class="n">{{ r.per_egg }}g</td><td>{{ r.uk }}</td><td class="n">{{ r.shelled }}g</td></tr>{% endfor %}</tbody>
+  <caption>US sizes are set as a minimum weight per dozen, so the per-egg figure is that minimum divided by 12. Out-of-shell weights are USDA's measured averages.</caption>
+</table></div>
+
+{{ ad_slot("eggs-1") }}
+
+<h2>UK egg sizes</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>UK size</th><th class="n">Weight in the shell</th></tr></thead>
+  <tbody>{% for b in ye.eggs.uk %}<tr><td>{{ b.size }}</td><td class="n">{{ b.range }}</td></tr>{% endfor %}</tbody>
+</table></div>
+
+<h2>When it matters</h2>
+<p>Sizes are bands, so two eggs of the same size can differ by several grams. If a recipe gives egg weights, weigh yours. <a href="/convert/eggs/">See beaten eggs in cups and grams</a>.</p>
+
+{{ affiliate('scale') }}
+{{ sponsor_slot() }}
+
+<p class="source">UK sizes: <a href="{{ ye.sources['uk-eggs'].url }}">{{ ye.sources['uk-eggs'].name }}</a>. US sizes: <a href="{{ ye.sources['us-eggs'].url }}">{{ ye.sources['us-eggs'].name }}</a>. Out-of-shell weights: <a href="{{ ye.sources['usda-sr'].url }}">{{ ye.sources['usda-sr'].name }}</a>. Checked {{ ye.sources['uk-eggs'].checked }}.</p>
+{% endblock %}

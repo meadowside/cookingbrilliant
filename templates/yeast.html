@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% block description %}Swap fresh yeast for dried or instant, or back again. Shows both King Arthur Baking's and Red Star's conversion, in grams, teaspoons and packets.{% endblock %}
+{% block main %}
+<h1>Yeast converter</h1>
+<p class="lede">Swap fresh yeast for dried, or dried for fresh. Yeast makers don't agree on the exact ratio, so you get both answers and can pick the one your yeast's maker uses.</p>
+
+<form id="yeast" class="tool" autocomplete="off" onsubmit="return false">
+  <div class="row">
+    <div class="field"><label for="y-amt">Amount in the recipe</label><input id="y-amt" inputmode="decimal" value="25"></div>
+    <div class="field"><label for="y-unit">Of</label>
+      <select id="y-unit">
+        <option value="fresh">g fresh yeast</option>
+        <option value="dry">g dried yeast</option>
+        <option value="tsp">tsp dried yeast</option>
+        <option value="packet">7g packets dried yeast</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<section class="scale" aria-live="polite" aria-label="Answer">
+  <p class="scale-q" id="y-q">25g fresh yeast is</p>
+  <p class="scale-a dur" id="y-a">8.3 to 10g dried</p>
+  <p class="scale-extra" id="y-extra"></p>
+</section>
+<div class="tablewrap"><table id="y-table"><thead><tr><th>Maker's ratio</th><th class="n">Answer</th></tr></thead><tbody></tbody></table></div>
+<p class="note">{{ ye.yeast.interchangeable }} So "dried" here means either.</p>
+
+{{ ad_slot("yeast-1") }}
+
+<h2>Common amounts</h2>
+<ul class="links">{% for p in ypages %}<li><a href="{{ p.url }}">{{ p.title }}</a></li>{% endfor %}</ul>
+
+<h2>Why two answers?</h2>
+{% for r in ye.yeast.ratios %}{% set s = ye.sources[r.source] %}
+<p><strong>{{ r.label }}:</strong> {% if r.verbatim %}“{{ r.quote }}”{% else %}{{ r.quote }}{% endif %} (<a href="{{ s.url }}">{{ s.name }}</a>)</p>
+{% endfor %}
+<p>King Arthur's ratio uses about a fifth less dried yeast than Red Star's. If you know your yeast's brand, follow that maker's figure. Teaspoons and packets here follow Red Star's packet: 7g, or 2¼ level teaspoons.</p>
+
+{{ affiliate('scale') }}
+{{ sponsor_slot() }}
+{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/common.js') }}" defer></script><script src="{{ asset('/js/yeast.js') }}" defer></script>{% endblock %}

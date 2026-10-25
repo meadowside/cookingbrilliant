@@ -1,0 +1,121 @@
+{
+  "_comment": "Yeast ratios and egg sizes. Every figure carries a source. Yeast makers disagree, so both ratios are shown side by side.",
+  "sources": {
+    "kab-yeast": {
+      "name": "King Arthur Baking, How to bake with fresh yeast",
+      "url": "https://www.kingarthurbaking.com/blog/2023/04/24/how-to-bake-with-fresh-yeast",
+      "checked": "2026-10-25"
+    },
+    "redstar": {
+      "name": "Red Star Yeast (Lesaffre), Yeast conversion chart",
+      "url": "https://redstaryeast.com/yeast-conversion-chart",
+      "checked": "2026-10-25"
+    },
+    "uk-eggs": {
+      "name": "Commission Regulation (EC) No 589/2008 as it applies in the UK, Article 4: Grading of Class A eggs by weight",
+      "url": "https://www.legislation.gov.uk/eur/2008/589/article/4",
+      "checked": "2026-10-25"
+    },
+    "us-eggs": {
+      "name": "USDA, United States Standards, Grades, and Weight Classes for Shell Eggs (AMS 56), §56.218 Table I",
+      "url": "https://www.ams.usda.gov/sites/default/files/media/Shell_Egg_Standard%5B1%5D.pdf",
+      "checked": "2026-10-25"
+    },
+    "usda-sr": {
+      "name": "USDA FoodData Central, SR Legacy, Egg, whole, raw, fresh (01123)",
+      "url": "https://fdc.nal.usda.gov/",
+      "checked": "2026-10-25"
+    }
+  },
+  "yeast": {
+    "ratios": [
+      {
+        "key": "kab",
+        "label": "King Arthur Baking",
+        "dry_per_fresh": 0.33,
+        "source": "kab-yeast",
+        "quote": "To convert from fresh yeast to instant or active dry yeast, multiply the fresh quantity by 0.33.",
+        "verbatim": true
+      },
+      {
+        "key": "redstar",
+        "label": "Red Star (Lesaffre)",
+        "dry_per_fresh": 0.4115,
+        "source": "redstar",
+        "quote": "Its chart treats one 7g (¼oz) packet of dry yeast, or 2¼ teaspoons, as the match for about 0.6oz (17g) of fresh cake yeast.",
+        "verbatim": false
+      }
+    ],
+    "packet_g": 7,
+    "packet_tsp": 2.25,
+    "packet_source": "redstar",
+    "interchangeable": "Both makers treat active dry and instant (fast-action) yeast as interchangeable, weight for weight.",
+    "fresh_pages": [
+      10,
+      15,
+      20,
+      25,
+      30,
+      50
+    ],
+    "dry_pages": [
+      7,
+      14
+    ]
+  },
+  "eggs": {
+    "uk": [
+      {
+        "size": "Very large (XL)",
+        "range": "73g or more",
+        "min": 73,
+        "max": null
+      },
+      {
+        "size": "Large (L)",
+        "range": "63g to under 73g",
+        "min": 63,
+        "max": 73
+      },
+      {
+        "size": "Medium (M)",
+        "range": "53g to under 63g",
+        "min": 53,
+        "max": 63
+      },
+      {
+        "size": "Small (S)",
+        "range": "under 53g",
+        "min": 0,
+        "max": 53
+      }
+    ],
+    "us": [
+      {
+        "size": "Jumbo",
+        "oz_dozen": 30,
+        "shelled": "jumbo"
+      },
+      {
+        "size": "Extra large",
+        "oz_dozen": 27,
+        "shelled": "extra large"
+      },
+      {
+        "size": "Large",
+        "oz_dozen": 24,
+        "shelled": "large"
+      },
+      {
+        "size": "Medium",
+        "oz_dozen": 21,
+        "shelled": "medium"
+      },
+      {
+        "size": "Small",
+        "oz_dozen": 18,
+        "shelled": "small"
+      }
+    ]
+  }
+}
