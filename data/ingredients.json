@@ -143,6 +143,14 @@
   "tbsp": "tbsp"
  },
  {
+  "slug": "golden-syrup",
+  "name": "Golden syrup",
+  "us_name": "golden syrup",
+  "group": "Sugars and syrups",
+  "src": "fsanz-golden-syrup",
+  "note": "Golden syrup is thick and sticky, so a cupful clings to the cup. Weighing it straight into the bowl is more accurate than measuring by volume."
+ },
+ {
   "slug": "corn-syrup",
   "name": "Light corn syrup",
   "us_name": "light corn syrup",
@@ -150,7 +158,7 @@
   "ndb": "19350",
   "cup": "cup",
   "tbsp": "tbsp",
-  "note": "Common in American recipes. USDA doesn't measure golden syrup, so we don't list it yet."
+  "note": "Common in American recipes. Golden syrup is the usual UK swap, and has its own page."
  },
  {
   "slug": "black-treacle",

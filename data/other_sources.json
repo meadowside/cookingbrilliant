@@ -1,11 +1,37 @@
 {
   "_comment": "Weights for ingredients USDA doesn't cover. Each food quotes its source row exactly. Use 'cup_g' when the source gives a weight per US cup, or 'density' (g/ml) when it gives a density. Nothing goes here without a source a reader can check.",
   "sources": {
-    "kab": {"name": "King Arthur Baking, Ingredient weight chart", "url": "https://www.kingarthurbaking.com/learn/ingredient-weight-chart", "checked": "2026-10-25"},
-    "fao": {"name": "FAO/INFOODS Density Database version 1.0 (UN Food and Agriculture Organization)", "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/upload/Density_databse_v1_final.pdf", "checked": "2026-10-25"}
+    "kab": {
+      "name": "King Arthur Baking, Ingredient weight chart",
+      "url": "https://www.kingarthurbaking.com/learn/ingredient-weight-chart",
+      "checked": "2026-10-25"
+    },
+    "fao": {
+      "name": "FAO/INFOODS Density Database version 1.0 (UN Food and Agriculture Organization)",
+      "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/upload/Density_databse_v1_final.pdf",
+      "checked": "2026-10-25"
+    },
+    "fsanz": {
+      "name": "Food Standards Australia New Zealand, Specific gravities (nutrition panel calculator)",
+      "url": "https://www.foodstandards.gov.au/business/labelling/nutrition-panel-calculator/specific-gravities",
+      "checked": "2026-10-25"
+    }
   },
   "foods": {
-    "kab-superfine": {"source": "kab", "row": "Baker's Special Sugar (superfine sugar, castor sugar): 1 cup = 190g", "cup_g": 190},
-    "fao-double-cream": {"source": "fao", "row": "Cream, double (about 40-50% fat): 0.94 g/ml, from McCance and Widdowson's The Composition of Foods, 6th summary edition", "density": 0.94}
+    "kab-superfine": {
+      "source": "kab",
+      "row": "Baker's Special Sugar (superfine sugar, castor sugar): 1 cup = 190g",
+      "cup_g": 190
+    },
+    "fao-double-cream": {
+      "source": "fao",
+      "row": "Cream, double (about 40-50% fat): 0.94 g/ml, from McCance and Widdowson's The Composition of Foods, 6th summary edition",
+      "density": 0.94
+    },
+    "fsanz-golden-syrup": {
+      "source": "fsanz",
+      "row": "Syrup, golden: specific gravity 1.34. FSANZ describes its table as indicative, a guide rather than an exact measurement.",
+      "density": 1.34
+    }
   }
 }

@@ -34,7 +34,7 @@ Every number on the site traces to a source. Weights come from USDA FoodData Cen
 3. Re-run the extraction: `python scripts/extract_usda.py PATH_TO_SR28_ASCII`. The SR28 ASCII files are mirrored at github.com/alyssaq/usda-sqlite (`data/` folder) and are identical to FDC's SR Legacy data.
 4. `python build.py --serve` and check the page.
 
-Ingredients USDA doesn't cover go in `data/other_sources.json`, quoting the source row exactly, and the ingredient entry uses `"src"` instead of `"ndb"`. Caster sugar (King Arthur Baking) and double cream (FAO density database) are done this way. Golden syrup still has no verified source: the 340g-per-cup figure online traces back to converter sites, not to King Arthur or Lyle's.
+Ingredients USDA doesn't cover go in `data/other_sources.json`, quoting the source row exactly, and the ingredient entry uses `"src"` instead of `"ndb"`. Caster sugar (King Arthur Baking), double cream (FAO density database) and golden syrup (FSANZ specific gravity table) are done this way. Specific gravity is treated as g/ml.
 
 ## Deploying
 

@@ -16,7 +16,7 @@
   {% if item.other %}
   <p><a href="{{ item.other.source_info.url }}">{{ item.other.source_info.name }}</a>, checked {{ item.other.source_info.checked }}. USDA doesn't measure this ingredient, so we use this source instead. It lists:</p>
   <ul><li>{{ item.other.row }}</li></ul>
-  {% if item.other.density %}<p>Cup and spoon weights are that density multiplied by the volume: a US cup holds 236.6ml and a US tablespoon 14.8ml.{% else %}<p>Fractions of a cup are the cup weight scaled down. The tablespoon is the cup weight divided by 16.{% endif %}
+  {% if item.other.density %}<p>Cup and spoon weights are that density (in g/ml) multiplied by the volume: a US cup holds 236.6ml and a US tablespoon 14.8ml.{% else %}<p>Fractions of a cup are the cup weight scaled down. The tablespoon is the cup weight divided by 16.{% endif %}
   {% else %}
   <p>USDA FoodData Central, SR Legacy, food {{ item.ndb }}: “{{ item.usda_description }}”. USDA lists these household measures for it:</p>
   <ul>
