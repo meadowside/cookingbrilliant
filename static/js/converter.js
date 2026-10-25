@@ -59,7 +59,7 @@
     var item = bySlug[$("ing").value], g = CB.parseQty($("grams").value);
     if (!item.u.cup || isNaN(g)) { $("cups-out").textContent = item.u.cup ? " " : "No cup weight for this one."; return; }
     var cups = g / item.u.cup;
-    $("cups-out").textContent = "About " + CB.fmtFrac(cups) + " cup" + (cups > 1.1 ? "s" : "") + " (" + cups.toFixed(2) + ")";
+    $("cups-out").textContent = CB.kitchen(g, item.u.cup, item.u.tbsp) + " (" + cups.toFixed(2) + " cups)";
   }
 
   fetch("/js/ingredients.json").then(function (r) { return r.json(); }).then(function (d) {

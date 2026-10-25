@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, usda_source, affiliate %}
+{% block description %}{{ p.g }}g of {{ item.name | lower }} is {{ p.measure }} ({{ p.cups }} US cups). Worked out from a sourced cup weight of {{ item.headline_g }}g.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cups to grams","item":"{{ site.base_url }}/convert/"},{"@type":"ListItem","position":2,"name":"{{ item.name }}","item":"{{ site.base_url }}{{ item.url }}"},{"@type":"ListItem","position":3,"name":"{{ p.g }}g in cups","item":"{{ canonical }}"}]}</script>
+{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/convert/">Cups to grams</a> / <a href="{{ item.url }}">{{ item.name }}</a></p>
+<h1>How many cups is {{ p.g }}g of {{ item.name | lower }}?</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">{{ p.g }}g of {{ item.name | lower }}{% if item.us_name | lower != item.name | lower %} ({{ item.us_name }}){% endif %} is</p>
+  <p class="scale-a dur">{{ p.measure }}</p>
+  <p class="scale-extra">That's {{ p.cups }} US cups, {{ p.metric_cups }} metric cups, or {{ p.tbsp }} level tablespoons.</p>
+</section>
+
+<p>Worked out from 1 US cup = {{ item.headline_g }}g. Cups are rounded to the nearest kitchen fraction, with what's left over in level tablespoons. If you have scales, weighing is more accurate.</p>
+
+{% if item.note %}<p class="note">{{ item.note }}</p>{% endif %}
+
+{{ ad_slot("reverse-1") }}
+
+<h2>Other amounts of {{ item.name | lower }}</h2>
+<ul class="links">
+{% for o in others %}<li><a href="{{ o.url }}">{{ o.g }}g: {{ o.measure }}</a></li>{% endfor %}
+{% for q in qpages %}<li><a href="{{ q.url }}">{{ q.phrase | capitalize }}: {{ q.g }}g</a></li>{% endfor %}
+<li><a href="{{ item.url }}">Full table for {{ item.name | lower }}</a></li>
+</ul>
+
+{{ affiliate('scale') }}
+{{ sponsor_slot() }}
+{{ usda_source(item) }}
+{% endblock %}

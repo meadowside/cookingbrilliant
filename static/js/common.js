@@ -31,5 +31,23 @@
     return s || "0";
   }
 
-  w.CB = { parseQty: parseQty, fmtG: fmtG, fmtFrac: fmtFrac };
+  // A weight as cups plus tablespoons. Must match kitchen() in build.py.
+  var CUPF = [[0, ""], [1 / 4, "¼"], [1 / 3, "⅓"], [1 / 2, "½"], [2 / 3, "⅔"], [3 / 4, "¾"]], TOL = 1 / 32;
+  function kitchen(g, cupG, tbspG) {
+    var cups = g / cupG;
+    if (cups < 0.25 - TOL) {
+      var h = Math.floor((g / tbspG) * 2 + 0.5) / 2;
+      if (h < 0.5) return "less than ½ tbsp";
+      var w = Math.floor(h);
+      return (w ? String(w) : "") + (h - w ? "½" : "") + " tbsp";
+    }
+    var whole = Math.floor(cups + TOL), rem = cups - whole, frac = 0, sym = "";
+    for (var i = 0; i < CUPF.length; i++) if (CUPF[i][0] <= rem + TOL) { frac = CUPF[i][0]; sym = CUPF[i][1]; }
+    var left = Math.floor((rem - frac) * 16 + 0.5);
+    if (left >= 4) return kitchen(cupG * (whole + frac + 0.25), cupG, tbspG);
+    var word = (whole === 0 || (whole === 1 && !frac)) ? "cup" : "cups";
+    return (whole ? String(whole) : "") + sym + " " + word + (left > 0 ? " + " + left + " tbsp" : "");
+  }
+
+  w.CB = { parseQty: parseQty, fmtG: fmtG, fmtFrac: fmtFrac, kitchen: kitchen };
 })(window);

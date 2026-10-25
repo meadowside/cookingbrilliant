@@ -75,10 +75,13 @@ def fmt_qty(q):
 
 def portion(ndb, measure):
     """Grams for ONE unit of a USDA household measure (USDA sometimes lists 2 tbsp or 0.25 cup)."""
-    for p in USDA["foods"][ndb]["portions"]:
-        if p["measure"] == measure:
-            return p["grams"] / p["amount"], p
-    raise KeyError(f"{ndb}: no USDA measure {measure!r}")
+    rows = [p for p in USDA["foods"][ndb]["portions"] if p["measure"] == measure]
+    if not rows:
+        raise KeyError(f"{ndb}: no USDA measure {measure!r}")
+    # USDA sometimes lists the same measure at several amounts (1 cup and 1/4 cup).
+    # Use the one closest to a single unit, so the figure is one USDA measured directly.
+    p = min(rows, key=lambda r: abs(r["amount"] - 1))
+    return p["grams"] / p["amount"], p
 
 
 def resolve_other(ing):
@@ -215,6 +218,66 @@ def quantity_pages(item):
             page["metric_g"] = fmt_g(item["units"]["au_tbsp"]["g"])
         pages.append(page)
     return pages
+
+
+# ---------------------------------------------------------------- grams to cups
+# Must match CB.kitchen() in static/js/common.js. Tested against each other.
+CUP_FRACS = [(0, ""), (1/4, "¼"), (1/3, "⅓"), (1/2, "½"), (2/3, "⅔"), (3/4, "¾")]
+TOL = 1 / 32  # half a tablespoon, in cups
+
+
+def kitchen(g, cup_g, tbsp_g):
+    """A weight as cups plus tablespoons, the way a recipe would write it."""
+    cups = g / cup_g
+    if cups < 0.25 - TOL:
+        t = g / tbsp_g
+        h = math.floor(t * 2 + 0.5) / 2
+        if h < 0.5:
+            return "less than ½ tbsp"
+        whole = int(h)
+        txt = (str(whole) if whole else "") + ("½" if h - whole else "")
+        return f"{txt} tbsp"
+    whole = math.floor(cups + TOL)
+    rem = cups - whole
+    frac, sym = 0, ""
+    for f, s in CUP_FRACS:
+        if f <= rem + TOL:
+            frac, sym = f, s
+    left = int(math.floor((rem - frac) * 16 + 0.5))
+    if left >= 4:  # rounds up to the next quarter cup
+        return kitchen(cup_g * (whole + frac + 0.25), cup_g, tbsp_g)
+    base = (str(whole) if whole else "") + sym
+    word = "cup" if (whole == 0 or (whole == 1 and not frac)) else "cups"
+    out = f"{base} {word}"
+    if left > 0:
+        out += f" + {left} tbsp"
+    return out
+
+
+REVERSE_WEIGHTS = [50, 100, 125, 150, 200, 250, 300, 500]
+REVERSE_PAGES = [100, 200, 250]
+
+
+def reverse_rows(item):
+    u = item["units"]
+    if "cup" not in u:
+        return []
+    return [{"g": w, "measure": kitchen(w, u["cup"]["g"], u["tbsp"]["g"]),
+             "cups": f"{w / u['cup']['g']:.2f}"} for w in REVERSE_WEIGHTS]
+
+
+def reverse_pages(item):
+    u = item["units"]
+    if "cup" not in u:
+        return []
+    out = []
+    for w in REVERSE_PAGES:
+        out.append({"g": w, "measure": kitchen(w, u["cup"]["g"], u["tbsp"]["g"]),
+                    "cups": f"{w / u['cup']['g']:.2f}",
+                    "metric_cups": f"{w / u['metric_cup']['g']:.2f}",
+                    "tbsp": f"{half_up(w / u['tbsp']['g']):g}",
+                    "url": f"{item['url']}{w}g-to-cups/"})
+    return out
 
 
 # ---------------------------------------------------------------- roasts
@@ -372,9 +435,13 @@ def main():
 
     for it in items:
         qp = quantity_pages(it)
+        rp = reverse_pages(it)
         related = [o for o in by_group[it["group"]] if o["slug"] != it["slug"]][:6]
-        urls.append(write(it["url"], "ingredient.html", item=it, qpages=qp, related=related,
-                          title=f"{it['name']}: cups to grams", page_kind="ingredient"))
+        urls.append(write(it["url"], "ingredient.html", item=it, qpages=qp, rpages=rp, rrows=reverse_rows(it),
+                          related=related, title=f"{it['name']}: cups to grams", page_kind="ingredient"))
+        for p in rp:
+            urls.append(write(p["url"], "reverse.html", item=it, p=p, others=[o for o in rp if o["g"] != p["g"]],
+                              qpages=qp, title=f"{p['g']}g of {it['name'].lower()} in cups", page_kind="quantity"))
         for p in qp:
             others = [o for o in qp if o["slug"] != p["slug"]]
             urls.append(write(p["url"], "quantity.html", item=it, p=p, others=others,

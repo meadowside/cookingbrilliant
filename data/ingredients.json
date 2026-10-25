@@ -654,5 +654,1212 @@
   "group": "Nuts, seeds and dried fruit",
   "ndb": "09087",
   "cup": "cup, chopped"
+ },
+ {
+  "slug": "rice-flour",
+  "name": "Rice flour",
+  "us_name": "white rice flour",
+  "group": "Flours and starches",
+  "ndb": "20061",
+  "cup": "cup"
+ },
+ {
+  "slug": "brown-rice-flour",
+  "name": "Brown rice flour",
+  "us_name": "brown rice flour",
+  "group": "Flours and starches",
+  "ndb": "20090",
+  "cup": "cup"
+ },
+ {
+  "slug": "potato-flour",
+  "name": "Potato flour",
+  "us_name": "potato flour",
+  "group": "Flours and starches",
+  "ndb": "11413",
+  "cup": "cup"
+ },
+ {
+  "slug": "arrowroot",
+  "name": "Arrowroot",
+  "us_name": "arrowroot flour",
+  "group": "Flours and starches",
+  "ndb": "20003",
+  "cup": "cup"
+ },
+ {
+  "slug": "cake-flour",
+  "name": "Cake flour",
+  "us_name": "cake flour",
+  "group": "Flours and starches",
+  "ndb": "20084",
+  "cup": "cup unsifted, dipped",
+  "note": "Common in American recipes. USDA measured it scooped straight from the bag, not spooned in."
+ },
+ {
+  "slug": "tapioca",
+  "name": "Tapioca pearls",
+  "us_name": "pearl tapioca",
+  "group": "Flours and starches",
+  "ndb": "20068",
+  "cup": "cup"
+ },
+ {
+  "slug": "pearl-barley",
+  "name": "Pearl barley",
+  "us_name": "pearled barley",
+  "group": "Grains, rice and pulses",
+  "ndb": "20005",
+  "cup": "cup"
+ },
+ {
+  "slug": "bulgur-wheat",
+  "name": "Bulgur wheat",
+  "us_name": "bulgur",
+  "group": "Grains, rice and pulses",
+  "ndb": "20012",
+  "cup": "cup"
+ },
+ {
+  "slug": "millet",
+  "name": "Millet",
+  "us_name": "millet",
+  "group": "Grains, rice and pulses",
+  "ndb": "20031",
+  "cup": "cup"
+ },
+ {
+  "slug": "oat-bran",
+  "name": "Oat bran",
+  "us_name": "oat bran",
+  "group": "Grains, rice and pulses",
+  "ndb": "20033",
+  "cup": "cup"
+ },
+ {
+  "slug": "wheat-germ",
+  "name": "Wheat germ",
+  "us_name": "wheat germ",
+  "group": "Grains, rice and pulses",
+  "ndb": "20078",
+  "cup": "cup"
+ },
+ {
+  "slug": "short-grain-rice",
+  "name": "Short-grain rice (uncooked)",
+  "us_name": "short-grain white rice",
+  "group": "Grains, rice and pulses",
+  "ndb": "20452",
+  "cup": "cup"
+ },
+ {
+  "slug": "glutinous-rice",
+  "name": "Glutinous rice (uncooked)",
+  "us_name": "sticky rice",
+  "group": "Grains, rice and pulses",
+  "ndb": "20054",
+  "cup": "cup"
+ },
+ {
+  "slug": "wild-rice",
+  "name": "Wild rice (uncooked)",
+  "us_name": "wild rice",
+  "group": "Grains, rice and pulses",
+  "ndb": "20088",
+  "cup": "cup"
+ },
+ {
+  "slug": "egg-noodles",
+  "name": "Dried egg noodles",
+  "us_name": "dry egg noodles",
+  "group": "Grains, rice and pulses",
+  "ndb": "20109",
+  "cup": "cup"
+ },
+ {
+  "slug": "dried-pasta",
+  "name": "Dried pasta",
+  "us_name": "dry pasta",
+  "group": "Grains, rice and pulses",
+  "ndb": "20120",
+  "cup": "cup penne",
+  "alt": [
+   {
+    "label": "1 cup spaghetti",
+    "measure": "cup spaghetti"
+   },
+   {
+    "label": "1 cup macaroni",
+    "measure": "cup elbows"
+   },
+   {
+    "label": "1 cup farfalle",
+    "measure": "cup farfalle"
+   },
+   {
+    "label": "1 cup fusilli (rotini)",
+    "measure": "cup rotini"
+   },
+   {
+    "label": "1 cup pasta shells",
+    "measure": "cup shells"
+   }
+  ],
+  "note": "Pasta shapes pack differently, so a cup of each weighs a different amount. The headline figure is penne."
+ },
+ {
+  "slug": "red-lentils",
+  "name": "Red lentils (dried)",
+  "us_name": "red lentils",
+  "group": "Grains, rice and pulses",
+  "ndb": "16144",
+  "cup": "cup"
+ },
+ {
+  "slug": "kidney-beans",
+  "name": "Dried kidney beans",
+  "us_name": "dry kidney beans",
+  "group": "Grains, rice and pulses",
+  "ndb": "16027",
+  "cup": "cup"
+ },
+ {
+  "slug": "black-beans",
+  "name": "Dried black beans",
+  "us_name": "dry black beans",
+  "group": "Grains, rice and pulses",
+  "ndb": "16014",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "haricot-beans",
+  "name": "Dried haricot beans",
+  "us_name": "dry navy beans",
+  "group": "Grains, rice and pulses",
+  "ndb": "16037",
+  "cup": "cup"
+ },
+ {
+  "slug": "pinto-beans",
+  "name": "Dried pinto beans",
+  "us_name": "dry pinto beans",
+  "group": "Grains, rice and pulses",
+  "ndb": "16042",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "agave-syrup",
+  "name": "Agave syrup",
+  "us_name": "agave nectar",
+  "group": "Sugars and syrups",
+  "ndb": "19912",
+  "cup": "cup",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "pancake-syrup",
+  "name": "Pancake syrup",
+  "us_name": "pancake syrup",
+  "group": "Sugars and syrups",
+  "ndb": "19129",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "maple-sugar",
+  "name": "Maple sugar",
+  "us_name": "maple sugar",
+  "group": "Sugars and syrups",
+  "ndb": "19340",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "macadamia-nuts",
+  "name": "Macadamia nuts",
+  "us_name": "macadamias",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12131",
+  "cup": "cup, whole or halves"
+ },
+ {
+  "slug": "pistachios",
+  "name": "Pistachios (shelled)",
+  "us_name": "shelled pistachios",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12151",
+  "cup": "cup"
+ },
+ {
+  "slug": "pine-nuts",
+  "name": "Pine nuts",
+  "us_name": "pine nuts",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12147",
+  "cup": "cup"
+ },
+ {
+  "slug": "brazil-nuts",
+  "name": "Brazil nuts",
+  "us_name": "brazil nuts",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12078",
+  "cup": "cup, whole"
+ },
+ {
+  "slug": "sweetened-coconut",
+  "name": "Sweetened shredded coconut",
+  "us_name": "sweetened flaked coconut",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12179",
+  "cup": "cup, shredded"
+ },
+ {
+  "slug": "chestnuts",
+  "name": "Roasted chestnuts",
+  "us_name": "roasted chestnuts",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12167",
+  "cup": "cup"
+ },
+ {
+  "slug": "peanuts",
+  "name": "Roasted peanuts",
+  "us_name": "dry-roasted peanuts",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "16390",
+  "cup": "cup"
+ },
+ {
+  "slug": "pumpkin-seeds",
+  "name": "Pumpkin seeds",
+  "us_name": "pepitas",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12014",
+  "cup": "cup"
+ },
+ {
+  "slug": "flaxseed",
+  "name": "Flaxseed (linseed)",
+  "us_name": "flaxseed",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12220",
+  "cup": "cup, whole",
+  "tbsp": "tbsp, whole",
+  "tsp": "tsp, whole",
+  "alt": [
+   {
+    "label": "1 tbsp ground flaxseed",
+    "measure": "tbsp, ground"
+   },
+   {
+    "label": "1 tsp ground flaxseed",
+    "measure": "tsp, ground"
+   }
+  ]
+ },
+ {
+  "slug": "poppy-seeds",
+  "name": "Poppy seeds",
+  "us_name": "poppy seeds",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "02033",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "tahini",
+  "name": "Tahini",
+  "us_name": "tahini",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12698",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "almond-butter",
+  "name": "Almond butter",
+  "us_name": "almond butter",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "12195",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "currants",
+  "name": "Currants",
+  "us_name": "zante currants",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "09085",
+  "cup": "cup"
+ },
+ {
+  "slug": "dried-figs",
+  "name": "Dried figs",
+  "us_name": "dried figs",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "09094",
+  "cup": "cup"
+ },
+ {
+  "slug": "prunes",
+  "name": "Prunes",
+  "us_name": "pitted prunes",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "09291",
+  "cup": "cup, pitted"
+ },
+ {
+  "slug": "dried-blueberries",
+  "name": "Dried blueberries",
+  "us_name": "dried blueberries",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "09163",
+  "cup": "cup"
+ },
+ {
+  "slug": "dried-apple",
+  "name": "Dried apple rings",
+  "us_name": "dried apples",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "09011",
+  "cup": "cup"
+ },
+ {
+  "slug": "dried-peaches",
+  "name": "Dried peaches",
+  "us_name": "dried peaches",
+  "group": "Nuts, seeds and dried fruit",
+  "ndb": "09246",
+  "cup": "cup, halves"
+ },
+ {
+  "slug": "feta",
+  "name": "Feta (crumbled)",
+  "us_name": "crumbled feta",
+  "group": "Dairy and liquids",
+  "ndb": "01019",
+  "cup": "cup, crumbled"
+ },
+ {
+  "slug": "cottage-cheese",
+  "name": "Cottage cheese",
+  "us_name": "cottage cheese",
+  "group": "Dairy and liquids",
+  "ndb": "01012",
+  "cup": "cup, small curd (not packed)",
+  "alt": [
+   {
+    "label": "1 cup, large curd",
+    "measure": "cup, large curd (not packed)"
+   }
+  ]
+ },
+ {
+  "slug": "grated-swiss-cheese",
+  "name": "Grated Swiss cheese",
+  "us_name": "shredded Swiss",
+  "group": "Dairy and liquids",
+  "ndb": "01040",
+  "cup": "cup, shredded"
+ },
+ {
+  "slug": "blue-cheese",
+  "name": "Blue cheese (crumbled)",
+  "us_name": "crumbled blue cheese",
+  "group": "Dairy and liquids",
+  "ndb": "01004",
+  "cup": "cup, crumbled, not packed"
+ },
+ {
+  "slug": "evaporated-milk",
+  "name": "Evaporated milk",
+  "us_name": "evaporated milk",
+  "group": "Dairy and liquids",
+  "ndb": "01214",
+  "cup": "cup",
+  "liquid": true
+ },
+ {
+  "slug": "condensed-milk",
+  "name": "Sweetened condensed milk",
+  "us_name": "sweetened condensed milk",
+  "group": "Dairy and liquids",
+  "ndb": "01095",
+  "cup": "cup",
+  "liquid": true
+ },
+ {
+  "slug": "milk-powder",
+  "name": "Dried milk powder",
+  "us_name": "dry whole milk",
+  "group": "Dairy and liquids",
+  "ndb": "01212",
+  "cup": "cup"
+ },
+ {
+  "slug": "reduced-fat-milk",
+  "name": "Reduced-fat milk (2%)",
+  "us_name": "2% milk",
+  "group": "Dairy and liquids",
+  "ndb": "01079",
+  "cup": "cup",
+  "liquid": true
+ },
+ {
+  "slug": "skimmed-milk",
+  "name": "Skimmed milk",
+  "us_name": "skim milk",
+  "group": "Dairy and liquids",
+  "ndb": "01085",
+  "cup": "cup",
+  "liquid": true
+ },
+ {
+  "slug": "half-and-half",
+  "name": "Half and half",
+  "us_name": "half-and-half",
+  "group": "Dairy and liquids",
+  "ndb": "01049",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "liquid": true,
+  "note": "An American mix of milk and cream, common in US recipes."
+ },
+ {
+  "slug": "almond-milk",
+  "name": "Almond milk (unsweetened)",
+  "us_name": "unsweetened almond milk",
+  "group": "Dairy and liquids",
+  "ndb": "14091",
+  "cup": "cup",
+  "liquid": true
+ },
+ {
+  "slug": "soya-milk",
+  "name": "Soya milk",
+  "us_name": "soy milk",
+  "group": "Dairy and liquids",
+  "ndb": "16120",
+  "cup": "cup",
+  "liquid": true
+ },
+ {
+  "slug": "coconut-milk",
+  "name": "Coconut milk (tinned)",
+  "us_name": "canned coconut milk",
+  "group": "Dairy and liquids",
+  "ndb": "12118",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "liquid": true
+ },
+ {
+  "slug": "lemon-juice",
+  "name": "Lemon juice",
+  "us_name": "lemon juice",
+  "group": "Dairy and liquids",
+  "ndb": "09152",
+  "cup": "cup",
+  "liquid": true,
+  "alt": [
+   {
+    "label": "Juice of 1 lemon",
+    "measure": "lemon yields"
+   }
+  ]
+ },
+ {
+  "slug": "lime-juice",
+  "name": "Lime juice",
+  "us_name": "lime juice",
+  "group": "Dairy and liquids",
+  "ndb": "09160",
+  "cup": "cup",
+  "liquid": true,
+  "alt": [
+   {
+    "label": "Juice of 1 lime",
+    "measure": "lime yields"
+   }
+  ]
+ },
+ {
+  "slug": "orange-juice",
+  "name": "Orange juice",
+  "us_name": "orange juice",
+  "group": "Dairy and liquids",
+  "ndb": "09206",
+  "cup": "cup",
+  "liquid": true,
+  "alt": [
+   {
+    "label": "Juice of 1 orange",
+    "measure": "fruit yields"
+   }
+  ]
+ },
+ {
+  "slug": "eggs",
+  "name": "Eggs (beaten)",
+  "us_name": "whole eggs",
+  "group": "Eggs",
+  "ndb": "01123",
+  "cup": "cup (4.86 large eggs)",
+  "alt": [
+   {
+    "label": "1 large egg, out of its shell",
+    "measure": "large"
+   },
+   {
+    "label": "1 medium egg (US size)",
+    "measure": "medium"
+   },
+   {
+    "label": "1 extra large egg (US size)",
+    "measure": "extra large"
+   }
+  ],
+  "note": "These are USDA weights for US egg sizes, out of the shell. UK sizes are graded differently, so weigh if it matters."
+ },
+ {
+  "slug": "egg-whites",
+  "name": "Egg whites",
+  "us_name": "egg whites",
+  "group": "Eggs",
+  "ndb": "01124",
+  "cup": "cup",
+  "liquid": true,
+  "alt": [
+   {
+    "label": "White of 1 large egg",
+    "measure": "large"
+   }
+  ]
+ },
+ {
+  "slug": "egg-yolks",
+  "name": "Egg yolks",
+  "us_name": "egg yolks",
+  "group": "Eggs",
+  "ndb": "01125",
+  "cup": "cup",
+  "alt": [
+   {
+    "label": "Yolk of 1 large egg",
+    "measure": "large"
+   }
+  ]
+ },
+ {
+  "slug": "ghee",
+  "name": "Ghee",
+  "us_name": "ghee (anhydrous butter oil)",
+  "group": "Fats and oils",
+  "ndb": "01003",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "lard",
+  "name": "Lard",
+  "us_name": "lard",
+  "group": "Fats and oils",
+  "ndb": "04002",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "beef-dripping",
+  "name": "Beef dripping",
+  "us_name": "beef tallow",
+  "group": "Fats and oils",
+  "ndb": "04001",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "sesame-oil",
+  "name": "Sesame oil",
+  "us_name": "sesame oil",
+  "group": "Fats and oils",
+  "ndb": "04058",
+  "cup": "cup",
+  "tbsp": "tablespoon",
+  "tsp": "tsp",
+  "liquid": true
+ },
+ {
+  "slug": "sunflower-oil",
+  "name": "Sunflower oil",
+  "us_name": "sunflower oil",
+  "group": "Fats and oils",
+  "ndb": "04060",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "tsp": "tsp",
+  "liquid": true
+ },
+ {
+  "slug": "groundnut-oil",
+  "name": "Groundnut oil",
+  "us_name": "peanut oil",
+  "group": "Fats and oils",
+  "ndb": "04042",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "tsp": "tsp",
+  "liquid": true
+ },
+ {
+  "slug": "dutch-cocoa",
+  "name": "Dutch-process cocoa",
+  "us_name": "Dutch-process cocoa",
+  "group": "Baking extras",
+  "ndb": "19166",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "white-chocolate-chips",
+  "name": "White chocolate chips",
+  "us_name": "white chocolate chips",
+  "group": "Baking extras",
+  "ndb": "19087",
+  "cup": "cup chips",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "milk-chocolate-chips",
+  "name": "Milk chocolate chips",
+  "us_name": "milk chocolate chips",
+  "group": "Baking extras",
+  "ndb": "19120",
+  "cup": "cup chips"
+ },
+ {
+  "slug": "mini-marshmallows",
+  "name": "Mini marshmallows",
+  "us_name": "miniature marshmallows",
+  "group": "Baking extras",
+  "ndb": "19116",
+  "cup": "cup of miniature"
+ },
+ {
+  "slug": "graham-cracker-crumbs",
+  "name": "Graham cracker crumbs",
+  "us_name": "graham cracker crumbs",
+  "group": "Baking extras",
+  "ndb": "18173",
+  "cup": "cup, crushed",
+  "note": "Common in American cheesecake bases. UK recipes use crushed digestives instead, but USDA doesn't measure those."
+ },
+ {
+  "slug": "cream-of-tartar",
+  "name": "Cream of tartar",
+  "us_name": "cream of tartar",
+  "group": "Baking extras",
+  "ndb": "18373",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "gelatine",
+  "name": "Powdered gelatine",
+  "us_name": "unflavored gelatin",
+  "group": "Baking extras",
+  "ndb": "19177",
+  "tbsp": "envelope (1 tbsp)",
+  "note": "One US envelope holds about a tablespoon."
+ },
+ {
+  "slug": "instant-coffee",
+  "name": "Instant coffee",
+  "us_name": "instant coffee",
+  "group": "Baking extras",
+  "ndb": "14214",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "cider-vinegar",
+  "name": "Cider vinegar",
+  "us_name": "apple cider vinegar",
+  "group": "Sauces and condiments",
+  "ndb": "02048",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "tsp": "tsp",
+  "liquid": true
+ },
+ {
+  "slug": "white-vinegar",
+  "name": "White vinegar",
+  "us_name": "distilled white vinegar",
+  "group": "Sauces and condiments",
+  "ndb": "02053",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "tsp": "tsp",
+  "liquid": true
+ },
+ {
+  "slug": "soy-sauce",
+  "name": "Soy sauce",
+  "us_name": "soy sauce",
+  "group": "Sauces and condiments",
+  "ndb": "16123",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "tsp": "tsp",
+  "liquid": true
+ },
+ {
+  "slug": "worcestershire-sauce",
+  "name": "Worcestershire sauce",
+  "us_name": "Worcestershire sauce",
+  "group": "Sauces and condiments",
+  "ndb": "06971",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "liquid": true
+ },
+ {
+  "slug": "ketchup",
+  "name": "Tomato ketchup",
+  "us_name": "ketchup",
+  "group": "Sauces and condiments",
+  "ndb": "11935",
+  "cup": "cup",
+  "tbsp": "tbsp"
+ },
+ {
+  "slug": "yellow-mustard",
+  "name": "American yellow mustard",
+  "us_name": "yellow mustard",
+  "group": "Sauces and condiments",
+  "ndb": "02046",
+  "cup": "cup",
+  "tsp": "tsp or 1 packet"
+ },
+ {
+  "slug": "tomato-puree",
+  "name": "Tomato purée",
+  "us_name": "tomato paste",
+  "group": "Sauces and condiments",
+  "ndb": "11546",
+  "cup": "cup",
+  "tbsp": "tbsp",
+  "note": "UK tomato purée is the thick concentrate Americans call tomato paste."
+ },
+ {
+  "slug": "allspice",
+  "name": "Ground allspice",
+  "us_name": "ground allspice",
+  "group": "Herbs and spices",
+  "ndb": "02001",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "dried-basil",
+  "name": "Dried basil",
+  "us_name": "dried basil",
+  "group": "Herbs and spices",
+  "ndb": "02003",
+  "tbsp": "tbsp, leaves",
+  "tsp": "tsp, leaves"
+ },
+ {
+  "slug": "caraway-seeds",
+  "name": "Caraway seeds",
+  "us_name": "caraway seeds",
+  "group": "Herbs and spices",
+  "ndb": "02005",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "ground-cardamom",
+  "name": "Ground cardamom",
+  "us_name": "ground cardamom",
+  "group": "Herbs and spices",
+  "ndb": "02006",
+  "tbsp": "tbsp, ground",
+  "tsp": "tsp, ground"
+ },
+ {
+  "slug": "chilli-powder",
+  "name": "Chilli powder",
+  "us_name": "chili powder",
+  "group": "Herbs and spices",
+  "ndb": "02009",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "ground-cloves",
+  "name": "Ground cloves",
+  "us_name": "ground cloves",
+  "group": "Herbs and spices",
+  "ndb": "02011",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "coriander-seeds",
+  "name": "Coriander seeds",
+  "us_name": "coriander seed",
+  "group": "Herbs and spices",
+  "ndb": "02013",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "cumin-seeds",
+  "name": "Cumin seeds",
+  "us_name": "whole cumin",
+  "group": "Herbs and spices",
+  "ndb": "02014",
+  "tbsp": "tbsp, whole",
+  "tsp": "tsp, whole"
+ },
+ {
+  "slug": "curry-powder",
+  "name": "Curry powder",
+  "us_name": "curry powder",
+  "group": "Herbs and spices",
+  "ndb": "02015",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "dried-dill",
+  "name": "Dried dill",
+  "us_name": "dried dill weed",
+  "group": "Herbs and spices",
+  "ndb": "02017",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "fennel-seeds",
+  "name": "Fennel seeds",
+  "us_name": "fennel seed",
+  "group": "Herbs and spices",
+  "ndb": "02018",
+  "tbsp": "tbsp, whole",
+  "tsp": "tsp, whole"
+ },
+ {
+  "slug": "garlic-powder",
+  "name": "Garlic powder",
+  "us_name": "garlic powder",
+  "group": "Herbs and spices",
+  "ndb": "02020",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "ground-ginger",
+  "name": "Ground ginger",
+  "us_name": "ground ginger",
+  "group": "Herbs and spices",
+  "ndb": "02021",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "ground-mace",
+  "name": "Ground mace",
+  "us_name": "ground mace",
+  "group": "Herbs and spices",
+  "ndb": "02022",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "mustard-powder",
+  "name": "Mustard powder",
+  "us_name": "ground mustard",
+  "group": "Herbs and spices",
+  "ndb": "02024",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "ground-nutmeg",
+  "name": "Ground nutmeg",
+  "us_name": "ground nutmeg",
+  "group": "Herbs and spices",
+  "ndb": "02025",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "onion-powder",
+  "name": "Onion powder",
+  "us_name": "onion powder",
+  "group": "Herbs and spices",
+  "ndb": "02026",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "dried-oregano",
+  "name": "Dried oregano",
+  "us_name": "dried oregano",
+  "group": "Herbs and spices",
+  "ndb": "02027",
+  "tsp": "tsp, leaves",
+  "alt": [
+   {
+    "label": "1 tsp ground oregano",
+    "measure": "tsp, ground"
+   }
+  ]
+ },
+ {
+  "slug": "paprika",
+  "name": "Paprika",
+  "us_name": "paprika",
+  "group": "Herbs and spices",
+  "ndb": "02028",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "dried-parsley",
+  "name": "Dried parsley",
+  "us_name": "dried parsley",
+  "group": "Herbs and spices",
+  "ndb": "02029",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "black-pepper",
+  "name": "Ground black pepper",
+  "us_name": "ground black pepper",
+  "group": "Herbs and spices",
+  "ndb": "02030",
+  "tbsp": "tbsp, ground",
+  "tsp": "tsp, ground"
+ },
+ {
+  "slug": "cayenne-pepper",
+  "name": "Cayenne pepper",
+  "us_name": "cayenne",
+  "group": "Herbs and spices",
+  "ndb": "02031",
+  "tbsp": "tbsp",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "garlic",
+  "name": "Garlic (minced)",
+  "us_name": "minced garlic",
+  "group": "Herbs and spices",
+  "ndb": "11215",
+  "tsp": "tsp",
+  "alt": [
+   {
+    "label": "1 clove",
+    "measure": "clove"
+   }
+  ]
+ },
+ {
+  "slug": "fresh-ginger",
+  "name": "Fresh ginger",
+  "us_name": "fresh ginger root",
+  "group": "Herbs and spices",
+  "ndb": "11216",
+  "tsp": "tsp"
+ },
+ {
+  "slug": "chopped-onion",
+  "name": "Chopped onion",
+  "us_name": "chopped onion",
+  "group": "Fruit and veg",
+  "ndb": "11282",
+  "cup": "cup, chopped",
+  "tbsp": "tbsp chopped",
+  "alt": [
+   {
+    "label": "1 cup sliced onion",
+    "measure": "cup, sliced"
+   },
+   {
+    "label": "1 medium onion",
+    "measure": "medium (2-1/2\" dia)"
+   }
+  ]
+ },
+ {
+  "slug": "grated-carrot",
+  "name": "Grated carrot",
+  "us_name": "shredded carrot",
+  "group": "Fruit and veg",
+  "ndb": "11124",
+  "cup": "cup grated",
+  "alt": [
+   {
+    "label": "1 cup chopped carrot",
+    "measure": "cup chopped"
+   },
+   {
+    "label": "1 medium carrot",
+    "measure": "medium"
+   }
+  ]
+ },
+ {
+  "slug": "chopped-celery",
+  "name": "Chopped celery",
+  "us_name": "chopped celery",
+  "group": "Fruit and veg",
+  "ndb": "11143",
+  "cup": "cup chopped",
+  "tbsp": "tbsp",
+  "alt": [
+   {
+    "label": "1 medium stick of celery",
+    "measure": "stalk, medium (7-1/2\" - 8\" long)"
+   }
+  ]
+ },
+ {
+  "slug": "spinach",
+  "name": "Fresh spinach",
+  "us_name": "raw spinach",
+  "group": "Fruit and veg",
+  "ndb": "11457",
+  "cup": "cup"
+ },
+ {
+  "slug": "sliced-mushrooms",
+  "name": "Sliced mushrooms",
+  "us_name": "sliced white mushrooms",
+  "group": "Fruit and veg",
+  "ndb": "11260",
+  "cup": "cup, pieces or slices",
+  "alt": [
+   {
+    "label": "1 cup whole mushrooms",
+    "measure": "cup, whole"
+   }
+  ]
+ },
+ {
+  "slug": "chopped-tomatoes",
+  "name": "Chopped tomatoes (fresh)",
+  "us_name": "chopped tomatoes",
+  "group": "Fruit and veg",
+  "ndb": "11529",
+  "cup": "cup, chopped or sliced",
+  "alt": [
+   {
+    "label": "1 cup cherry tomatoes",
+    "measure": "cup cherry tomatoes"
+   }
+  ]
+ },
+ {
+  "slug": "red-pepper",
+  "name": "Chopped red pepper",
+  "us_name": "chopped red bell pepper",
+  "group": "Fruit and veg",
+  "ndb": "11821",
+  "cup": "cup, chopped",
+  "tbsp": "tablespoon"
+ },
+ {
+  "slug": "shredded-cabbage",
+  "name": "Shredded cabbage",
+  "us_name": "shredded cabbage",
+  "group": "Fruit and veg",
+  "ndb": "11109",
+  "cup": "cup, shredded"
+ },
+ {
+  "slug": "sweetcorn",
+  "name": "Sweetcorn (frozen)",
+  "us_name": "frozen corn kernels",
+  "group": "Fruit and veg",
+  "ndb": "11178",
+  "cup": "cup"
+ },
+ {
+  "slug": "blueberries",
+  "name": "Blueberries",
+  "us_name": "blueberries",
+  "group": "Fruit and veg",
+  "ndb": "09050",
+  "cup": "cup"
+ },
+ {
+  "slug": "strawberries",
+  "name": "Sliced strawberries",
+  "us_name": "sliced strawberries",
+  "group": "Fruit and veg",
+  "ndb": "09316",
+  "cup": "cup, sliced",
+  "alt": [
+   {
+    "label": "1 cup whole strawberries",
+    "measure": "cup, whole"
+   },
+   {
+    "label": "1 cup puréed strawberries",
+    "measure": "cup, pureed"
+   }
+  ]
+ },
+ {
+  "slug": "raspberries",
+  "name": "Raspberries",
+  "us_name": "raspberries",
+  "group": "Fruit and veg",
+  "ndb": "09302",
+  "cup": "cup"
+ },
+ {
+  "slug": "chopped-apple",
+  "name": "Chopped apple",
+  "us_name": "chopped apple",
+  "group": "Fruit and veg",
+  "ndb": "09003",
+  "cup": "cup, quartered or chopped",
+  "alt": [
+   {
+    "label": "1 medium apple",
+    "measure": "medium (3\" dia)"
+   }
+  ]
+ },
+ {
+  "slug": "mashed-banana",
+  "name": "Mashed banana",
+  "us_name": "mashed banana",
+  "group": "Fruit and veg",
+  "ndb": "09040",
+  "cup": "cup, mashed",
+  "alt": [
+   {
+    "label": "1 cup sliced banana",
+    "measure": "cup, sliced"
+   },
+   {
+    "label": "1 medium banana, peeled",
+    "measure": "medium (7\" to 7-7/8\" long)"
+   }
+  ]
+ },
+ {
+  "slug": "pumpkin-puree",
+  "name": "Pumpkin purée (tinned)",
+  "us_name": "canned pumpkin",
+  "group": "Fruit and veg",
+  "ndb": "11424",
+  "cup": "cup"
  }
 ]
