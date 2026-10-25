@@ -25,8 +25,12 @@ jobs:
       - name: Build site
         run: python build.py
 
+      # Fingerprints of the pages currently live, so we only notify search engines about changes.
+      - name: Fetch live page fingerprints
+        run: curl -fsS https://cookingbrilliant.com/page-hashes.json -o old-hashes.json || echo '{}' > old-hashes.json
+
       # Uploads only changed files. Needs three repository secrets:
-      # FTP_SERVER (e.g. ftp.cookingbrilliant.com), FTP_USERNAME, FTP_PASSWORD.
+      # FTP_SERVER (the hosting server name, e.g. premium75.web-hosting.com), FTP_USERNAME, FTP_PASSWORD.
       # Create a cPanel FTP account whose home directory is the site's document root.
       - name: Deploy to Namecheap over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -37,3 +41,6 @@ jobs:
           protocol: ftps
           local-dir: ./dist/
           server-dir: ./
+
+      - name: Notify search engines (IndexNow)
+        run: python scripts/indexnow.py old-hashes.json dist/page-hashes.json

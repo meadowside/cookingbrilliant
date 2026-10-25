@@ -43,6 +43,10 @@ Pushes to `main` build and upload `dist/` over FTPS. Add these repository secret
 - `FTP_SERVER`: the hosting server name (`premium75.web-hosting.com`), not ftp.yourdomain, or the FTPS certificate check fails
 - `FTP_USERNAME`, `FTP_PASSWORD`: a cPanel FTP account whose home directory is the cookingbrilliant.com document root
 
+## Search engine notifications (IndexNow)
+
+Each build writes `page-hashes.json` (a fingerprint of every page) and the IndexNow key file named after `indexnow_key` in `site.json`. After uploading, the deploy compares the new fingerprints with the ones that were live and sends only new or changed URLs to api.indexnow.org, which shares them with Bing and the other IndexNow engines. Google doesn't use IndexNow, so the sitemap still matters there.
+
 ## Turning on ads
 
 1. Get AdSense approval for cookingbrilliant.com.

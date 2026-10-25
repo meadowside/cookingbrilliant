@@ -645,6 +645,15 @@ def main():
     if SITE.get("adsense_client"):
         pub = SITE["adsense_client"].replace("ca-", "")
         (DIST / "ads.txt").write_text(f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
+    # Page fingerprints, so the deploy can tell search engines only about pages that changed.
+    import hashlib
+    hashes = {}
+    for u in urls:
+        f = DIST / u.lstrip("/") / "index.html" if u.endswith("/") else DIST / u.lstrip("/")
+        hashes[u] = hashlib.sha256(f.read_bytes()).hexdigest()[:16]
+    (DIST / "page-hashes.json").write_text(json.dumps(hashes, separators=(",", ":"), sort_keys=True))
+    if SITE.get("indexnow_key"):
+        (DIST / f"{SITE['indexnow_key']}.txt").write_text(SITE["indexnow_key"])
     print(f"Built {len(urls)} pages into {DIST}")
 
 
