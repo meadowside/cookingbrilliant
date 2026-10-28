@@ -585,11 +585,27 @@ def write(url, template, **ctx):
     return url
 
 
+ANALYTICS_TEXT = (
+    "## Analytics\n\n"
+    "We use Google Analytics to count visits and see which pages people use, so we know what to fix and what to add. "
+    "It records things like the pages you view, roughly where you are (country or city), your device and browser, "
+    "and how you found the site. It doesn't tell us who you are.\n\n"
+    "In the UK, the EEA and Switzerland, Google Analytics only sets cookies if you agree in the consent message. "
+    "If you refuse, it sends Google cookieless pings that can't be tied to you.\n\n"
+    "Google explains how it handles this data at "
+    "[policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites). "
+    "You can block Google Analytics on every site with Google's opt-out browser add-on at "
+    "[tools.google.com/dlpage/gaoptout](https://tools.google.com/dlpage/gaoptout)."
+)
+NO_ANALYTICS_TEXT = "We don't use any other analytics or tracking cookies."
+
+
 def md_page(name):
     text = (ROOT / "content" / f"{name}.md").read_text()
     meta, _, body = text.partition("\n---\n")
     fields = dict(line.split(": ", 1) for line in meta.strip().splitlines())
     body = body.replace("{{contact_email}}", SITE["contact_email"]).replace("{{owner}}", SITE["owner"])
+    body = body.replace("{{analytics}}", ANALYTICS_TEXT if SITE.get("ga_measurement_id") else NO_ANALYTICS_TEXT)
     return fields, markdown.markdown(body, extensions=["tables"])
 
 

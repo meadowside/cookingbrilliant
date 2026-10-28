@@ -23,7 +23,7 @@ You can change your choice at any time from the privacy and cookie settings link
 
 Google explains how it uses information from sites that show its ads at [policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites). You can turn off personalised ads from Google across the web at [adssettings.google.com](https://adssettings.google.com).
 
-We don't use any other analytics or tracking cookies.
+{{analytics}}
 
 ## Links to other sites
 

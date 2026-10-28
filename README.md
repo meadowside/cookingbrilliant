@@ -6,7 +6,7 @@ Kitchen conversions that answer the question in the first line. Static site: a P
 
 ```
 build.py                  builds everything into dist/  (python build.py --serve to preview)
-site.json                 site name, contact email, AdSense client ID, sponsor slot
+site.json                 site name, contact email, AdSense client ID, GA4 ID, sponsor slot
 data/
   ingredients.json        the ingredient list: names, USDA record (NDB) number, which USDA measures to use
   usda_portions.json      gram weights extracted from USDA. Generated, never edited by hand
@@ -53,3 +53,9 @@ Each build writes `page-hashes.json` (a fingerprint of every page) and the Index
 1. Get AdSense approval for cookingbrilliant.com.
 2. `adsense_client` in `site.json` holds the publisher ID. It adds the AdSense script and `ads.txt` to every build. The in-page ad slots stay hidden until `ad_units` is set to `true`, so there are no empty gaps while Google reviews the site.
 3. In AdSense, Privacy & messaging, publish a European regulations message (Google's own consent tool) for UK, EEA and Swiss visitors. The footer's "Privacy and cookie settings" link reopens it.
+
+## Google Analytics
+
+Set `ga_measurement_id` in `site.json` to the GA4 measurement ID (starts `G-`) and push. That adds the Google tag to every page and switches the privacy page to its analytics wording. Set it back to `null` to remove both.
+
+Consent is handled by the same Google consent message that covers AdSense: it passes the visitor's choice to Analytics through Consent Mode, so UK, EEA and Swiss visitors who refuse get no Analytics cookies.
