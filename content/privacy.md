@@ -1,7 +1,7 @@
 title: Privacy and cookies
 description: What Cooking Brilliant collects, what the ads do, and how to change your cookie choices.
 ---
-Last updated: 24 October 2026.
+Last updated: 28 October 2026.
 
 Cooking Brilliant is run by {{owner}} in the UK. Questions about this policy go to [{{contact_email}}](mailto:{{contact_email}}).
 
