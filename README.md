@@ -13,6 +13,7 @@ data/
   measures.json           cup and spoon sizes in ml, each with a source
   oven.json               oven table (source: Which?)
   thanksgiving.json       US turkey times, thawing and safety (source: USDA FSIS)
+  airfryer.json           air fryer times for 100 foods (sources: Ninja charts, makers' pack instructions)
 content/*.md              about, contact, privacy, sources pages
 templates/                Jinja2 templates
 static/                   CSS, JS, fonts, favicon, .htaccess (copied into dist/ as is)
@@ -59,3 +60,7 @@ Each build writes `page-hashes.json` (a fingerprint of every page) and the Index
 Set `ga_measurement_id` in `site.json` to the GA4 measurement ID (starts `G-`) and push. That adds the Google tag to every page and switches the privacy page to its analytics wording. Set it back to `null` to remove both.
 
 Consent is handled by the same Google consent message that covers AdSense: it passes the visitor's choice to Analytics through Consent Mode, so UK, EEA and Swiss visitors who refuse get no Analytics cookies.
+
+## Adding an air fryer food
+
+Add an entry to `data/airfryer.json` under the right hub. Each row needs a source: a key from `sources` (the Ninja charts) or `"source": "pack"` with the product name, the product page URL and the times exactly as printed. If a maker prints no air fryer time, leave that product out rather than estimating one. The page, hub table, chart, dual basket timer and pack comparison all pick it up on the next build.
