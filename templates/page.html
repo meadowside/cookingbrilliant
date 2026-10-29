@@ -28,6 +28,14 @@
   {% endfor %}
   </tbody>
 </table></div>
+<h2>Air fryer times</h2>
+<ul>
+{% for k, v in af.sources.items() %}<li><a href="{{ v.url }}">{{ v.name }}</a>, checked {{ v.checked }}</li>{% endfor %}
+</ul>
+<p>Pack instructions for these products, as printed on each retailer's product page:</p>
+<ul>
+{% for f in af_foods_list %}{% for r in f.rows if r.source == 'pack' %}<li><a href="{{ r.url }}">{{ r.product }}</a> ({{ r.where }}), for <a href="{{ f.url }}">{{ f.name | lower }}</a></li>{% endfor %}{% endfor %}
+</ul>
 <h2>Roast times and food safety</h2>
 <ul>
 {% for k, v in roasts.sources.items() %}<li><a href="{{ v.url }}">{{ v.name }}</a>, checked {{ v.checked }}</li>{% endfor %}

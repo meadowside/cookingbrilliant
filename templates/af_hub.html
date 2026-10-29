@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% from "_af.html" import af_caution, af_food_table %}
+{% block description %}Air fryer times for {{ h.name | lower }}: {{ h.foods | length }} foods with temperature and time, each from Ninja's charts or the maker's own pack instructions.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Air fryer","item":"{{ site.base_url }}/air-fryer/"},{"@type":"ListItem","position":2,"name":"{{ h.name }}","item":"{{ canonical }}"}]}</script>
+{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/air-fryer/">Air fryer</a></p>
+<h1>Air fryer times: {{ h.name | lower }}</h1>
+<p class="lede">{{ h.blurb }} Tap a food for every source we found, oven times and tips.</p>
+
+{{ af_food_table(h.foods) }}
+<p class="small">Times are for the amount each source tested. The first source listed for each food is shown here.</p>
+
+{% if h.slug == 'christmas' %}
+<p>Planning the whole day? The <a href="/christmas-dinner-planner/">Christmas dinner planner</a> builds a timetable around the turkey, and the <a href="/air-fryer/dual-basket-timer/">dual basket timer</a> lines up two sides so they finish together.</p>
+{% endif %}
+
+{% if h.also_foods %}
+<h2>Also useful</h2>
+{{ af_food_table(h.also_foods) }}
+{% endif %}
+
+{{ af_caution() }}
+{{ ad_slot("af-hub-1") }}
+
+<h2>Other air fryer times</h2>
+<ul class="links">{% for o in hubs if o.slug != h.slug %}<li><a href="{{ o.url }}">{{ o.name }}</a></li>{% endfor %}<li><a href="/air-fryer/cooking-times-chart/">Printable chart of all {{ foods | length }}</a></li></ul>
+{{ affiliate('liner') }}
+{{ sponsor_slot() }}
+{% endblock %}

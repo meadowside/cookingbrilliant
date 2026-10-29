@@ -38,6 +38,7 @@ XMAS = load("data/christmas.json")
 TG = load("data/thanksgiving.json")
 OTHER = load("data/other_sources.json")
 YE = load("data/yeast_eggs.json")
+AF = load("data/airfryer.json")
 
 ML = {k: v["ml"] for k, v in MEASURES["units"].items()}
 
@@ -536,6 +537,122 @@ def turkey_weight_pages():
     return out
 
 
+# ---------------------------------------------------------------- air fryer
+# Every row in data/airfryer.json is copied from a named source. The only arithmetic is the
+# Ninja 25% packet rule and the oven-to-air-fryer comparison of pack instructions, and the
+# pages say so.
+def num_text(x):
+    return "6½" if x == 6.5 else f"{x:g}"
+
+
+def af_time(lo, hi=None):
+    """'8 to 10 min', '15 min', or '1 hour 5 min' for long cooks."""
+    if hi is None or hi == lo:
+        return fmt_duration(int(lo)) if lo >= 60 else f"{num_text(lo)} min"
+    if hi >= 60:
+        return f"{fmt_duration(int(lo))} to {fmt_duration(int(hi))}"
+    return f"{num_text(lo)} to {num_text(hi)} min"
+
+
+def af_oven_text(o):
+    parts = []
+    if o.get("c"):
+        parts.append(f"{o['c']}°C")
+    parts.append(f"fan {o['fan_c']}°C")
+    if o.get("gas"):
+        parts.append(f"gas {o['gas']}")
+    return ", ".join(parts) + f" for {af_time(o['min'], o.get('max'))}"
+
+
+START_WORDS = {"frozen": "From frozen", "chilled": "From chilled", "fresh": "Fresh", "defrosted": "Defrosted"}
+
+
+def af_row(r, food):
+    src = AF["sources"].get(r["source"])
+    row = dict(r)
+    row["time"] = af_time(r["min"], r.get("max"))
+    row["start_text"] = START_WORDS[r.get("start") or food["start"]]
+    if r["source"] == "pack":
+        row["by"] = r["product"]
+        row["by_url"] = r["url"]
+        row["by_kind"] = f"Pack instructions ({r['where']})"
+    else:
+        row["by"] = src["short"]
+        row["by_url"] = src["url"]
+        row["by_kind"] = "Ninja"
+    if r.get("watts"):
+        row["watts"] = [dict(w, time=af_time(w["min"], w.get("max"))) for w in r["watts"]]
+    if r.get("oven"):
+        row["oven_text"] = af_oven_text(r["oven"])
+    return row
+
+
+def af_foods():
+    hubs = {h["slug"]: dict(h, url=f"/air-fryer/{h['slug']}/", foods=[]) for h in AF["hubs"]}
+    foods = []
+    for f in AF["foods"]:
+        f = dict(f)
+        f["url"] = f"/air-fryer/{f['slug']}/"
+        proper = f["name"].split()[0] in ("Yorkshire", "Brussels")
+        f["lc"] = f["name"] if proper else f["name"][0].lower() + f["name"][1:]
+        f["rows"] = [af_row(r, f) for r in f["rows"]]
+        top = f["rows"][0]
+        f["top"] = top
+        f["headline_time"] = top["time"]
+        if top.get("watts"):
+            f["headline_note"] = "depending on your air fryer's wattage"
+        f["hub_info"] = hubs[f["hub"]]
+        foods.append(f)
+        hubs[f["hub"]]["foods"].append(f)
+    for f in foods:
+        for h in f["also"]:
+            hubs[h].setdefault("also_foods", []).append(f)
+    return foods, list(hubs.values())
+
+
+def af_pack_compare(foods):
+    """Packs that print both oven and air fryer instructions: the air fryer time as a share of the
+    oven time (middle of each range), and the temperature difference from the fan oven setting."""
+    rows = []
+    for f in foods:
+        for r in f["rows"]:
+            o = r.get("oven")
+            if r["source"] != "pack" or not o or r.get("watts"):
+                continue
+            air = (r["min"] + (r.get("max") or r["min"])) / 2
+            ov = (o["min"] + (o.get("max") or o["min"])) / 2
+            rows.append({"food": f, "product": r["product"], "url": r["url"],
+                         "oven": f"fan {o['fan_c']}°C, {af_time(o['min'], o.get('max'))}",
+                         "air": f"{r['temp_c']}°C, {r['time']}",
+                         "ratio": air / ov, "pct": int(half_up(air / ov * 100)),
+                         "diff": r["temp_c"] - o["fan_c"]})
+    rows.sort(key=lambda x: x["ratio"])
+    ratios = [x["ratio"] for x in rows]
+    diffs = sorted(x["diff"] for x in rows)
+
+    def median(v):
+        v = sorted(v)
+        n = len(v)
+        return v[n // 2] if n % 2 else (v[n // 2 - 1] + v[n // 2]) / 2
+
+    def quartile(v, q):
+        """Linear interpolation between the closest ranks."""
+        v = sorted(v)
+        k = (len(v) - 1) * q
+        f = math.floor(k)
+        return v[f] + (v[min(f + 1, len(v) - 1)] - v[f]) * (k - f)
+
+    return {"rows": rows, "n": len(rows),
+            "ratio_q1": quartile(ratios, .25), "ratio_q3": quartile(ratios, .75),
+            "pct_q1": int(half_up(quartile(ratios, .25) * 100)), "pct_q3": int(half_up(quartile(ratios, .75) * 100)),
+            "ratio_med": median(ratios), "ratio_lo": min(ratios), "ratio_hi": max(ratios),
+            "pct_med": int(half_up(median(ratios) * 100)), "pct_lo": int(half_up(min(ratios) * 100)),
+            "pct_hi": int(half_up(max(ratios) * 100)),
+            "diff_med": median(diffs), "diff_lo": diffs[0], "diff_hi": diffs[-1],
+            "same_temp": sum(1 for d in diffs if d == 0), "lower": sum(1 for d in diffs if d < 0),
+            "higher": sum(1 for d in diffs if d > 0)}
+
+
 # ---------------------------------------------------------------- render
 env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True,
                   trim_blocks=True, lstrip_blocks=True)
@@ -714,10 +831,36 @@ def main():
     urls.append(write("/egg-sizes/", "eggs.html", ye=YE, rows=egg_rows(),
                       title="Egg sizes: UK and US compared", page_kind="tool"))
 
+    af_list, af_hubs = af_foods()
+    cmp = af_pack_compare(af_list)
+    af_ctx = dict(af=AF, hubs=af_hubs, foods=af_list, roasts=ROASTS)
+    (DIST / "js" / "airfryer.json").write_text(json.dumps(
+        {"foods": [{"s": f["slug"], "n": f["name"], "t": f["top"]["temp_c"],
+                    "a": f["top"]["min"], "b": f["top"].get("max") or f["top"]["min"]} for f in af_list],
+         "packet": AF["rules"]["packet"]["factor"],
+         "cmp": {"q1": cmp["ratio_q1"], "med": cmp["ratio_med"], "q3": cmp["ratio_q3"]}},
+        separators=(",", ":"), ensure_ascii=False))
+    urls.append(write("/air-fryer/", "af_home.html", **af_ctx, cmp=cmp,
+                      title="Air fryer cooking times: 100 foods, every time sourced", page_kind="tool"))
+    urls.append(write("/air-fryer/oven-to-air-fryer/", "af_convert.html", **af_ctx, cmp=cmp,
+                      title="Oven to air fryer converter", page_kind="tool"))
+    urls.append(write("/air-fryer/dual-basket-timer/", "af_dual.html", **af_ctx,
+                      title="Dual basket air fryer timer: finish two foods together", page_kind="tool"))
+    urls.append(write("/air-fryer/cooking-times-chart/", "af_chart.html", **af_ctx,
+                      title="Air fryer cooking times chart (printable)", page_kind="tool"))
+    for h in af_hubs:
+        urls.append(write(h["url"], "af_hub.html", **af_ctx, h=h,
+                          title=f"Air fryer times: {h['name'].lower()}", page_kind="tool"))
+    for f in af_list:
+        same = [o for o in f["hub_info"]["foods"] if o["slug"] != f["slug"]]
+        urls.append(write(f["url"], "af_food.html", **af_ctx, f=f, related=same,
+                          title=f"{f['name']} in the air fryer: time and temperature", page_kind="airfryer"))
+
     for name in ("about", "privacy", "contact", "sources", "disclaimer"):
         fields, body = md_page(name)
         urls.append(write(f"/{name}/", "page.html", body=body, title=fields["title"],
-                          description=fields["description"], page_kind="page", items=items, roasts=ROASTS))
+                          description=fields["description"], page_kind="page", items=items, roasts=ROASTS,
+                          af=AF, af_foods_list=af_list))
     write("/404.html", "404.html", title="Page not found", page_kind="page")
 
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',

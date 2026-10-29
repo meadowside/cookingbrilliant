@@ -57,6 +57,8 @@
 {% macro affiliate(kind) %}
 {% if site.amazon_tag %}
 {% if kind == 'scale' %}{% set q = 'digital kitchen scales' %}{% set label = 'kitchen scales' %}{% set why = 'Cup measures vary with how you fill the cup. Kitchen scales take the guesswork out.' %}
+{% elif kind == 'liner' %}{% set q = 'air fryer liners' %}{% set label = 'air fryer liners' %}{% set why = 'Liners catch crumbs and drips, so the basket needs less scrubbing.' %}
+{% elif kind == 'airfryer' %}{% set q = 'dual basket air fryer' %}{% set label = 'air fryers' %}{% set why = 'Thinking of getting one, or a second basket?' %}
 {% else %}{% set q = 'digital meat thermometer' %}{% set label = 'meat thermometers' %}{% set why = 'A meat thermometer is the only sure way to tell when a roast is cooked.' %}{% endif %}
 <aside class="affiliate">
   <p>{{ why }} <a href="https://www.amazon.co.uk/s?k={{ q | urlencode }}&amp;tag={{ site.amazon_tag }}" rel="sponsored nofollow noopener" target="_blank">Shop {{ label }} on Amazon UK</a>.</p>

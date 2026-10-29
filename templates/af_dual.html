@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% from "_af.html" import af_caution %}
+{% block description %}Cooking two things in a dual basket air fryer? Pick the foods or type their times and get when to start each basket so both finish together.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/air-fryer/">Air fryer</a></p>
+<h1>Dual basket timer: finish two foods together</h1>
+<p class="lede">Start the longer one first, then add the second when the time left matches its cooking time. Pick from our list or type your own times.</p>
+
+<div class="tool" id="dual">
+  {% for i in (1, 2) %}
+  <fieldset>
+    <legend><strong>Basket {{ i }}</strong></legend>
+    <div class="row">
+      <div class="field">
+        <label for="f{{ i }}">Food</label>
+        <select id="f{{ i }}">
+          <option value="">Choose, or type a time</option>
+          {% for h in hubs %}<optgroup label="{{ h.name }}">{% for f in h.foods %}<option value="{{ f.slug }}">{{ f.name }}</option>{% endfor %}</optgroup>{% endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label for="m{{ i }}">Minutes</label>
+        <input id="m{{ i }}" inputmode="numeric" placeholder="e.g. {{ 20 if i == 1 else 12 }}">
+      </div>
+    </div>
+    <p class="small" id="t{{ i }}"></p>
+  </fieldset>
+  {% endfor %}
+  <div class="field">
+    <label for="ready">Ready at (optional)</label>
+    <input id="ready" type="time">
+  </div>
+  <div class="out" id="dual-out" aria-live="polite">Choose two foods or type two times.</div>
+</div>
+
+<p>When a food has a time range, the timer uses the longest time, so check the first basket a few minutes early. If the two foods need different temperatures, set each basket to its own. Ninja's dual zone models can do this for you with the SYNC button, which holds the shorter basket until it's time to start.</p>
+
+{{ af_caution() }}
+{{ ad_slot("af-dual-1") }}
+{{ affiliate('airfryer') }}
+{{ sponsor_slot() }}
+<p class="source">Food times come from each food's page on this site, where the source is linked. The timer only does the subtraction.</p>
+{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/af-dual.js') }}" defer></script>{% endblock %}

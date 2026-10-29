@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% from "_af.html" import af_caution, src_link %}
+{% block description %}Only oven times on the packet? Ninja's rule is to cut the time by 25%. We checked {{ cmp.n }} packs that print both and show what they actually do.{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/air-fryer/">Air fryer</a></p>
+<h1>Oven to air fryer converter</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">Ninja's rule for food with only oven times:</p>
+  <p class="scale-a">−25<small>% time</small></p>
+  <p class="scale-extra">Cut the cooking time on the packaging by a quarter, check often and add time if it needs it ({{ src_link(af, 'ninja-af200uk') }}).</p>
+</section>
+
+<div class="tool">
+  <div class="row">
+    <div class="field">
+      <label for="ov-min">Oven time on the pack (minutes)</label>
+      <input id="ov-min" inputmode="numeric" placeholder="e.g. 20">
+    </div>
+    <div class="field">
+      <label for="ov-temp">Fan oven temperature (°C, optional)</label>
+      <input id="ov-temp" inputmode="numeric" placeholder="e.g. 200">
+    </div>
+  </div>
+  <div class="out" id="conv-out" aria-live="polite">Type the oven time from the pack.</div>
+</div>
+
+{{ af_caution() }}
+
+<h2>What real packs do</h2>
+<p>We found {{ cmp.n }} products whose packs give both oven and air fryer instructions. Comparing the middle of each time range:</p>
+<ul>
+  <li>The air fryer time was between {{ cmp.pct_lo }}% and {{ cmp.pct_hi }}% of the oven time. Half of them fell between {{ cmp.pct_q1 }}% and {{ cmp.pct_q3 }}%, and the middle value was {{ cmp.pct_med }}%, so a typical pack cuts the time by about {{ 100 - cmp.pct_med }}%.</li>
+  <li>Against the fan oven setting, {{ cmp.same_temp }} packs used the same temperature in the air fryer, {{ cmp.lower }} went lower and {{ cmp.higher }} went higher. The differences ran from {{ cmp.diff_lo | abs }}°C lower to {{ cmp.diff_hi }}°C higher.</li>
+</ul>
+{% if cmp.pct_med < 75 and cmp.same_temp + cmp.lower > cmp.higher * 3 %}
+<p>So most packs keep the fan oven temperature or turn it down, and the time usually drops by more than Ninja's quarter. Packs also tend to tell you to cook less at once, often half the pack or a few pieces, which is part of why the time comes down.</p>
+{% endif %}
+
+<div class="tablewrap"><table>
+  <thead><tr><th>Product</th><th>Oven</th><th>Air fryer</th><th class="n">Air fryer time</th></tr></thead>
+  <tbody>
+  {% for r in cmp.rows %}<tr><td><a href="{{ r.food.url }}">{{ r.product }}</a></td><td>{{ r.oven }}</td><td>{{ r.air }}</td><td class="n">{{ r.pct }}%</td></tr>{% endfor %}
+  </tbody>
+  <caption>Air fryer time as a share of the oven time, using the middle of each range. Each product links to its page and source.</caption>
+</table></div>
+
+{{ ad_slot("af-convert-1") }}
+{{ affiliate('liner') }}
+{{ sponsor_slot() }}
+<p class="source">The 25% rule is from {{ src_link(af, 'ninja-af200uk') }}, checked {{ af.sources['ninja-af200uk'].checked }}. The pack comparison is our arithmetic on the pack instructions listed above, as printed on each retailer's product page.</p>
+{% endblock %}
+{% block scripts %}<script src="{{ asset('/js/af-convert.js') }}" defer></script>{% endblock %}

@@ -1,0 +1,3580 @@
+{
+ "_comment": "Air fryer times. Every row is copied from a named source: a Ninja quick start guide chart, Ninja UK's own table, or the maker's printed pack instructions as shown on the linked product page. Pack rows keep the pack's own quantity. Do not add a row without a source.",
+ "sources": {
+  "ninja-af200uk": {
+   "name": "Ninja, Foodi Dual Zone Air Fryer AF200UK Quick Start Guide (air fry cooking chart)",
+   "short": "Ninja's AF200UK chart",
+   "url": "https://www.ninjakitchen.ie/cdn/shop/files/AF200UK_IG_QSG_MP_241007_Mv2_LR.pdf",
+   "checked": "2026-10-29"
+  },
+  "ninja-af100uk": {
+   "name": "Ninja, Air Fryer AF100UK Series Quick Start Guide (air fry cooking chart), copy hosted by ManualsLib",
+   "short": "Ninja's AF100UK chart",
+   "url": "https://www.manualslib.com/manual/1605945/Ninja-Af100uk-Series.html?page=3",
+   "checked": "2026-10-29"
+  },
+  "ninja-blog": {
+   "name": "Ninja Kitchen UK, Air fryer cooking times",
+   "short": "Ninja UK's cooking times table",
+   "url": "https://www.sharkninja.co.uk/blog/air-fryer-cooking-times.html",
+   "checked": "2026-10-29"
+  }
+ },
+ "rules": {
+  "packet": {
+   "text": "If a food isn't in Ninja's chart, it says to cut the cooking time on the packaging by 25%, check often and add time if needed.",
+   "source": "ninja-af200uk",
+   "factor": 0.75
+  },
+  "preheat": {
+   "text": "Ninja recommends 3 minutes of preheating.",
+   "source": "ninja-af100uk"
+  },
+  "quantity": {
+   "text": "Cook a smaller amount for less time and a larger amount for longer, and check often.",
+   "source": "ninja-af100uk"
+  },
+  "layer": {
+   "text": "For even browning, spread food in an even layer with no overlapping.",
+   "source": "ninja-af100uk"
+  },
+  "shake": {
+   "text": "Shake the food at least twice during cooking.",
+   "source": "ninja-af200uk"
+  },
+  "check": {
+   "text": "Start checking 2 minutes before the time is up, and make sure food has reached a safe temperature.",
+   "source": "ninja-af200uk"
+  }
+ },
+ "hubs": [
+  {
+   "slug": "chips-and-potatoes",
+   "name": "Chips and potatoes",
+   "blurb": "Frozen chips, homemade chips, jacket potatoes, roasties, waffles and hash browns."
+  },
+  {
+   "slug": "chicken",
+   "name": "Chicken",
+   "blurb": "Fresh breasts, thighs and wings, a whole chicken, and freezer favourites like nuggets and dippers."
+  },
+  {
+   "slug": "meat",
+   "name": "Meat and sausages",
+   "blurb": "Burgers, steak, bacon, gammon, pork chops, sausages, lamb and meatballs."
+  },
+  {
+   "slug": "fish",
+   "name": "Fish and seafood",
+   "blurb": "Salmon, cod and prawns, plus fish fingers, battered fish, scampi and fishcakes."
+  },
+  {
+   "slug": "vegetables",
+   "name": "Vegetables and veggie",
+   "blurb": "Roast vegetables, corn on the cob, kale crisps, and veggie burgers and sausages."
+  },
+  {
+   "slug": "party-food",
+   "name": "Snacks and party food",
+   "blurb": "Onion rings, spring rolls, bhajis, sausage rolls, Greggs bakes and cheesy bites."
+  },
+  {
+   "slug": "christmas",
+   "name": "Sunday roast and Christmas",
+   "blurb": "Yorkshire puddings, pigs in blankets, stuffing balls and parsnips."
+  },
+  {
+   "slug": "pastries",
+   "name": "Pastries and sweet things",
+   "blurb": "Croissants, pains au chocolat, churros and apple pie bites."
+  }
+ ],
+ "foods": [
+  {
+   "slug": "homemade-chips",
+   "name": "Homemade chips",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 20,
+     "max": 24,
+     "amount": "450g potatoes",
+     "prep": "Hand-cut chips, thin",
+     "oil": "½ to 3 tbsp vegetable oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 23,
+     "max": 26,
+     "amount": "450g potatoes",
+     "prep": "Hand-cut chips, thick",
+     "oil": "½ to 3 tbsp vegetable oil",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": "Ninja's chart says to soak the cut chips in cold water for at least 30 minutes, then pat them dry. The drier they are, the better they crisp.",
+   "also": []
+  },
+  {
+   "slug": "potato-wedges",
+   "name": "Potato wedges",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 18,
+     "max": 20,
+     "amount": "750g potatoes",
+     "prep": "Cut in 2.5cm wedges",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "jacket-potatoes",
+   "name": "Jacket potatoes",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 25,
+     "max": 35,
+     "amount": "4 potatoes, 200g each",
+     "prep": "Pierced with a fork 3 times",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 30,
+     "max": 35,
+     "amount": "4 potatoes, 185 to 250g each",
+     "prep": "Pierced with a fork 3 times",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 200,
+     "min": 30,
+     "max": 40,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 230,
+      "fan_c": 200,
+      "min": 65,
+      "max": 80
+     }
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "roast-potatoes",
+   "name": "Roast potatoes",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-blog",
+     "temp_c": 200,
+     "min": 15,
+     "max": 26,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 200,
+      "fan_c": 180,
+      "min": 40,
+      "max": 50
+     }
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": "Ninja's table doesn't say whether the potatoes are parboiled first, or how many. For frozen roasties, see the frozen roast potatoes page.",
+   "also": [
+    "christmas"
+   ]
+  },
+  {
+   "slug": "sweet-potato-chunks",
+   "name": "Sweet potato chunks",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": 20,
+     "amount": "750g",
+     "prep": "Cut in 2.5cm chunks",
+     "oil": "1 tbsp",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": 20,
+     "amount": "750g",
+     "prep": "Cut in 2.5cm chunks",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "baked-sweet-potatoes",
+   "name": "Baked sweet potatoes",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 35,
+     "max": null,
+     "amount": "4 whole, 225g each",
+     "prep": "Pierced with a fork 3 times",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 30,
+     "max": 35,
+     "amount": "4 whole, 185 to 250g each",
+     "prep": "Pierced with a fork 3 times",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "frozen-chips",
+   "name": "Frozen chips",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Straight Cut Chips 1.25kg",
+     "url": "https://www.iceland.co.uk/p/iceland-straight-cut-chips-1.25kg/66215.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 14,
+     "max": 15,
+     "start": "frozen",
+     "amount": "An eighth of the pack",
+     "notes": [
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 23,
+      "max": 25,
+      "c": null,
+      "gas": "7"
+     }
+    },
+    {
+     "source": "pack",
+     "product": "McCain Home Chips Lighter Straight Cut 1.2kg",
+     "url": "https://www.iceland.co.uk/p/mccain-home-chips-lighter-straight-cut-1.2kg/92589.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 13,
+     "max": 20,
+     "start": "frozen",
+     "amount": "500g",
+     "notes": [
+      "Shake halfway"
+     ],
+     "preheat": "Preheat to 200°C",
+     "oven": {
+      "fan_c": 210,
+      "min": 22,
+      "max": 24,
+      "c": null,
+      "gas": "8"
+     },
+     "watts": [
+      {
+       "w": 2000,
+       "min": 13,
+       "max": null
+      },
+      {
+       "w": 1700,
+       "min": 15,
+       "max": null
+      },
+      {
+       "w": 1400,
+       "min": 20,
+       "max": null
+      }
+     ]
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 180,
+     "min": 20,
+     "max": 25,
+     "amount": "450g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 180,
+     "min": 28,
+     "max": 32,
+     "amount": "1kg",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 180,
+     "min": 14,
+     "max": 25,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 230,
+      "fan_c": 210,
+      "min": 15,
+      "max": 20
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chunky-chips",
+   "name": "Chunky oven chips",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Ridiculously Crispy Chunky Chips 1.2kg",
+     "url": "https://www.iceland.co.uk/p/iceland-ridiculously-crispy-chunky-chips-1.2kg/38115.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 13,
+     "max": 15,
+     "start": "frozen",
+     "amount": "A quarter of the bag",
+     "notes": [
+      "Single layer",
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 25,
+      "max": 30,
+      "c": null,
+      "gas": "7"
+     }
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 22,
+     "max": null,
+     "amount": "500g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "crinkle-cut-chips",
+   "name": "Crinkle cut chips",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "McCain Air Fryer Crinkle Cut Chips",
+     "url": "https://mccain.co.uk/products/chips/air-fryer-crinkle-cut-chips",
+     "where": "McCain website",
+     "temp_c": 200,
+     "min": 7,
+     "max": 10,
+     "start": "frozen",
+     "amount": "200g",
+     "notes": [
+      "Shake halfway"
+     ],
+     "preheat": "Preheat to 200°C",
+     "watts": [
+      {
+       "w": 2000,
+       "min": 7,
+       "max": null
+      },
+      {
+       "w": 1700,
+       "min": 8,
+       "max": null
+      },
+      {
+       "w": 1400,
+       "min": 10,
+       "max": null
+      }
+     ]
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "frozen-potato-wedges",
+   "name": "Frozen potato wedges",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 20,
+     "max": null,
+     "amount": "500g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "frozen-roast-potatoes",
+   "name": "Frozen roast potatoes",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Aunt Bessie's Roast Potatoes 600g",
+     "url": "https://www.iceland.co.uk/p/aunt-bessies-roast-potatoes-600g/74627.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 25,
+     "max": null,
+     "start": "frozen",
+     "amount": "Up to 250g",
+     "notes": [
+      "Shake halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 210,
+      "min": 30,
+      "max": 35,
+      "c": 230,
+      "gas": "8"
+     }
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 190,
+     "min": 20,
+     "max": null,
+     "amount": "700g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": [
+    "christmas"
+   ]
+  },
+  {
+   "slug": "frozen-sweet-potato-fries",
+   "name": "Frozen sweet potato fries",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 190,
+     "min": 20,
+     "max": 24,
+     "amount": "500g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 20,
+     "max": 22,
+     "amount": "450g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "hash-browns",
+   "name": "Hash browns",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Hash Browns 800g",
+     "url": "https://www.iceland.co.uk/p/iceland-hash-browns-800g/95209.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 12,
+     "max": null,
+     "start": "frozen",
+     "amount": "6 hash browns",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 18,
+      "max": 20,
+      "c": null,
+      "gas": "7"
+     }
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": null,
+     "amount": "7 (390g)",
+     "prep": "Single layer",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 180,
+     "min": 18,
+     "max": 22,
+     "amount": "450g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "hash-brown-bites",
+   "name": "Hash brown bites",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "McCain Air Fryer Hash Brown Bites 600g",
+     "url": "https://www.iceland.co.uk/p/mccain-air-fryer-hash-brown-bites-600g/104850.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 8,
+     "max": 16,
+     "start": "frozen",
+     "amount": "300g",
+     "notes": [
+      "Shake halfway"
+     ],
+     "preheat": "Preheat to 200°C for 5 minutes",
+     "watts": [
+      {
+       "w": 2000,
+       "min": 8,
+       "max": 10
+      },
+      {
+       "w": 1700,
+       "min": 12,
+       "max": 14
+      },
+      {
+       "w": 1400,
+       "min": 14,
+       "max": 16
+      }
+     ]
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "potato-waffles",
+   "name": "Potato waffles",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Birds Eye 10 Potato Waffles 567g",
+     "url": "https://groceries.morrisons.com/products/birds-eye-10-potato-waffles-567g/105417857",
+     "where": "Morrisons product page",
+     "temp_c": 180,
+     "min": 8,
+     "max": 10,
+     "start": "frozen",
+     "amount": "Up to 2 waffles",
+     "notes": [
+      "Turn halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": "Preheat to 180°C for 3½ minutes",
+     "oven": {
+      "fan_c": 200,
+      "min": 12,
+      "max": 15,
+      "c": 220,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "potato-smiles",
+   "name": "Potato smiles",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "McCain Potato Smiles 454g",
+     "url": "https://www.iceland.co.uk/p/mccain-potato-smiles-454g/6179.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 5,
+     "max": 12,
+     "start": "frozen",
+     "amount": null,
+     "notes": [
+      "Shake halfway"
+     ],
+     "preheat": "Preheat to 200°C",
+     "watts": [
+      {
+       "w": 2000,
+       "min": 5,
+       "max": null
+      },
+      {
+       "w": 1700,
+       "min": 6,
+       "max": null
+      },
+      {
+       "w": 1400,
+       "min": 12,
+       "max": null
+      }
+     ]
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "potato-croquettes",
+   "name": "Potato croquettes",
+   "hub": "chips-and-potatoes",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Potato Croquettes 908g",
+     "url": "https://www.iceland.co.uk/p/iceland-potato-croquettes-908g/41589.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 10,
+     "max": 11,
+     "start": "frozen",
+     "amount": "A sixth of the pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 220,
+      "min": 18,
+      "max": 20,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-breast",
+   "name": "Chicken breast",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": 18,
+     "amount": "2 breasts, 150g each",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 18,
+     "max": 22,
+     "amount": "4 breasts, 150g each",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 18,
+     "max": 22,
+     "amount": "2 breasts",
+     "prep": "Boneless",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 25,
+     "max": 35,
+     "amount": "2 breasts",
+     "prep": "Bone in",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 200,
+     "min": 16,
+     "max": 22,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 200,
+      "fan_c": 180,
+      "min": 20,
+      "max": 25
+     }
+    }
+   ],
+   "safety": "poultry",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-thighs",
+   "name": "Chicken thighs",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 22,
+     "max": 28,
+     "amount": "4 thighs (800g)",
+     "prep": "Bone in",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 18,
+     "max": 22,
+     "amount": "4 thighs (600g)",
+     "prep": "Boneless",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": "poultry",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-wings",
+   "name": "Chicken wings",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 30,
+     "max": 33,
+     "amount": "1kg",
+     "prep": "Drumettes and flats",
+     "oil": "1 tbsp",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 22,
+     "max": 26,
+     "amount": "1kg",
+     "prep": "Drumettes and flats",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": "poultry",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "frozen-chicken-wings",
+   "name": "Frozen chicken wings",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Hot & Spicy Chicken Wings 850g",
+     "url": "https://www.iceland.co.uk/p/iceland-hot-and-spicy-chicken-wings-850g/75452.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 14,
+     "max": 16,
+     "start": "frozen",
+     "amount": "Half the pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 30,
+      "max": 35,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "poultry",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "whole-chicken",
+   "name": "Whole chicken",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Whole Chicken 1.1kg, from frozen",
+     "url": "https://www.iceland.co.uk/p/iceland-whole-chicken-1.1kg/52050.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 65,
+     "max": null,
+     "start": "frozen",
+     "amount": "1.1kg chicken",
+     "notes": [
+      "The chicken must not sit higher than the drawer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 90,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    },
+    {
+     "source": "pack",
+     "product": "Iceland Whole Chicken 1.1kg, defrosted",
+     "url": "https://www.iceland.co.uk/p/iceland-whole-chicken-1.1kg/52050.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 40,
+     "max": 45,
+     "start": "defrosted",
+     "amount": "1.1kg chicken",
+     "notes": [
+      "The chicken must not sit higher than the drawer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 50,
+      "max": 55,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "poultry",
+   "start": "frozen",
+   "intro": null,
+   "also": [
+    "christmas"
+   ]
+  },
+  {
+   "slug": "chicken-nuggets",
+   "name": "Chicken nuggets",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 10,
+     "max": 13,
+     "amount": "1 box",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-dippers",
+   "name": "Chicken dippers",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Birds Eye 12 Crispy Chicken Dippers 220g",
+     "url": "https://www.iceland.co.uk/p/birds-eye-12-crispy-chicken-dippers-220g/77773.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 10,
+     "max": null,
+     "start": "frozen",
+     "amount": "Up to 10 dippers",
+     "notes": [
+      "Shake halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 15,
+      "max": null,
+      "c": 210,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "raw-coated",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-goujons",
+   "name": "Chicken goujons",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 190,
+     "min": 8,
+     "max": null,
+     "amount": "11 goujons (270g)",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-kiev",
+   "name": "Chicken Kiev",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 15,
+     "max": null,
+     "amount": "4 Kievs (500g)",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": "poultry",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "southern-fried-chicken",
+   "name": "Southern fried chicken",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Southern Fried Chicken Breast Fillet Chunks 475g",
+     "url": "https://www.iceland.co.uk/p/iceland-southern-fried-chicken-breast-fillet-chunks-475g/90316.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 12,
+     "max": 14,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 22,
+      "max": 24,
+      "c": null,
+      "gas": "6"
+     }
+    },
+    {
+     "source": "pack",
+     "product": "Birds Eye 6 Southern Fried Breaded Chicken Breast Steaks 540g",
+     "url": "https://www.iceland.co.uk/p/birds-eye-6-southern-fried-chicken-in-breadcrumbs-540g/79683.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 14,
+     "max": null,
+     "start": "frozen",
+     "amount": "Up to 2 steaks",
+     "notes": [
+      "Turn halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 25,
+      "max": null,
+      "c": 200,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-tenders",
+   "name": "Chicken tenders",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Crispy Chicken Tenders 450g",
+     "url": "https://www.iceland.co.uk/p/iceland-crispy-chicken-tenders-450g/38253.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 14,
+     "max": null,
+     "start": "frozen",
+     "amount": "Half the pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 24,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-burgers",
+   "name": "Chicken burgers",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 4 Breaded Quarter Pounder Chicken Burgers 454g",
+     "url": "https://www.iceland.co.uk/p/iceland-4-breaded-quarter-pounder-chicken-burgers-454g/50631.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 14,
+     "max": 16,
+     "start": "frozen",
+     "amount": "Half the pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 26,
+      "max": 29,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-tikka-bites",
+   "name": "Chicken tikka bites",
+   "hub": "chicken",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 20 Chicken Tikka Bites 200g",
+     "url": "https://www.iceland.co.uk/p/iceland-20-(approx.)-chicken-tikka-bites-200g/91089.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 7,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole bag",
+     "notes": [
+      "Single layer",
+      "Tested in a 1400W, 4 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 14,
+      "max": 16,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "burgers",
+   "name": "Burgers",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 190,
+     "min": 12,
+     "max": null,
+     "amount": "4 patties, 125g each",
+     "prep": "2.5cm thick",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 8,
+     "max": 10,
+     "amount": "4 quarter-pounders",
+     "prep": "2.5cm thick",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 190,
+     "min": 10,
+     "max": 18,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 200,
+      "fan_c": 160,
+      "min": 20,
+      "max": 25
+     }
+    }
+   ],
+   "safety": "mince",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "frozen-burgers",
+   "name": "Frozen burgers",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 4 Beef Quarter Pounders 454g",
+     "url": "https://www.iceland.co.uk/p/iceland-4-beef-quarter-pounders-454g/55874.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 17,
+     "max": null,
+     "start": "frozen",
+     "amount": "1 burger",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 20,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "mince",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "steak",
+   "name": "Steak",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 8,
+     "max": 12,
+     "amount": "2 steaks, 230g each",
+     "prep": "Whole",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 10,
+     "max": 20,
+     "amount": "2 steaks, 8oz each",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 190,
+     "min": 8,
+     "max": 20,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 200,
+      "fan_c": 180,
+      "min": 10,
+      "max": 18
+     }
+    }
+   ],
+   "safety": "whole-beef",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "bacon",
+   "name": "Bacon",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 9,
+     "max": null,
+     "amount": "4 rashers",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 180,
+     "min": 8,
+     "max": 10,
+     "amount": "4 rashers, cut in half",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 220,
+     "min": 6,
+     "max": 8,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 200,
+      "fan_c": 180,
+      "min": 10,
+      "max": 15
+     }
+    }
+   ],
+   "safety": "pork",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "gammon-steak",
+   "name": "Gammon steak",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 10,
+     "max": null,
+     "amount": "1 steak (225g)",
+     "prep": "Cut the rind at 2cm, turn over after 5 minutes",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": "gammon",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "pork-chops",
+   "name": "Pork chops",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 18,
+     "max": 19,
+     "amount": "2 thick-cut chops, 250g each",
+     "prep": "Bone in",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 12,
+     "max": 15,
+     "amount": "4 boneless chops (100g)",
+     "prep": "Boneless",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 15,
+     "max": 17,
+     "amount": "2 thick-cut chops",
+     "prep": "Bone in",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 14,
+     "max": 17,
+     "amount": "4 boneless chops",
+     "prep": "Boneless",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": "pork",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "pork-tenderloin",
+   "name": "Pork tenderloin",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 190,
+     "min": 20,
+     "max": 27,
+     "amount": "2 tenderloins, 350 to 500g each",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 25,
+     "max": 35,
+     "amount": "2 tenderloins",
+     "prep": "Whole",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": "pork",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "sausages",
+   "name": "Sausages",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 7,
+     "max": 9,
+     "amount": "8 sausages",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 8,
+     "max": 10,
+     "amount": "4 sausages",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 200,
+     "min": 8,
+     "max": 15,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 200,
+      "fan_c": 180,
+      "min": 20,
+      "max": 25
+     }
+    }
+   ],
+   "safety": "sausage",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "cocktail-sausages",
+   "name": "Cocktail sausages",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 20 Cocktail Sausages 240g",
+     "url": "https://www.iceland.co.uk/p/iceland-20-(approx.)-cocktail-sausages-240g/27095.html",
+     "where": "Iceland product page",
+     "temp_c": 160,
+     "min": 6,
+     "max": null,
+     "start": "frozen",
+     "amount": "Half the pack",
+     "notes": [
+      "Single layer",
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 15,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "sausage",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "hot-dogs",
+   "name": "Hot dogs",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Luxury 6 Ultimate Hot Dogs 420g",
+     "url": "https://www.iceland.co.uk/p/iceland-luxury-6-ultimate-hot-dogs-420g/4713.html",
+     "where": "Iceland product page",
+     "temp_c": 140,
+     "min": 14,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Separate and turn halfway",
+      "Tested in a 1400W, 4 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 25,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "sausage",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "pork-belly-slices",
+   "name": "Pork belly slices",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Pork Belly Slices 300g",
+     "url": "https://www.iceland.co.uk/p/iceland-pork-belly-slices-300g/41500.html",
+     "where": "Iceland product page",
+     "temp_c": 170,
+     "min": 17,
+     "max": 19,
+     "start": "chilled",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 16,
+      "max": 19,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "pork",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "lamb-chops",
+   "name": "Lamb chops",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 12,
+     "max": null,
+     "amount": "4 chops (340g)",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": "whole-lamb",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "lamb-steaks",
+   "name": "Lamb steaks",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 12,
+     "max": null,
+     "amount": "3 steaks (300g)",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": "whole-lamb",
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "lamb-koftas",
+   "name": "Lamb koftas",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 6 Lamb & Mint Koftas 300g",
+     "url": "https://www.iceland.co.uk/p/iceland-6-lamb-and-mint-koftas-300g/54098.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 14,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 25,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "mince",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "meatballs",
+   "name": "Meatballs",
+   "hub": "meat",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland British Beef Meatballs",
+     "url": "https://www.iceland.co.uk/p/iceland-16-british-beef-meatballs-305g/33950.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 10,
+     "max": null,
+     "start": "chilled",
+     "amount": null,
+     "notes": [
+      "Single layer",
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 21,
+      "max": null,
+      "c": null,
+      "gas": "4"
+     }
+    }
+   ],
+   "safety": "mince",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "salmon",
+   "name": "Salmon fillets",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 8,
+     "max": 10,
+     "amount": "2 fillets (260g)",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 10,
+     "max": 13,
+     "amount": "2 fillets",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 200,
+     "min": 10,
+     "max": 14,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 180,
+      "fan_c": 160,
+      "min": 10,
+      "max": 15
+     }
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "cod",
+   "name": "Cod fillets",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 8,
+     "max": 10,
+     "amount": "2 fillets (240g)",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "prawns",
+   "name": "Prawns",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 3,
+     "max": 4,
+     "amount": "16 jumbo prawns (165g)",
+     "prep": "Peeled, tails on",
+     "oil": "1 tbsp",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 7,
+     "max": 10,
+     "amount": "16 large prawns",
+     "prep": "Peeled, tails on",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "fishcakes",
+   "name": "Fishcakes",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 14 Breaded Cod Fishcakes 700g",
+     "url": "https://www.iceland.co.uk/p/iceland-14-breaded-cod-fishcakes-700g/89701.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 16,
+     "max": null,
+     "start": "frozen",
+     "amount": "4 fishcakes",
+     "notes": [
+      "Single layer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 16,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 12,
+     "max": 15,
+     "amount": "2 fishcakes, 150g each",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 180,
+     "min": 12,
+     "max": 15,
+     "amount": "2 fishcakes",
+     "prep": "None",
+     "oil": "Brushed with oil",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "fish-fingers",
+   "name": "Fish fingers",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Birds Eye 6 Chunky Fish Fingers",
+     "url": "https://www.birdseye.co.uk/range/frozen-fish/fish-fingers/6-chunky-fish-fingers",
+     "where": "Birds Eye website",
+     "temp_c": 180,
+     "min": 14,
+     "max": null,
+     "start": "frozen",
+     "amount": "Up to 6 fingers",
+     "notes": [
+      "Shake halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": null
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": null,
+     "amount": "10 fish fingers (280g)",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 10,
+     "max": 13,
+     "amount": "18 fish fingers",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "breaded-fish",
+   "name": "Breaded fish fillets",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 20,
+     "max": 22,
+     "amount": "4 fillets (500g)",
+     "prep": "Turn halfway",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 14,
+     "max": 16,
+     "amount": "1 box (6 fillets)",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "battered-fish",
+   "name": "Battered fish",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Birds Eye 4 Battered Cod Fillets 400g",
+     "url": "https://www.iceland.co.uk/p/birds-eye-4-battered-cod-fillets-400g/80918.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 15,
+     "max": null,
+     "start": "frozen",
+     "amount": "Up to 2 fillets",
+     "notes": [
+      "Turn halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 20,
+      "max": 22,
+      "c": 220,
+      "gas": "7"
+     }
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 18,
+     "max": null,
+     "amount": "4 fillets (440g)",
+     "prep": "Turn halfway",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "scampi",
+   "name": "Scampi",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 12,
+     "max": null,
+     "amount": "280g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": "Young's prints no air fryer time on its scampi pack. It says to follow your air fryer maker's guidance, so this is Ninja's figure.",
+   "also": []
+  },
+  {
+   "slug": "prawn-tempura",
+   "name": "Prawn tempura",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 190,
+     "min": 8,
+     "max": 9,
+     "amount": "8 prawns (140g)",
+     "prep": "Turn halfway",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "popcorn-shrimp",
+   "name": "Popcorn shrimp",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 9,
+     "max": 11,
+     "amount": "1 bag",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "lobster-tails",
+   "name": "Lobster tails",
+   "hub": "fish",
+   "rows": [
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 5,
+     "max": 8,
+     "amount": "4 tails",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "asparagus",
+   "name": "Asparagus",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 8,
+     "max": 12,
+     "amount": "1 bunch (200g)",
+     "prep": "Whole, stems trimmed",
+     "oil": "2 tsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "beetroot",
+   "name": "Beetroot",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 35,
+     "max": 45,
+     "amount": "6 small or 4 large (about 1kg)",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 45,
+     "max": 60,
+     "amount": "6 small or 4 large (about 1kg)",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "peppers",
+   "name": "Roast peppers",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 16,
+     "max": null,
+     "amount": "2 peppers",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 25,
+     "max": 30,
+     "amount": "4 peppers",
+     "prep": "Whole",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "broccoli",
+   "name": "Broccoli",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 9,
+     "max": null,
+     "amount": "400g",
+     "prep": "Cut in 2.5cm florets",
+     "oil": "1 tbsp",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 10,
+     "max": 12,
+     "amount": "1 head",
+     "prep": "Cut in 2.5cm florets",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "brussels-sprouts",
+   "name": "Brussels sprouts",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": 20,
+     "amount": "500g",
+     "prep": "Cut in half, stem removed",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": [
+    "christmas"
+   ]
+  },
+  {
+   "slug": "butternut-squash",
+   "name": "Butternut squash",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 20,
+     "max": 25,
+     "amount": "500 to 750g",
+     "prep": "Cut in 2.5cm pieces",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "carrots",
+   "name": "Carrots",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 13,
+     "max": 16,
+     "amount": "500g",
+     "prep": "Peeled, cut in 1.5cm pieces",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": [
+    "christmas"
+   ]
+  },
+  {
+   "slug": "cauliflower",
+   "name": "Cauliflower",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": 20,
+     "amount": "600g",
+     "prep": "Cut in 2.5cm florets",
+     "oil": "2 tbsp",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": 20,
+     "amount": "1 head",
+     "prep": "Cut in 2.5cm florets",
+     "oil": "2 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "corn-on-the-cob",
+   "name": "Corn on the cob",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 12,
+     "max": 15,
+     "amount": "4 cobs",
+     "prep": "Whole, husks removed",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "courgette",
+   "name": "Courgette",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 15,
+     "max": 18,
+     "amount": "500g",
+     "prep": "Quartered lengthways, then cut in 2.5cm pieces",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "green-beans",
+   "name": "Green beans",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 8,
+     "max": null,
+     "amount": "200g fine green beans",
+     "prep": "Trimmed",
+     "oil": "1 tbsp",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 8,
+     "max": 10,
+     "amount": "375g",
+     "prep": "Trimmed",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "kale-crisps",
+   "name": "Kale crisps",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 150,
+     "min": 8,
+     "max": null,
+     "amount": "100g",
+     "prep": "Torn in pieces, stems removed",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 150,
+     "min": 8,
+     "max": 10,
+     "amount": "225g",
+     "prep": "Torn in pieces, stems removed",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "mushrooms",
+   "name": "Mushrooms",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 200,
+     "min": 7,
+     "max": null,
+     "amount": "225g",
+     "prep": "Wiped, cut in quarters",
+     "oil": "1 tbsp",
+     "notes": []
+    },
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 200,
+     "min": 7,
+     "max": 9,
+     "amount": "225g",
+     "prep": "Rinsed, cut in quarters",
+     "oil": "1 tbsp",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "fresh",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "veggie-burgers",
+   "name": "Veggie and vegan burgers",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 10,
+     "max": null,
+     "amount": "4 burgers (264g)",
+     "prep": "Single layer",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "vegan-nuggets",
+   "name": "Vegan nuggets",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 12,
+     "max": null,
+     "amount": "14 nuggets (320g)",
+     "prep": "Single layer",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "vegan-sausages",
+   "name": "Vegan sausages",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 8,
+     "max": null,
+     "amount": "6 sausages (300g)",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "bean-burgers",
+   "name": "Bean burgers",
+   "hub": "vegetables",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 4 Spicy Bean Quarter Pounders 454g",
+     "url": "https://www.iceland.co.uk/p/iceland-4-spicy-bean-quarter-pounders-454g/42129.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 14,
+     "max": null,
+     "start": "frozen",
+     "amount": "Half the pack",
+     "notes": [
+      "Single layer",
+      "Stand for 2 minutes"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 26,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "onion-rings",
+   "name": "Onion rings",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland Battered Onion Rings 600g",
+     "url": "https://www.iceland.co.uk/p/iceland-battered-onion-rings-600g/35841.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 11,
+     "max": null,
+     "start": "frozen",
+     "amount": "A quarter of the pack",
+     "notes": [
+      "Single layer",
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 210,
+      "min": 14,
+      "max": 16,
+      "c": null,
+      "gas": "8"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "spring-rolls",
+   "name": "Spring rolls",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 12 Duck Spring Rolls 300g",
+     "url": "https://www.iceland.co.uk/p/iceland-12-duck-spring-rolls-300g/80000.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 10,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 14,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "samosas",
+   "name": "Samosas",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 20 Vegetable Samosas 400g",
+     "url": "https://www.iceland.co.uk/p/iceland-20-(approx.)-vegetable-samosas-400g/91166.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 8,
+     "max": 10,
+     "start": "frozen",
+     "amount": "Half the pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway",
+      "Tested in a 1400W, 4 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 14,
+      "max": 16,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "onion-bhajis",
+   "name": "Onion bhajis",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 14 Onion Bhajis 210g, from frozen",
+     "url": "https://www.iceland.co.uk/p/iceland-14-(approx.)-onion-bhajis-210g/27494.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 8,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 14,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    },
+    {
+     "source": "pack",
+     "product": "Iceland 14 Onion Bhajis 210g, defrosted",
+     "url": "https://www.iceland.co.uk/p/iceland-14-(approx.)-onion-bhajis-210g/27494.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 6,
+     "max": null,
+     "start": "chilled",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 12,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "mozzarella-sticks",
+   "name": "Mozzarella sticks",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "ninja-af100uk",
+     "temp_c": 190,
+     "min": 8,
+     "max": 10,
+     "amount": "1 box",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "pack",
+     "product": "Iceland 10 Mozzarella Balls 200g",
+     "url": "https://www.iceland.co.uk/p/iceland-10-approx.-mozzarella-balls-200g/28211.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 6.5,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 190,
+      "min": 9,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "halloumi-fries",
+   "name": "Halloumi fries",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Sides Crispy Coated Halloumi Fries 210g",
+     "url": "https://www.iceland.co.uk/p/sides-crispy-coated-halloumi-fries-6-(approx.)-210g/32708.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 9,
+     "max": null,
+     "start": "frozen",
+     "amount": null,
+     "notes": [
+      "Single layer",
+      "Turn halfway",
+      "Stand for 2 minutes"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 15,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "jalapeno-bites",
+   "name": "Jalapeño cheese bites",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 12 Jalapeño Cream Cheese Bites 180g",
+     "url": "https://www.iceland.co.uk/p/iceland-12-(approx.)-jalape%C3%B1o-cream-cheese-bites-180g/95088.html",
+     "where": "Iceland product page",
+     "temp_c": 170,
+     "min": 9,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Shake halfway",
+      "Stand for 2 minutes",
+      "Tested in a 1400W, 4 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 15,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "garlic-mushrooms",
+   "name": "Breaded garlic mushrooms",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 190,
+     "min": 10,
+     "max": 12,
+     "amount": "300g",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "cauliflower-cheese-bites",
+   "name": "Cauliflower cheese bites",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Cathedral City Our Cauliflower Cheese Bites 280g",
+     "url": "https://www.iceland.co.uk/p/cathedral-city-our-cauliflower-cheese-bites-280g/95223.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 9,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole bag",
+     "notes": [
+      "Single layer",
+      "Turn halfway",
+      "Stand for 1 minute",
+      "Tested in a 1400W, 4 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 170,
+      "min": 16,
+      "max": null,
+      "c": null,
+      "gas": "4"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "mac-and-cheese-bites",
+   "name": "Mac and cheese bites",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 10 Mac 'N' Cheese Bites 170g",
+     "url": "https://www.iceland.co.uk/p/iceland-10-(approx.)-mac-'n'-cheese-bites-170g/32795.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 8,
+     "max": null,
+     "start": "frozen",
+     "amount": null,
+     "notes": [
+      "Single layer",
+      "Shake halfway",
+      "Stand for 2 minutes"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 13,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "garlic-cheese-bites",
+   "name": "Garlic and cheese bites",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 17 Garlic & Cheese Bites 230g",
+     "url": "https://www.iceland.co.uk/p/iceland-approx.-17-garlic-&-cheese-bites-230g/26978.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 8,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole bag",
+     "notes": [
+      "Single layer",
+      "Shake halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 11,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "sausage-rolls",
+   "name": "Sausage rolls",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 8 Sausage Rolls 854g",
+     "url": "https://www.iceland.co.uk/p/greggs-8-sausage-rolls-854g/76133.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 15,
+     "max": null,
+     "start": "frozen",
+     "amount": "2 sausage rolls",
+     "notes": [
+      "Flat side down",
+      "Turn halfway",
+      "Stand for 1 minute",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 25,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "mini-sausage-rolls",
+   "name": "Mini sausage rolls",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 16 Mini Sausage Rolls 433g",
+     "url": "https://www.iceland.co.uk/p/greggs-16-mini-sausage-rolls-433g/57301.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 12,
+     "max": 14,
+     "start": "frozen",
+     "amount": "4 mini rolls",
+     "notes": [
+      "Flat side down",
+      "Turn halfway",
+      "Stand for 1 minute",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 20,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "steak-bake",
+   "name": "Steak bake",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 2 Steak Bakes 280g",
+     "url": "https://www.iceland.co.uk/p/greggs-2-steak-bakes-280g/66330.html",
+     "where": "Iceland product page",
+     "temp_c": 190,
+     "min": 19,
+     "max": null,
+     "start": "frozen",
+     "amount": "1 bake",
+     "notes": [
+      "Flat side down",
+      "Turn halfway",
+      "Stand for 1 minute",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "cheese-and-onion-bake",
+   "name": "Cheese and onion bake",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 2 Cheese & Onion Bakes 288g",
+     "url": "https://www.iceland.co.uk/p/greggs-2-cheese-and-onion-bakes-288g/53850.html",
+     "where": "Iceland product page",
+     "temp_c": 190,
+     "min": 19,
+     "max": null,
+     "start": "frozen",
+     "amount": "1 bake",
+     "notes": [
+      "Flat side down",
+      "Turn halfway",
+      "Stand for 1 minute",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 28,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "chicken-bake",
+   "name": "Chicken bake",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 2 Chicken Bakes 306g",
+     "url": "https://www.iceland.co.uk/p/greggs-2-chicken-bakes-306g/66336.html",
+     "where": "Iceland product page",
+     "temp_c": 190,
+     "min": 21,
+     "max": null,
+     "start": "frozen",
+     "amount": "1 bake",
+     "notes": [
+      "Flat side down",
+      "Turn halfway",
+      "Stand for 1 minute",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 32,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "sausage-bean-cheese-melt",
+   "name": "Sausage, bean and cheese melt",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 2 Sausage Bean & Cheese Melts 308g",
+     "url": "https://www.iceland.co.uk/p/greggs-2-sausage-bean-and-cheese-melts-308g/53852.html",
+     "where": "Iceland product page",
+     "temp_c": 190,
+     "min": 21,
+     "max": null,
+     "start": "frozen",
+     "amount": "1 melt",
+     "notes": [
+      "Flat side down",
+      "Turn halfway",
+      "Stand for 1 minute",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 31,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "crispy-pancakes",
+   "name": "Crispy pancakes",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Birds Eye 4 Minced Beef & Onion Crispy Pancakes 250g",
+     "url": "https://www.iceland.co.uk/p/birds-eye-4-minced-beef-and-onion-crispy-pancakes-250g/84462.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 8,
+     "max": 10,
+     "start": "frozen",
+     "amount": "Up to 2 pancakes",
+     "notes": [
+      "Turn halfway"
+     ],
+     "preheat": "Preheat to 200°C for 3½ minutes",
+     "oven": {
+      "fan_c": 190,
+      "min": 10,
+      "max": 14,
+      "c": 210,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "ready",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "mini-pizza",
+   "name": "Mini deep dish pizza",
+   "hub": "party-food",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Chicago Town 2 Deep Dish Four Cheese Mini Pizzas",
+     "url": "https://www.iceland.co.uk/p/chicago-town-2-deep-dish-four-cheese-mini-pizzas-2-x-148g/89719.html",
+     "where": "Iceland product page",
+     "temp_c": 160,
+     "min": 10,
+     "max": 18,
+     "start": "frozen",
+     "amount": "1 pizza at a time",
+     "notes": [
+      "No need to preheat",
+      "Turn the pizza round halfway",
+      "Tested in a 1400W, 4 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 20,
+      "max": 23,
+      "c": 200,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "yorkshire-puddings",
+   "name": "Yorkshire puddings",
+   "hub": "christmas",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 10 Yorkshire Puddings 185g",
+     "url": "https://www.iceland.co.uk/p/iceland-12-yorkshire-puddings-217g/94601.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 3,
+     "max": null,
+     "start": "frozen",
+     "amount": "2 Yorkshire puddings",
+     "notes": [
+      "Single layer",
+      "Stand for 1 minute"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 6,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    },
+    {
+     "source": "ninja-af200uk",
+     "temp_c": 180,
+     "min": 3,
+     "max": 4,
+     "amount": "8 (150g)",
+     "prep": "None",
+     "oil": "None",
+     "notes": []
+    },
+    {
+     "source": "ninja-blog",
+     "temp_c": 180,
+     "min": 3,
+     "max": 4,
+     "amount": null,
+     "prep": null,
+     "oil": null,
+     "notes": [],
+     "oven": {
+      "c": 220,
+      "fan_c": 200,
+      "min": 5,
+      "max": 8
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": "These are ready-made frozen Yorkshires being heated through. Aunt Bessie's prints no air fryer time on its Yorkshires, so use its oven instructions or the times here.",
+   "also": []
+  },
+  {
+   "slug": "pigs-in-blankets",
+   "name": "Pigs in blankets",
+   "hub": "christmas",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 12 Pigs in Blankets 252g",
+     "url": "https://www.iceland.co.uk/p/iceland-12-pigs-in-blankets-252g/83286.html",
+     "where": "Iceland product page",
+     "temp_c": 160,
+     "min": 14,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Turn halfway"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 190,
+      "min": 30,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": "sausage",
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "stuffing-balls",
+   "name": "Stuffing balls",
+   "hub": "christmas",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Aunt Bessie's 10 Sage & Onion Stuffing Balls 260g",
+     "url": "https://www.iceland.co.uk/p/aunt-bessies-10-sage-and-onion-stuffing-balls-260g/78309.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 11,
+     "max": 12,
+     "start": "frozen",
+     "amount": "Up to 6 balls",
+     "notes": [
+      "Shake halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 160,
+      "min": 20,
+      "max": 25,
+      "c": 180,
+      "gas": "4"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "honey-glazed-parsnips",
+   "name": "Honey glazed parsnips",
+   "hub": "christmas",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Aunt Bessie's Honey Glazed Parsnips 500g",
+     "url": "https://www.iceland.co.uk/p/aunt-bessies-honey-glazed-parsnips-500g/85579.html",
+     "where": "Iceland product page",
+     "temp_c": 180,
+     "min": 22,
+     "max": 24,
+     "start": "frozen",
+     "amount": "Up to 200g",
+     "notes": [
+      "Shake halfway",
+      "Stand for 1 minute"
+     ],
+     "preheat": "Preheat to 180°C for 3½ minutes",
+     "oven": {
+      "fan_c": 200,
+      "min": 25,
+      "max": 30,
+      "c": 220,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "croissants",
+   "name": "Croissants",
+   "hub": "pastries",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 6 All Butter Croissants 330g",
+     "url": "https://www.iceland.co.uk/p/greggs-6-all-butter-croissants-330g/40136.html",
+     "where": "Iceland product page",
+     "temp_c": 160,
+     "min": 10,
+     "max": null,
+     "start": "frozen",
+     "amount": "1 croissant",
+     "notes": [
+      "Don't overfill the basket",
+      "Stand for 10 minutes",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 16,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "pains-au-chocolat",
+   "name": "Pains au chocolat",
+   "hub": "pastries",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Greggs 4 Pains au Chocolat 280g",
+     "url": "https://www.iceland.co.uk/p/greggs-4-pains-au-chocolat-280g/40132.html",
+     "where": "Iceland product page",
+     "temp_c": 160,
+     "min": 10,
+     "max": null,
+     "start": "frozen",
+     "amount": "1 pain au chocolat",
+     "notes": [
+      "Don't overfill the basket",
+      "Stand for 10 minutes",
+      "Minimum 3.8 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 180,
+      "min": 16,
+      "max": null,
+      "c": null,
+      "gas": "6"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "churros",
+   "name": "Churros",
+   "hub": "pastries",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "TGI Fridays Churros with Chocolate Dipping Sauce 291g",
+     "url": "https://www.iceland.co.uk/p/chiquito%C2%AE-churros-320g/88873.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 6,
+     "max": null,
+     "start": "frozen",
+     "amount": null,
+     "notes": [
+      "Single layer",
+      "Turn halfway",
+      "Keep the sauce and sugar sachets out of the basket"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 8,
+      "max": null,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  },
+  {
+   "slug": "apple-pie-bites",
+   "name": "Apple pie bites",
+   "hub": "pastries",
+   "rows": [
+    {
+     "source": "pack",
+     "product": "Iceland 12 Mini Apple Pie Bites 170g",
+     "url": "https://www.iceland.co.uk/p/iceland-12-(approx.)-mini-apple-pie-bites-170g/91453.html",
+     "where": "Iceland product page",
+     "temp_c": 200,
+     "min": 6,
+     "max": null,
+     "start": "frozen",
+     "amount": "Whole pack",
+     "notes": [
+      "Single layer",
+      "Shake halfway",
+      "The filling may be very hot",
+      "Tested in a 1400W, 4 litre air fryer"
+     ],
+     "preheat": null,
+     "oven": {
+      "fan_c": 200,
+      "min": 6,
+      "max": 8,
+      "c": null,
+      "gas": "7"
+     }
+    }
+   ],
+   "safety": null,
+   "start": "frozen",
+   "intro": null,
+   "also": []
+  }
+ ]
+}

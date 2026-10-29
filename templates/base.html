@@ -48,6 +48,7 @@ gtag("config", "{{ site.ga_measurement_id }}");
       <a href="/convert/"{% if url.startswith('/convert/') %} aria-current="page"{% endif %}>{{ icon('scale', 18) }}Cups to grams</a>
       <a href="/oven-temperatures/"{% if url == '/oven-temperatures/' %} aria-current="page"{% endif %}>{{ icon('oven', 18) }}Oven temps</a>
       <a href="/roast-timer/"{% if url.startswith('/roast-timer/') %} aria-current="page"{% endif %}>{{ icon('roast', 18) }}Roast timer</a>
+      <a href="/air-fryer/"{% if url.startswith('/air-fryer/') %} aria-current="page"{% endif %}>{{ icon('fan', 18) }}Air fryer</a>
       <a href="/recipe-scaler/"{% if url == '/recipe-scaler/' %} aria-current="page"{% endif %}>{{ icon('scaler', 18) }}Scale a recipe</a>
       <a href="/christmas-dinner-planner/"{% if url in ('/christmas-dinner-planner/', '/how-long-to-defrost-a-turkey/') %} aria-current="page"{% endif %}>{{ icon('star', 18) }}Christmas</a>
     </nav>
@@ -75,6 +76,8 @@ gtag("config", "{{ site.ga_measurement_id }}");
         <li><a href="/convert/">{{ icon('scale', 18) }}Cups to grams</a></li>
         <li><a href="/oven-temperatures/">{{ icon('oven', 18) }}Oven temperatures</a></li>
         <li><a href="/roast-timer/">{{ icon('roast', 18) }}Roast timer</a></li>
+        <li><a href="/air-fryer/">{{ icon('fan', 18) }}Air fryer times</a></li>
+        <li><a href="/air-fryer/oven-to-air-fryer/">{{ icon('fan', 18) }}Oven to air fryer</a></li>
         <li><a href="/recipe-scaler/">{{ icon('scaler', 18) }}Recipe scaler</a></li>
         <li><a href="/cake-tin-converter/">{{ icon('tin', 18) }}Cake tin converter</a></li>
         <li><a href="/yeast-converter/">{{ icon('scaler', 18) }}Yeast converter</a></li>

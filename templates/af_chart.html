@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot %}
+{% from "_af.html" import af_food_table %}
+{% block description %}Printable air fryer cooking times chart: {{ foods | length }} foods with temperature in °C and time, each from Ninja's charts or the maker's pack instructions.{% endblock %}
+{% block main %}
+<p class="crumbs noprint"><a href="/air-fryer/">Air fryer</a></p>
+<h1>Air fryer cooking times chart</h1>
+<p class="lede">All {{ foods | length }} foods on one page. Times are for the amount each source tested, so check early and make sure food is piping hot. Tap a food for the full details.</p>
+<p class="noprint"><button type="button" onclick="window.print()">Print this chart</button></p>
+
+{% for h in hubs %}
+<h2>{{ h.name }}</h2>
+{{ af_food_table(h.foods) }}
+{% endfor %}
+
+<p class="source">From cookingbrilliant.com/air-fryer. Sources: Ninja AF200UK and AF100UK quick start guide charts, Ninja UK's cooking times table, and makers' pack instructions. Checked {{ af.sources['ninja-af200uk'].checked }}.</p>
+<div class="noprint">{{ ad_slot("af-chart-1") }}{{ sponsor_slot() }}</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% from "_af.html" import af_caution, src_link %}
+{% block description %}Air fryer times for {{ foods | length }} foods, from frozen chips to Yorkshire puddings. Each time comes from Ninja's charts or the maker's pack, plus an oven to air fryer converter.{% endblock %}
+{% block main %}
+<h1>Air fryer cooking times</h1>
+<p class="lede">Times and temperatures for {{ foods | length }} foods, in °C, for UK freezer favourites as well as fresh food. We don't make the numbers up: every one comes from Ninja's own cooking charts or the instructions printed on the pack, and the page links to where we found it.</p>
+
+<ul class="tool-cards">
+  <li><a href="/air-fryer/oven-to-air-fryer/"><span class="tc-ico">{{ icon('fan', 24) }}</span><strong>Oven to air fryer</strong><span>Only oven times on the packet? Get a starting point, and see what {{ cmp.n }} real packs do.</span></a></li>
+  <li><a href="/air-fryer/dual-basket-timer/"><span class="tc-ico">{{ icon('roast', 24) }}</span><strong>Dual basket timer</strong><span>Two foods, two times. When to start each so they finish together.</span></a></li>
+  <li><a href="/air-fryer/cooking-times-chart/"><span class="tc-ico">{{ icon('oven', 24) }}</span><strong>Printable chart</strong><span>All {{ foods | length }} on one page for the fridge door.</span></a></li>
+</ul>
+
+<label for="af-find">Find a food</label>
+<input id="af-find" list="af-foods" placeholder="e.g. fish fingers, pigs in blankets" autocomplete="off">
+<datalist id="af-foods">{% for f in foods %}<option value="{{ f.name }}">{% endfor %}</datalist>
+<p class="small" id="af-find-out" aria-live="polite"></p>
+
+<div class="groups">
+{% for h in hubs %}
+  <section class="group-card">
+    <h3><a href="{{ h.url }}">{{ h.name }}</a></h3>
+    <ul>{% for f in h.foods %}<li><a href="{{ f.url }}">{{ f.name }}</a></li>{% endfor %}</ul>
+  </section>
+{% endfor %}
+</div>
+
+{{ af_caution() }}
+
+<h2>Where the times come from</h2>
+<p>Fresh food times are from the cooking charts in Ninja's quick start guides ({{ src_link(af, 'ninja-af200uk') }}, for the Foodi Dual Zone, and {{ src_link(af, 'ninja-af100uk') }}) and from {{ src_link(af, 'ninja-blog') }}. Freezer food times are copied from the maker's air fryer instructions, as printed on the pack and shown on the retailer's product page. Where sources disagree, we show them all.</p>
+<p>If a food isn't in Ninja's chart, Ninja says to cut the time on the packaging by 25%, check often and add time if needed ({{ src_link(af, 'ninja-af200uk') }}). Some makers print no air fryer time at all. Aunt Bessie's Yorkshire puddings and Young's scampi, for example, only give oven times, so check the pack.</p>
+
+{{ ad_slot("af-home-1") }}
+{{ affiliate('airfryer') }}
+{{ sponsor_slot() }}
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  var input = document.getElementById("af-find"), out = document.getElementById("af-find-out");
+  var map = { {% for f in foods %}{{ f.name | lower | tojson }}: {{ f.url | tojson }}{% if not loop.last %},{% endif %}{% endfor %} };
+  input.addEventListener("change", function () {
+    var u = map[input.value.trim().toLowerCase()];
+    if (u) location.href = u; else if (input.value.trim()) out.textContent = "Not in our list yet. Pick one of the suggestions, or try the oven to air fryer converter.";
+  });
+})();
+</script>
+{% endblock %}

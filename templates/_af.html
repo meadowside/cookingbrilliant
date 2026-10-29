@@ -1,0 +1,63 @@
+{% macro src_link(af, key) %}<a href="{{ af.sources[key].url }}">{{ af.sources[key].short }}</a>{% endmacro %}
+
+{% macro af_caution() %}
+<aside class="caution" role="note">
+  <p><strong>Treat these as starting points.</strong> Air fryers differ in power and basket size, and the makers say their times are a guide. Check a few minutes early, and make sure food is piping hot all the way through before you eat it. If the pack has air fryer instructions, follow those. <a href="/disclaimer/">More on using this site safely</a>.</p>
+</aside>
+{% endmacro %}
+
+{% macro af_rows_table(f) %}
+<div class="tablewrap"><table class="af-rows">
+  <thead><tr><th>Who says</th><th>How much</th><th class="n">Temp</th><th class="n">Time</th><th>Notes</th></tr></thead>
+  <tbody>
+  {% for r in f.rows %}
+    <tr>
+      <td data-label="Who says"><a href="{{ r.by_url }}">{{ r.by }}</a><br><span class="small">{{ r.start_text }}{% if r.source == 'pack' %}, pack instructions{% endif %}</span></td>
+      <td data-label="How much">{{ r.amount or '' }}{% if r.prep and r.prep != 'None' %}{% if r.amount %}<br>{% endif %}<span class="small">{{ r.prep }}</span>{% endif %}</td>
+      <td class="n" data-label="Temp">{{ r.temp_c }}°C</td>
+      <td class="n" data-label="Time">{{ r.time }}</td>
+      <td class="small" data-label="Notes">{% set bits = [] %}{% if r.preheat %}{% set _ = bits.append(r.preheat) %}{% endif %}{% if r.oil and r.oil != 'None' %}{% set _ = bits.append('Oil: ' ~ r.oil) %}{% endif %}{% for n in r.notes %}{% set _ = bits.append(n) %}{% endfor %}{% if r.watts %}{% set _ = bits.append('Time depends on wattage, see below') %}{% endif %}{{ bits | join('. ') }}{% if bits %}.{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% for r in f.rows if r.watts %}
+<h2>{{ r.by }}: time by wattage</h2>
+<p>The pack gives a different time for each air fryer power. The wattage is usually on the label underneath, or in the manual.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Air fryer power</th><th class="n">Time at {{ r.temp_c }}°C</th></tr></thead>
+  <tbody>{% for w in r.watts %}<tr><td>{{ w.w }}W</td><td class="n">{{ w.time }}</td></tr>{% endfor %}</tbody>
+  <caption>For {{ r.amount or 'the amount on the pack' }}.</caption>
+</table></div>
+{% endfor %}
+{% endmacro %}
+
+{% macro af_safety(f, roasts) %}
+{% if f.safety in ('poultry', 'pork', 'sausage', 'mince', 'gammon', 'raw-coated') %}
+<h2>Is it cooked?</h2>
+<p>{{ f.name }} must be cooked all the way through. {{ roasts.fsa_core.text }} (<a href="{{ roasts.sources.fsa.url }}">Food Standards Agency</a>)</p>
+<p>A probe thermometer in the thickest piece is the quickest way to check. If it isn't there yet, give it a few more minutes and check again.</p>
+{% elif f.safety == 'ready' %}
+<p class="note">Breaded and coated foods can look done before the middle is hot. Make sure it's piping hot all the way through before eating.</p>
+{% elif f.safety in ('whole-beef', 'whole-lamb') %}
+<p class="note">How done you like it is up to you, so check early. A probe thermometer takes the guesswork out. For doneness temperatures, see the {% if f.safety == 'whole-beef' %}<a href="/roast-timer/beef/">roast beef</a>{% else %}<a href="/roast-timer/lamb/">roast lamb</a>{% endif %} page.</p>
+{% endif %}
+{% endmacro %}
+
+{% macro af_tips(af) %}
+<h2>Getting it right</h2>
+<ul>
+  {% for k in ('preheat', 'layer', 'shake', 'quantity', 'check') %}{% set t = af.rules[k] %}
+  <li>{{ t.text }} ({{ src_link(af, t.source) }})</li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro af_food_table(foods) %}
+<div class="tablewrap"><table>
+  <thead><tr><th>Food</th><th class="n">Temp</th><th class="n">Time</th><th>From</th></tr></thead>
+  <tbody>
+  {% for f in foods %}<tr><td><a href="{{ f.url }}">{{ f.name }}</a></td><td class="n">{{ f.top.temp_c }}°C</td><td class="n">{{ f.headline_time }}</td><td class="small">{{ f.top.by }}</td></tr>{% endfor %}
+  </tbody>
+</table></div>
+{% endmacro %}

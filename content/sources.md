@@ -21,6 +21,10 @@ Cooking times, oven settings and resting times come from the Q Guild, the UK but
 
 [USDA Food Safety and Inspection Service, Let's Talk Turkey](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/lets-talk-turkey-roasting). Roasting times at 325°F, thawing times, the 165°F safe temperature and the leftovers advice all come from this page. Where a weight sits on the line between two rows of USDA's chart (12 lb is in both the 8 to 12 lb and 12 to 14 lb rows), we show the range covering both rows.
 
+## Air fryer times
+
+Fresh food times come from the air fry cooking charts in Ninja's quick start guides for the AF200UK (Foodi Dual Zone) and AF100UK air fryers, and from Ninja UK's own cooking times table. Freezer food times are copied from the maker's air fryer instructions as printed on the pack, which retailers show on their product pages. Each air fryer page links to the exact source, and the full list is at the bottom of this page. We don't adjust these times. The one calculation is on the oven to air fryer page, which compares the oven and air fryer times printed on the same packs.
+
 ## Oven temperatures
 
 [Which?, Oven temperature conversion table](https://www.which.co.uk/reviews/built-in-ovens/article/oven-temperature-conversion-table-aA5Ol9b157On).

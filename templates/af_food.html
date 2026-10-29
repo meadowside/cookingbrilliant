@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% from "_macros.html" import ad_slot, sponsor_slot, affiliate %}
+{% from "_af.html" import af_caution, af_rows_table, af_safety, af_tips, src_link %}
+{% block description %}{{ f.name }} in the air fryer: {{ f.top.temp_c }}°C for {{ f.headline_time }}{% if f.headline_note %} {{ f.headline_note }}{% endif %}, from {{ f.top.by }}. {% if f.rows | length > 1 %}{{ f.rows | length }} sourced times compared, {% endif %}with oven times and tips.{% endblock %}
+{% block head %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Air fryer","item":"{{ site.base_url }}/air-fryer/"},{"@type":"ListItem","position":2,"name":"{{ f.hub_info.name }}","item":"{{ site.base_url }}{{ f.hub_info.url }}"},{"@type":"ListItem","position":3,"name":"{{ f.name }}","item":"{{ canonical }}"}]}</script>
+{% endblock %}
+{% block main %}
+<p class="crumbs"><a href="/air-fryer/">Air fryer</a> › <a href="{{ f.hub_info.url }}">{{ f.hub_info.name }}</a></p>
+<h1>How long to cook {{ f.lc }} in an air fryer</h1>
+
+<section class="scale" aria-label="Answer">
+  <p class="scale-q">{{ f.top.start_text }}, air fry at</p>
+  <p class="scale-a">{{ f.top.temp_c }}<small>°C</small></p>
+  <p class="scale-extra">for <strong>{{ f.headline_time }}</strong>{% if f.headline_note %} {{ f.headline_note }}{% endif %}{% if f.top.amount %} ({{ f.top.amount[0] | lower }}{{ f.top.amount[1:] }}){% endif %}.{% if f.top.notes %} {{ f.top.notes | join('. ') }}.{% endif %}</p>
+  <p class="scale-extra small">Source: <a href="{{ f.top.by_url }}">{{ f.top.by }}</a>{% if f.top.source == 'pack' %} pack instructions{% endif %}.</p>
+</section>
+
+{% if f.intro %}<p>{{ f.intro }}</p>{% endif %}
+
+{{ af_caution() }}
+
+<h2>{% if f.rows | length > 1 %}What each source says{% else %}The details{% endif %}</h2>
+{{ af_rows_table(f) }}
+{% if f.rows | length > 1 %}<p class="small">Sources tested different amounts in different machines, which is why the times don't match. Go by the row closest to how much you're cooking.</p>{% endif %}
+
+{% set ovens = f.rows | selectattr('oven_text') | list %}
+{% if ovens %}
+<h2>Air fryer or oven?</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>Source</th><th>Oven</th><th>Air fryer</th></tr></thead>
+  <tbody>{% for r in ovens %}<tr><td>{{ r.by }}</td><td>{{ r.oven_text }}</td><td>{{ r.temp_c }}°C for {{ r.time }}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endif %}
+
+{{ af_safety(f, roasts) }}
+
+{{ ad_slot("af-food-1") }}
+
+{{ af_tips(af) }}
+
+<p>Cooking something with only oven instructions on the pack? Try the <a href="/air-fryer/oven-to-air-fryer/">oven to air fryer converter</a>. Two things to finish at once? The <a href="/air-fryer/dual-basket-timer/">dual basket timer</a> tells you when to start each.</p>
+
+{{ affiliate('thermo' if f.safety in ('poultry', 'pork', 'sausage', 'mince', 'gammon', 'raw-coated', 'whole-beef', 'whole-lamb') else 'liner') }}
+{{ sponsor_slot() }}
+
+<p class="source">Every time on this page is copied from the linked source, checked {{ af.sources['ninja-af200uk'].checked }}. Pack instructions are as printed for that product. Other brands of the same food can differ. <a href="/sources/">All our sources</a>.</p>
+
+{% if related %}
+<h2>More {{ f.hub_info.name | lower }}</h2>
+<ul class="links">{% for o in related %}<li><a href="{{ o.url }}">{{ o.name }}: {{ o.top.temp_c }}°C, {{ o.headline_time }}</a></li>{% endfor %}</ul>
+{% endif %}
+{% endblock %}

@@ -265,3 +265,27 @@ textarea { min-height: 12rem; resize: vertical; line-height: 1.5; }
 @media (min-width: 40rem) { .tins { grid-template-columns: 1fr 1fr; } }
 .tin-box { border: 1px solid var(--line); border-radius: 12px; padding: .7rem .9rem .1rem; margin: 0; }
 .tin-box legend { font-weight: 700; padding: 0 .3rem; }
+
+/* ---------- air fryer */
+.af-rows td { vertical-align: top; }
+.af-rows .small { margin: 0; }
+@media (max-width: 600px) {
+  .af-rows thead { display: none; }
+  .af-rows, .af-rows tbody, .af-rows tr, .af-rows td { display: block; width: 100%; }
+  .af-rows tr { border-bottom: 1px solid var(--line); padding: .5rem 0; }
+  .af-rows tbody tr:last-child { border-bottom: 0; }
+  .af-rows td { border: 0; padding: .2rem .8rem; text-align: left; }
+  .af-rows td.n { text-align: left; }
+  .af-rows td[data-label]:not(:first-child)::before { content: attr(data-label) ": "; font-weight: 700; color: var(--ink-soft); font-size: .85rem; }
+  .af-rows td:empty { display: none; }
+}
+
+/* ---------- print (the air fryer chart, and any page someone prints) */
+@media print {
+  .top, .side-left, .side-right, .foot, .noprint, .slot, .sponsor, .affiliate, .skip { display: none !important; }
+  .layout { display: block; padding: 0; }
+  body { background: #fff; color: #000; }
+  .tablewrap { box-shadow: none; break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+  h2 { break-after: avoid; }
+}
